@@ -27,7 +27,7 @@ function render(container) {
     }
   });
 
-  resultsEl = createEl("div", { className: "search__results" });
+  resultsEl = createEl("div", { className: "search__results", attrs: { "aria-live": "polite" } });
 
   input.addEventListener("input", () => {
     renderResults(input.value);
@@ -40,20 +40,24 @@ function render(container) {
   renderResults("");
 }
 
+function s(value) {
+  return String(value ?? "").toLowerCase();
+}
+
 function matchNote(note, q) {
-  return note.title.toLowerCase().includes(q) || note.body.toLowerCase().includes(q);
+  return s(note.title).includes(q) || s(note.body).includes(q);
 }
 
 function matchBookmark(bookmark, q) {
   return (
-    bookmark.title.toLowerCase().includes(q) ||
-    bookmark.url.toLowerCase().includes(q) ||
-    (bookmark.note && bookmark.note.toLowerCase().includes(q))
+    s(bookmark.title).includes(q) ||
+    s(bookmark.url).includes(q) ||
+    (bookmark.note && s(bookmark.note).includes(q))
   );
 }
 
 function matchFlashcard(card, q) {
-  return card.front.toLowerCase().includes(q) || card.back.toLowerCase().includes(q);
+  return s(card.front).includes(q) || s(card.back).includes(q);
 }
 
 function snippet(text, length = 100) {
