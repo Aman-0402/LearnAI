@@ -23,6 +23,14 @@ export function setStoredTheme(theme) {
   }
 }
 
+export function clearStoredTheme() {
+  try {
+    localStorage.removeItem(THEME_KEY);
+  } catch {
+    /* localStorage unavailable - nothing to clear */
+  }
+}
+
 export function resolveTheme() {
   const stored = getStoredTheme();
   if (stored === "light" || stored === "dark") return stored;

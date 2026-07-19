@@ -2,15 +2,16 @@
 import { resolveTheme, applyTheme, setStoredTheme } from "../../storage/theme-store.js";
 
 export function initThemeToggle(buttonEl) {
-  let current = resolveTheme();
-  applyTheme(current);
-  updateIcon(buttonEl, current);
+  const initial = resolveTheme();
+  applyTheme(initial);
+  updateIcon(buttonEl, initial);
 
   buttonEl.addEventListener("click", () => {
-    current = current === "dark" ? "light" : "dark";
-    applyTheme(current);
-    setStoredTheme(current);
-    updateIcon(buttonEl, current);
+    const current = document.documentElement.getAttribute("data-theme") || resolveTheme();
+    const next = current === "dark" ? "light" : "dark";
+    applyTheme(next);
+    setStoredTheme(next);
+    updateIcon(buttonEl, next);
   });
 }
 
