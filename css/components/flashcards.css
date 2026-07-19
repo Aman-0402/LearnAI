@@ -43,6 +43,16 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.flashcards__submit:hover {
+  opacity: 0.9;
+}
+
+.flashcards__submit:active {
+  transform: scale(0.97);
 }
 
 .flashcards__grid {
@@ -73,6 +83,11 @@
   flex-direction: column;
   gap: var(--space-3);
   min-height: 140px;
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.flashcard:hover {
+  border-color: var(--color-primary);
 }
 
 .flashcard__body {
@@ -110,6 +125,11 @@
   padding: var(--space-2) var(--space-4);
   cursor: pointer;
   font-weight: 500;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.flashcard__delete:hover {
+  background-color: color-mix(in srgb, var(--color-error) 10%, transparent);
 }
 
 .flashcards__empty {

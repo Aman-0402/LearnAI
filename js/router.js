@@ -58,6 +58,21 @@ export function initRouter(mainEl, onRouteChange) {
   handleRoute(mainEl, onRouteChange);
 }
 
+function waitForTransitionEnd(el, className, fallbackMs) {
+  return new Promise((resolve) => {
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      el.removeEventListener("transitionend", finish);
+      resolve();
+    };
+    el.addEventListener("transitionend", finish, { once: true });
+    setTimeout(finish, fallbackMs);
+    el.classList.add(className);
+  });
+}
+
 async function handleRoute(mainEl, onRouteChange) {
   const routeId = (location.hash.replace(/^#\//, "") || DEFAULT_ROUTE);
   const entry = routeTable[routeId];
@@ -74,6 +89,12 @@ async function handleRoute(mainEl, onRouteChange) {
 
     if (myRequestId !== requestId) return;
 
+    await waitForTransitionEnd(mainEl, "route-fade-out", 300);
+
+    if (myRequestId !== requestId) return;
+
+    mainEl.classList.remove("route-fade-out");
+
     if (currentModule && typeof currentModule.unmount === "function") {
       currentModule.unmount();
     }
@@ -81,6 +102,13 @@ async function handleRoute(mainEl, onRouteChange) {
     currentModule = mod;
     mod.mount(mainEl, entry.meta);
     onRouteChange(routeId);
+
+    mainEl.classList.add("route-fade-in");
+    mainEl.addEventListener(
+      "animationend",
+      () => mainEl.classList.remove("route-fade-in"),
+      { once: true }
+    );
   } catch (err) {
     if (myRequestId !== requestId) return;
     console.error(`Failed to load route "${routeId}":`, err);

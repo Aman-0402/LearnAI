@@ -37,6 +37,16 @@
   padding: var(--space-3) var(--space-5);
   font-weight: 600;
   cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.notes__submit:hover {
+  opacity: 0.9;
+}
+
+.notes__submit:active {
+  transform: scale(0.97);
 }
 
 .notes__list {
@@ -54,6 +64,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  transition: transform var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
 }
 
 .note-card__title {
@@ -87,6 +104,11 @@
   cursor: pointer;
   color: var(--color-text);
   font-weight: 500;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.note-card__button:hover {
+  background-color: color-mix(in srgb, var(--color-text) 8%, transparent);
 }
 
 .note-card__button--danger {
