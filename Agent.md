@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 16:55
+- Task: Phase 1 Task 6 fix — pin Lucide CDN version + SRI hash (code review follow-up on commit acc0bc5).
+- Changed: Resolved unpkg's `@latest` redirect for Lucide (currently `1.25.0`), downloaded that exact file, and computed its sha384 hash. Updated the `<script>` tag in index.html to `https://unpkg.com/lucide@1.25.0/dist/umd/lucide.js` with `integrity="sha384-PpZ0v4GjRXD+zBXfYaMJkWUZG4mHqAlhTADbQwrM8oXYO7LGWz+NcISPEVyO9opc"` and `crossorigin="anonymous"`, removing the unpinned `@latest`. Verified reproducibility by re-downloading the file and recomputing the hash (identical bytes, identical digest). This closes the supply-chain/stability gap flagged in review: a future Lucide release can no longer silently change what loads, and any tampering in transit would fail the SRI check instead of executing.
+- Files: index.html
+- Next: none for this task; later tasks (topbar.js, sidebar.js, etc.) can safely call `lucide.createIcons()` against this pinned build.
+
 ## 2026-07-19 16:45
 - Task: Phase 1 Task 6 — Shell layout grid + Lucide icon loading.
 - Changed: Created css/layout.css defining the .app-shell CSS grid (sidebar/topbar/main areas, responsive collapse to fixed off-canvas sidebar + scrim below 1024px). Inserted a deferred Lucide UMD CDN script tag into index.html <head> (right after the Google Fonts stylesheet link) and a css/layout.css stylesheet link (right after css/base.css). No JS component work done — this only lays the CSS grid groundwork and script tag for later tasks (topbar.js, sidebar.js, main.js bootstrap) to populate. Verified via `npx serve .`: index.html and css/layout.css both returned 200, and the Lucide CDN URL resolved (302 -> 200) to a valid UMD bundle (v1.25.0) that assigns window.lucide; no browser devtools available in this environment to interactively confirm, so relied on network-level checks plus confirming all CSS custom properties used in layout.css (--sidebar-width, --topbar-height, --space-6, --duration-base, --ease-standard) already exist in css/tokens.css.
