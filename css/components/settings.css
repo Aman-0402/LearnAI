@@ -41,4 +41,14 @@
   padding: var(--space-3) var(--space-5);
   font-weight: 600;
   cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.settings__danger-button:hover {
+  opacity: 0.9;
+}
+
+.settings__danger-button:active {
+  transform: scale(0.97);
 }
