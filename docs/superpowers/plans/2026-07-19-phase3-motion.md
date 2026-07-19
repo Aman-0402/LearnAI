@@ -142,6 +142,8 @@ async function handleRoute(mainEl, onRouteChange) {
     await waitForTransitionEnd(mainEl, "route-fade-out", 300);
     mainEl.classList.remove("route-fade-out");
 
+    if (myRequestId !== requestId) return;
+
     if (currentModule && typeof currentModule.unmount === "function") {
       currentModule.unmount();
     }
@@ -168,7 +170,7 @@ Leave `routeTable`, `DEFAULT_ROUTE`, `initRouter`, and the `currentModule`/`requ
 
 - [ ] **Step 2: Verify**
 
-Run `node --check js/router.js` — expect no output. Read the diff: `waitForTransitionEnd` is a new module-level helper (300ms fallback comfortably exceeds `--duration-base`'s 250ms so the real transition always wins in normal conditions); the fade-out happens *before* `mod.mount`/`unmount` swap the content, and fade-in happens *after* — matching the "fade out old content, swap, fade in new content" spec. The existing `myRequestId !== requestId` staleness guards are unchanged and still run at the same points relative to the async `await entry.load()`, so rapid navigation still can't leave a stale route mounted (Task 11's Phase 1 guarantee is preserved — the new `await waitForTransitionEnd` doesn't introduce a new unguarded async gap _before_ the existing check, only after it).
+Run `node --check js/router.js` — expect no output. Read the diff: `waitForTransitionEnd` is a new module-level helper (300ms fallback comfortably exceeds `--duration-base`'s 250ms so the real transition always wins in normal conditions); the fade-out happens *before* `mod.mount`/`unmount` swap the content, and fade-in happens *after* — matching the "fade out old content, swap, fade in new content" spec. Note the code above includes a **second** `if (myRequestId !== requestId) return;` check right after `await waitForTransitionEnd(...)`, in addition to the existing one after `await entry.load()` — this is required, not optional: the fade-out wait is itself a new async gap (~250-300ms), and without re-checking staleness after it, a rapid second navigation during that window could let a stale route proceed to unmount/mount, regressing Task 11's Phase 1 race-condition guard. (An earlier draft of this plan omitted this second check; it was caught in code review and must be present in the final code.)
 
 - [ ] **Step 3: Verify in browser**
 
