@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 17:30
+- Task: Phase 1 Task 8 — Sidebar component (css/components/sidebar.css, js/modules/shell/sidebar.js).
+- Changed: Created css/components/sidebar.css (sidebar layout, nav list/link styles with hover and data-active states, bottom block with progress bar/stat rows — all consuming existing design tokens from tokens.css). Created js/modules/shell/sidebar.js exporting renderSidebar({ activeRoute }) (fetches json/nav.json, builds the nav `<ul>` of `.sidebar__link` anchors keyed off item.route/.icon/.label with data-active set from activeRoute, appends the bottom progress/streak/learning-time block sourced from progress-store getState/getOverallProgressPercent, calls window.lucide.createIcons()) and setActiveLink(sidebarEl, activeRoute) (re-marks the matching link's data-active on route change). Implemented exactly as specified in the plan, including the unused clearChildren import (left in place per instructions, not wired up). Verified `node --check js/modules/shell/sidebar.js` (syntax OK) and confirmed json/nav.json's `main` array shape (each item has id/label/route/icon, phase optional) matches what sidebar.js destructures (.route/.icon/.label). Confirmed both imports (createEl/clearChildren from js/utils/dom.js, getState/getOverallProgressPercent from js/storage/progress-store.js) resolve to existing exports. No wiring into index.html/main.js yet — per the plan, Task 9 mounts the full shell (topbar + sidebar) and does live visual verification.
+- Files: css/components/sidebar.css, js/modules/shell/sidebar.js, Agent.md
+- Next: Task 9 of Phase 1 Foundation plan — main.js shell integration wiring topbar.js + sidebar.js together into index.html, with live visual verification.
+
 ## 2026-07-19 17:15
 - Task: Phase 1 Task 7 fix — accessibility gap in topbar search input (code review follow-up on commit 1f183cd).
 - Changed: Added `"aria-label": "Search lessons, terms, concepts"` to the search `<input>`'s attrs in js/modules/shell/topbar.js. Placeholder text alone isn't reliably exposed as an accessible name to screen readers, so the input previously had no dependable accessible name. Verified with `node --check` (syntax OK). Two other review findings (theme-toggle closure staleness across re-renders, and `lucide.createIcons()` doing a document-wide rescan on every theme-toggle click) were flagged as real but dormant — only one call site exists for Phase 1 — and were intentionally left unfixed per coordinator direction.
