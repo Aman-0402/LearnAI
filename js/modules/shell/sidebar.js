@@ -3,7 +3,14 @@ import { createEl, clearChildren } from "../../utils/dom.js";
 import { getState, getOverallProgressPercent } from "../../storage/progress-store.js";
 
 export async function renderSidebar({ activeRoute }) {
-  const navData = await fetch("json/nav.json").then((res) => res.json());
+  let navData = { main: [] };
+  try {
+    const res = await fetch("json/nav.json");
+    if (!res.ok) throw new Error(`nav.json fetch failed: ${res.status}`);
+    navData = await res.json();
+  } catch (err) {
+    console.error("Failed to load sidebar navigation:", err);
+  }
 
   const list = createEl("ul", { className: "sidebar__nav" });
   for (const item of navData.main) {
