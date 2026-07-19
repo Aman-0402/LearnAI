@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 23:15
+- Task: Phase 2 Notes Task 3 fix — address code-review findings on commit fea8045.
+- Changed: js/modules/notes/notes.js — added an `<h1>Notes</h1>` page heading; `render()` now saves/restores `window.scrollY` around the full-container redraw; added a module-level `focusTarget` discriminated-object variable (cleared in mount/unmount) plus `applyFocusTarget()` called at the end of `render()` to restore keyboard focus after each mutating action (Add -> add-form title input, Edit -> that card's edit-mode title input, Save/Cancel -> that card's Edit button via `:not(.note-card__button--danger)`, Delete -> add-form title input as fallback). Added `data-note-id` attrs to both `renderCard` and `renderEditCard` root elements so focus targets can be located after redraw. Verified with `node --check`.
+- Files: js/modules/notes/notes.js
+- Next: Task 4 of Phase 2 Notes plan — wire the notes route in js/router.js to this module (currently points at coming-soon.js).
+
 ## 2026-07-19 23:00
 - Task: Phase 2 Notes Task 3 — Notes view module.
 - Changed: Added js/modules/notes/notes.js implementing mount/unmount lifecycle, add-note form, list rendering (sorted newest first), and edit-in-place (per-card edit/save/cancel) plus delete with confirm. Verified imports resolve against js/utils/dom.js (createEl) and js/storage/notes-store.js (getNotes, addNote, updateNote, deleteNote), and all class names used match css/components/notes.css. Verified with `node --check`.
