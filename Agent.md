@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 21:45
+- Task: Phase 2 Task 4 — write js/modules/settings/settings.js.
+- Changed: Created js/modules/settings/settings.js exporting `mount(container)` and `unmount()`. Renders three panel cards: Appearance (theme radio group light/dark/system backed by theme-store, plus a reduced-motion checkbox backed by settings-store), Learning (daily goal minutes number input, clamped 5-240), and Data (Reset Progress danger button gated by confirm() that calls resetProgress() and reloads). Content matches the plan verbatim. Verified every imported name resolves to a real export: theme-store.js exports getStoredTheme, applyTheme, setStoredTheme, clearStoredTheme, getSystemTheme; settings-store.js exports getSettings, setSettings; progress-store.js exports resetProgress; dom.js exports createEl. Verified every className used (settings, panel, settings__card, settings__card--danger, settings__radio-row, settings__checkbox-row, settings__number-input, settings__danger-button) matches css/components/settings.css exactly. Ran `node --check js/modules/settings/settings.js` — no output, syntax OK. Not wired into the router (Task 5's job), so no runtime/browser testing was possible or expected at this stage.
+- Files: js/modules/settings/settings.js, Agent.md
+- Next: Task 5 — wire settings module into the router/nav so it's reachable in the app shell.
+
 ## 2026-07-19 21:30
 - Task: Phase 2 Task 3 — write css/components/settings.css.
 - Changed: Created css/components/settings.css with `.settings` (flex column layout, max-width 640px), `.settings__card` (flex column, meant to combine with `.panel` from dashboard.css — adds only layout, no background/border/shadow), `.settings__card--danger` (overrides border-color to var(--color-error) on top of `.panel`), `.settings__radio-row` / `.settings__checkbox-row` (inline flex rows), `.settings__number-input` (bg/border/radius/padding using existing tokens), `.settings__danger-button` (solid error-colored button). Content matches the plan verbatim. Verified brace balance (6 open / 6 close) and cross-checked every var(--...) reference against css/tokens.css — all present (--space-5, --space-3, --space-2, --color-error, --color-bg, --color-border, --radius-control, --color-text). File is not yet linked into index.html (that's Task 5), so no visual/runtime testing was possible or expected at this stage.
