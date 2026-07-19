@@ -3,14 +3,17 @@ import { createEl } from "../../utils/dom.js";
 import { getFlashcards, addFlashcard, deleteFlashcard } from "../../storage/flashcards-store.js";
 
 let flippedIds = new Set();
+let focusTarget = null; // { type: "add-front" } | { type: "card", id: string }
 
 export function mount(container) {
   flippedIds = new Set();
+  focusTarget = null;
   render(container);
 }
 
 export function unmount() {
   flippedIds = new Set();
+  focusTarget = null;
 }
 
 function render(container) {
@@ -21,6 +24,19 @@ function render(container) {
       children: [renderForm(container), renderGrid(container)]
     })
   );
+  applyFocusTarget(container);
+}
+
+function applyFocusTarget(container) {
+  if (!focusTarget) return;
+  let el = null;
+  if (focusTarget.type === "add-front") {
+    el = container.querySelector(".flashcards__form .flashcards__input");
+  } else if (focusTarget.type === "card") {
+    el = container.querySelector(`.flashcard__body[data-card-id="${focusTarget.id}"]`);
+  }
+  if (el) el.focus();
+  focusTarget = null;
 }
 
 function renderForm(container) {
@@ -57,6 +73,7 @@ function renderForm(container) {
     const back = backInput.value.trim();
     if (!front || !back) return;
     addFlashcard(front, back);
+    focusTarget = { type: "add-front" };
     render(container);
   });
 
@@ -81,18 +98,34 @@ function renderCard(card, container) {
 
   const body = createEl("div", {
     className: "flashcard__body",
+    attrs: {
+      tabindex: "0",
+      role: "button",
+      "aria-label": isFlipped ? "Show front" : "Show back",
+      "data-card-id": card.id
+    },
     children: [
       createEl("div", { className: "flashcard__side-label", text: isFlipped ? "Back" : "Front" }),
       createEl("div", { className: "flashcard__text", text: isFlipped ? card.back : card.front })
     ]
   });
-  body.addEventListener("click", () => {
+
+  const toggleFlip = () => {
     if (flippedIds.has(card.id)) {
       flippedIds.delete(card.id);
     } else {
       flippedIds.add(card.id);
     }
+    focusTarget = { type: "card", id: card.id };
     render(container);
+  };
+
+  body.addEventListener("click", toggleFlip);
+  body.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleFlip();
+    }
   });
 
   const deleteButton = createEl("button", { className: "flashcard__delete", text: "Delete" });
@@ -100,6 +133,7 @@ function renderCard(card, container) {
     event.stopPropagation();
     if (confirm("Delete this flashcard? This cannot be undone.")) {
       deleteFlashcard(card.id);
+      focusTarget = { type: "add-front" };
       render(container);
     }
   });
