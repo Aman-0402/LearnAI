@@ -90,6 +90,9 @@ async function handleRoute(mainEl, onRouteChange) {
     if (myRequestId !== requestId) return;
 
     await waitForTransitionEnd(mainEl, "route-fade-out", 300);
+
+    if (myRequestId !== requestId) return;
+
     mainEl.classList.remove("route-fade-out");
 
     if (currentModule && typeof currentModule.unmount === "function") {
