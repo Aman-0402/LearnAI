@@ -58,6 +58,7 @@ const routeTable = {
 const DEFAULT_ROUTE = "dashboard";
 
 let currentModule = null;
+let requestId = 0;
 
 export function initRouter(mainEl, onRouteChange) {
   window.addEventListener("hashchange", () => handleRoute(mainEl, onRouteChange));
@@ -73,13 +74,23 @@ async function handleRoute(mainEl, onRouteChange) {
     return;
   }
 
-  if (currentModule && typeof currentModule.unmount === "function") {
-    currentModule.unmount();
+  const myRequestId = ++requestId;
+
+  try {
+    const mod = await entry.load();
+
+    if (myRequestId !== requestId) return;
+
+    if (currentModule && typeof currentModule.unmount === "function") {
+      currentModule.unmount();
+    }
+
+    currentModule = mod;
+    mod.mount(mainEl, entry.meta);
+    onRouteChange(routeId);
+  } catch (err) {
+    if (myRequestId !== requestId) return;
+    console.error(`Failed to load route "${routeId}":`, err);
+    mainEl.innerHTML = '<p style="padding: 24px;">Failed to load this section. Please try again.</p>';
   }
-
-  const mod = await entry.load();
-  currentModule = mod;
-  mod.mount(mainEl, entry.meta);
-
-  onRouteChange(routeId);
 }
