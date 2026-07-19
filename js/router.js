@@ -30,8 +30,7 @@ const routeTable = {
     meta: { title: "Flashcards", phase: "Phase 2" }
   },
   bookmarks: {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Bookmarks", phase: "Phase 2" }
+    load: () => import("./modules/bookmarks/bookmarks.js")
   },
   notes: {
     load: () => import("./modules/notes/notes.js")
