@@ -101,6 +101,12 @@ Format:
 - Files: js/storage/progress-store.js, js/storage/theme-store.js
 - Next: Task 5 of Phase 1 Foundation plan (per implementation plan sequence).
 
+## 2026-07-19 16:10
+- Task: Phase 1 Task 14 — README + final Phase 1 wrap-up commit.
+- Changed: Added README.md at repo root describing the project (frontend-only HTML/CSS/vanilla ES6 modules AI learning platform, no build step, GitHub Pages deployable), local-run instructions (npx serve / python http.server, noting file:// won't work due to ES module CORS requirements), and a Status section marking Phase 1 (Foundation) complete (theme system, responsive sidebar/topbar shell, hash-based router, empty-state Dashboard), pointing to docs/superpowers/specs/ and docs/superpowers/plans/ for design history. Content matches the plan's verbatim spec exactly.
+- Files: README.md
+- Next: Phase 1 Foundation complete. Phase 2 (Core Platform: progress tracking, notes, bookmarks, search, flashcards, achievements, settings, localStorage integration) per project CLAUDE.md/spec, pending user direction.
+
 ## 2026-07-19 15:50
 - Task: Phase 1 Task 4 — storage wrappers (theme + progress).
 - Changed: Added js/storage/theme-store.js (getSystemTheme, getStoredTheme, setStoredTheme, resolveTheme, applyTheme — localStorage-backed theme persistence with try/catch fallbacks) and js/storage/progress-store.js (getState, setState, getOverallProgressPercent — localStorage-backed progress state with DEFAULT_STATE merge-in for xp/streak/learningTime/currentLesson/unitProgress). Verified via the plan's node scratch script with mocked localStorage/window/document globals: getState() returned the expected default object and getOverallProgressPercent() returned 0, no errors. These modules will be consumed by sidebar.js, topbar.js, theme-toggle.js, and dashboard.js in later tasks.
