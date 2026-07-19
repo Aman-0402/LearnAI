@@ -35,8 +35,7 @@ const routeTable = {
     load: () => import("./modules/notes/notes.js")
   },
   search: {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Search", phase: "Phase 2" }
+    load: () => import("./modules/search/search.js")
   },
   progress: {
     load: () => import("./modules/coming-soon/coming-soon.js"),
