@@ -94,7 +94,7 @@
   padding: var(--space-5);
 }
 
-.panel h3 {
+.panel h2 {
   font-size: 1.0625rem;
   margin-bottom: var(--space-4);
 }

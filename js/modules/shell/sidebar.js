@@ -8,6 +8,9 @@ export async function renderSidebar({ activeRoute }) {
     const res = await fetch("json/nav.json");
     if (!res.ok) throw new Error(`nav.json fetch failed: ${res.status}`);
     navData = await res.json();
+    if (!Array.isArray(navData.main)) {
+      throw new Error("nav.json 'main' field is missing or not an array");
+    }
   } catch (err) {
     console.error("Failed to load sidebar navigation:", err);
   }

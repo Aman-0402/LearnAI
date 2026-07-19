@@ -10,6 +10,7 @@ async function bootstrap() {
 
   const shell = createEl("div", { className: "app-shell" });
   const scrim = createEl("div", { className: "sidebar-scrim" });
+  const skipLink = createEl("a", { className: "skip-link", attrs: { href: "#main-content" }, text: "Skip to content" });
 
   const topbar = renderTopbar({
     onHamburgerClick: () => {
@@ -30,6 +31,12 @@ async function bootstrap() {
     scrim.setAttribute("data-open", "false");
   });
 
+  window.addEventListener("hashchange", () => {
+    sidebarOpen = false;
+    sidebarEl.setAttribute("data-open", "false");
+    scrim.setAttribute("data-open", "false");
+  });
+
   const main = createEl("main", { className: "app-main", attrs: { id: "main-content" } });
 
   shell.appendChild(topbar);
@@ -37,6 +44,7 @@ async function bootstrap() {
   shell.appendChild(main);
 
   app.innerHTML = "";
+  app.appendChild(skipLink);
   app.appendChild(shell);
   app.appendChild(scrim);
 

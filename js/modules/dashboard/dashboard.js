@@ -92,7 +92,7 @@ function renderUnitProgress(state) {
 
   return createEl("div", {
     className: "panel",
-    children: [createEl("h3", { text: "Unit Progress" }), ...rows]
+    children: [createEl("h2", { text: "Unit Progress" }), ...rows]
   });
 }
 
@@ -105,7 +105,7 @@ function renderRecommended() {
   return createEl("div", {
     className: "panel recommended-card",
     children: [
-      createEl("h3", { text: "Recommended Lesson" }),
+      createEl("h2", { text: "Recommended Lesson" }),
       createEl("span", { text: "Unit 1 – Lesson 1" }),
       createEl("span", { className: "recommended-card__meta", text: "Introduction to Artificial Intelligence" }),
       link
