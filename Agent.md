@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 16:45
+- Task: Phase 1 Task 6 — Shell layout grid + Lucide icon loading.
+- Changed: Created css/layout.css defining the .app-shell CSS grid (sidebar/topbar/main areas, responsive collapse to fixed off-canvas sidebar + scrim below 1024px). Inserted a deferred Lucide UMD CDN script tag into index.html <head> (right after the Google Fonts stylesheet link) and a css/layout.css stylesheet link (right after css/base.css). No JS component work done — this only lays the CSS grid groundwork and script tag for later tasks (topbar.js, sidebar.js, main.js bootstrap) to populate. Verified via `npx serve .`: index.html and css/layout.css both returned 200, and the Lucide CDN URL resolved (302 -> 200) to a valid UMD bundle (v1.25.0) that assigns window.lucide; no browser devtools available in this environment to interactively confirm, so relied on network-level checks plus confirming all CSS custom properties used in layout.css (--sidebar-width, --topbar-height, --space-6, --duration-base, --ease-standard) already exist in css/tokens.css.
+- Files: css/layout.css, index.html
+- Next: Task 7+ will build topbar.js/sidebar.js/main.js to populate the .app-shell grid areas defined here and consume the Lucide global for icons.
+
 ## 2026-07-19 16:30
 - Task: Phase 1 Task 5 — DOM helper utility.
 - Changed: Created js/utils/dom.js exporting createEl (builds an element with className/text/attrs/children), qs (querySelector with optional root), and clearChildren (removes all child nodes). This is a framework-free DOM construction helper that later tasks (topbar.js, sidebar.js, dashboard.js, coming-soon.js) will import to build UI without a framework. Verified with the scratch node -e script from the plan using a mocked document.createElement; output matched expected `div x hi`.
