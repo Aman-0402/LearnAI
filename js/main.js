@@ -5,7 +5,6 @@ import { createEl } from "./utils/dom.js";
 
 async function bootstrap() {
   const app = document.getElementById("app");
-  app.innerHTML = "";
 
   let sidebarOpen = false;
 
@@ -36,6 +35,8 @@ async function bootstrap() {
   shell.appendChild(topbar);
   shell.appendChild(sidebarEl);
   shell.appendChild(main);
+
+  app.innerHTML = "";
   app.appendChild(shell);
   app.appendChild(scrim);
 
@@ -43,4 +44,8 @@ async function bootstrap() {
   initRouter(main, (activeRoute) => setActiveLink(sidebarEl, activeRoute));
 }
 
-bootstrap();
+bootstrap().catch((err) => {
+  console.error("Failed to bootstrap app:", err);
+  const app = document.getElementById("app");
+  app.innerHTML = '<p style="padding: 24px;">Something went wrong loading the app. Please refresh the page.</p>';
+});
