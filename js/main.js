@@ -2,9 +2,13 @@
 import { renderTopbar } from "./modules/shell/topbar.js";
 import { renderSidebar, setActiveLink } from "./modules/shell/sidebar.js";
 import { createEl } from "./utils/dom.js";
+import { getSettings } from "./storage/settings-store.js";
 
 async function bootstrap() {
   const app = document.getElementById("app");
+
+  const settings = getSettings();
+  document.documentElement.setAttribute("data-reduced-motion", String(settings.reducedMotion));
 
   let sidebarOpen = false;
 
