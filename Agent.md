@@ -14,6 +14,24 @@ Format:
 
 ---
 
+## 2026-07-19 23:30
+- Task: Phase 2 Notes Task 4 — wire Notes into the router and index.html (final task of Phase 2 Notes sub-project).
+- Changed: Updated the `notes` entry in `routeTable` (js/router.js) to load `./modules/notes/notes.js` instead of the coming-soon.js fallback, and dropped the now-unused `meta` block, matching how the Settings route was wired. Added `<link rel="stylesheet" href="css/components/notes.css" />` to index.html immediately after the `settings.css` link (last CSS link in `<head>`). Verified `node --check` passes on js/router.js. Confirmed js/modules/notes/notes.js, css/components/notes.css, and js/storage/notes-store.js all exist on disk. Ran `npx serve . -p 5433` and curled `/`, `/js/modules/notes/notes.js`, `/css/components/notes.css` — all 200. No browser tool available in this environment for live click-through verification (add/edit/delete/persist), consistent with the same limitation noted in every prior Phase 1/2 entry — structural + HTTP-level verification performed instead per the plan's fallback instruction.
+- Files: js/router.js, index.html, Agent.md
+- Next: Notes sub-project (Phase 2, Tasks 1-4) is complete — `#/notes` is now a working route alongside `#/settings`. Remaining Phase 2 sub-projects (Bookmarks, Achievements, Flashcards, Search, Progress) are still pending and each still route to the generic coming-soon.js fallback. Recommend merging `worktree-phase-2-notes` into `main` next.
+
+## 2026-07-19 23:15
+- Task: Phase 2 Notes Task 3 fix — address code-review findings on commit fea8045.
+- Changed: js/modules/notes/notes.js — added an `<h1>Notes</h1>` page heading; `render()` now saves/restores `window.scrollY` around the full-container redraw; added a module-level `focusTarget` discriminated-object variable (cleared in mount/unmount) plus `applyFocusTarget()` called at the end of `render()` to restore keyboard focus after each mutating action (Add -> add-form title input, Edit -> that card's edit-mode title input, Save/Cancel -> that card's Edit button via `:not(.note-card__button--danger)`, Delete -> add-form title input as fallback). Added `data-note-id` attrs to both `renderCard` and `renderEditCard` root elements so focus targets can be located after redraw. Verified with `node --check`.
+- Files: js/modules/notes/notes.js
+- Next: Task 4 of Phase 2 Notes plan — wire the notes route in js/router.js to this module (currently points at coming-soon.js).
+
+## 2026-07-19 23:00
+- Task: Phase 2 Notes Task 3 — Notes view module.
+- Changed: Added js/modules/notes/notes.js implementing mount/unmount lifecycle, add-note form, list rendering (sorted newest first), and edit-in-place (per-card edit/save/cancel) plus delete with confirm. Verified imports resolve against js/utils/dom.js (createEl) and js/storage/notes-store.js (getNotes, addNote, updateNote, deleteNote), and all class names used match css/components/notes.css. Verified with `node --check`.
+- Files: js/modules/notes/notes.js
+- Next: Task 4 of Phase 2 Notes plan — wire the notes route in js/router.js to this module (currently points at coming-soon.js).
+
 ## 2026-07-19 22:30
 - Task: Phase 2 final cross-cutting code review — fix 2 real bugs before merge (reduced-motion never applied on load; topbar theme-toggle desync vs. Settings page).
 - Changed: (1) css/base.css — appended a `[data-reduced-motion="true"] *` rule (after `.skip-link:focus`) that zeroes animation/transition durations and forces `scroll-behavior: auto`, so the existing `data-reduced-motion` attribute (already set live by settings.js's checkbox handler) actually has a CSS consumer. (2) js/main.js — added `import { getSettings } from "./storage/settings-store.js";` at the top, and at the start of `bootstrap()` (right after `const app = document.getElementById("app");`) added `const settings = getSettings();` + `document.documentElement.setAttribute("data-reduced-motion", String(settings.reducedMotion));` so the persisted setting is re-applied on every load/navigation instead of being lost. (3) js/modules/shell/theme-toggle.js — replaced the closure-based `current` theme variable (only updated by its own click handler, so it went stale after the Settings page's independent theme-radio mutation path) with a fresh read of `document.documentElement.getAttribute("data-theme")` (falling back to `resolveTheme()`) on every click, keeping the topbar toggle always in sync with the live DOM state that `applyTheme` sets.
@@ -50,6 +68,18 @@ Format:
 - Changed: Added new module `js/storage/settings-store.js` following the exact try/catch + default-fallback pattern established by theme-store.js and progress-store.js from Phase 1. Exposes `getSettings()` (reads `ailp:settings` from localStorage, merges over `{ reducedMotion: false, dailyGoalMinutes: 15 }` defaults, falls back to defaults on missing/corrupt data) and `setSettings(partial)` (merges partial into current settings, persists, swallows write errors silently, returns the merged object).
 - Files: js/storage/settings-store.js (new)
 - Next: Task 2 (per Phase 2 plan) will harden/extend theme-store.js and progress-store.js further and/or wire settings-store.js into a settings UI — not touched in this session.
+
+## 2026-07-19 20:55
+- Task: Phase 2 Notes — Task 2: Notes page styles.
+- Changed: Added css/components/notes.css defining the notes page layout (.notes, .notes__form, .notes__input/.notes__textarea, .notes__submit, .notes__list, .notes__empty) and a standalone note card component (.note-card + .note-card__title/__body/__date/__actions/__button/__button--danger) that carries its own background/border/shadow/padding (unlike Settings' .settings__card, which composes with .panel), so it renders consistently in both display and edit modes. Verified brace balance (14 open / 14 close) and confirmed every var(--...) reference (--space-2..6, --color-bg/border/error/primary/surface/text/text-muted, --font-heading/mono, --radius-card/control, --shadow-card) exists in css/tokens.css. Not yet linked into index.html — that happens in Task 4.
+- Files: css/components/notes.css
+- Next: Task 3 of Phase 2 Notes plan (per implementation plan sequence).
+
+## 2026-07-19 20:45
+- Task: Phase 2 Notes — Task 1: create notes-store.js (array-backed localStorage CRUD module for the upcoming Notes feature).
+- Changed: Added `js/storage/notes-store.js`, mirroring the existing `theme-store.js`/`progress-store.js`/`settings-store.js` pattern but backed by an array instead of a single object. `getNotes()` reads and JSON-parses `localStorage["ailp:notes"]`, guarding against missing/corrupt data by returning `[]` on parse failure or when the parsed value isn't an array (same defensive shape-check pattern as Phase 1's `sidebar.js` nav.json guard, adapted for arrays via `Array.isArray`). `addNote(title, body)` appends a new note (`crypto.randomUUID()` id, `createdAt`/`updatedAt` timestamps) and persists via internal `saveNotes()`. `updateNote(id, changes)` merges changes into the matching note and bumps `updatedAt`, returning `null` if not found. `deleteNote(id)` filters the note out and persists. `saveNotes()` wraps `localStorage.setItem` in try/catch so a full or unavailable localStorage degrades to non-persistent notes rather than throwing.
+- Files: js/storage/notes-store.js (new)
+- Next: Task 2+ of the Phase 2 Notes plan (UI module wiring the store into a notes list/editor view, and routing/nav entry) — not started.
 
 ## 2026-07-19 20:10
 - Task: Phase 1 final code review wrap-up — 4 Important issues fixed as one cleanup commit.
