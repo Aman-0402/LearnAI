@@ -1,0 +1,119 @@
+/* css/components/flashcards.css */
+.flashcards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.flashcards__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-end;
+}
+
+.flashcards__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1 1 200px;
+}
+
+.flashcards__label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.flashcards__input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  font-family: inherit;
+  width: 100%;
+}
+
+.flashcards__submit {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-control);
+  padding: var(--space-3) var(--space-5);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.flashcards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .flashcards__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .flashcards__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flashcard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 140px;
+}
+
+.flashcard__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.flashcard__side-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.flashcard__text {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  white-space: pre-wrap;
+}
+
+.flashcard__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flashcard__delete {
+  background: none;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  border-radius: var(--radius-control);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.flashcards__empty {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-6);
+}
