@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 16:30
+- Task: Phase 1 Task 5 — DOM helper utility.
+- Changed: Created js/utils/dom.js exporting createEl (builds an element with className/text/attrs/children), qs (querySelector with optional root), and clearChildren (removes all child nodes). This is a framework-free DOM construction helper that later tasks (topbar.js, sidebar.js, dashboard.js, coming-soon.js) will import to build UI without a framework. Verified with the scratch node -e script from the plan using a mocked document.createElement; output matched expected `div x hi`.
+- Files: js/utils/dom.js
+- Next: Proceed to Task 6 in the Phase 1 Foundation plan.
+
 ## 2026-07-19 16:05
 - Task: Phase 1 Task 4 fix — harden storage wrappers per code review.
 - Changed: Fixed 3 Important issues found in code review of commit 90391a7. (1) js/storage/progress-store.js setState() now deep-merges unitProgress instead of shallow-spreading, so a partial unitProgress update no longer drops unit-2/3/4 keys. (2) js/storage/progress-store.js getState() now guards that a stored unitProgress is a plain object (not array/string/etc.) before merging, preventing NaN propagation from corrupted/tampered localStorage JSON. (3) js/storage/theme-store.js resolveTheme() now validates the stored theme is exactly "light" or "dark" before using it, falling back to getSystemTheme() otherwise, preventing an invalid tampered value from reaching the data-theme attribute. Re-ran the original node -e scratch verification script; output unchanged (default state object, then 0), confirming no regression. Minor issues from the review (clamping unitProgress values, JSDoc, matchMedia try/catch) were explicitly deferred, not required for Phase 1.
