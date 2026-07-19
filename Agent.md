@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 23:30
+- Task: Phase 2 Notes Task 4 — wire Notes into the router and index.html (final task of Phase 2 Notes sub-project).
+- Changed: Updated the `notes` entry in `routeTable` (js/router.js) to load `./modules/notes/notes.js` instead of the coming-soon.js fallback, and dropped the now-unused `meta` block, matching how the Settings route was wired. Added `<link rel="stylesheet" href="css/components/notes.css" />` to index.html immediately after the `settings.css` link (last CSS link in `<head>`). Verified `node --check` passes on js/router.js. Confirmed js/modules/notes/notes.js, css/components/notes.css, and js/storage/notes-store.js all exist on disk. Ran `npx serve . -p 5433` and curled `/`, `/js/modules/notes/notes.js`, `/css/components/notes.css` — all 200. No browser tool available in this environment for live click-through verification (add/edit/delete/persist), consistent with the same limitation noted in every prior Phase 1/2 entry — structural + HTTP-level verification performed instead per the plan's fallback instruction.
+- Files: js/router.js, index.html, Agent.md
+- Next: Notes sub-project (Phase 2, Tasks 1-4) is complete — `#/notes` is now a working route alongside `#/settings`. Remaining Phase 2 sub-projects (Bookmarks, Achievements, Flashcards, Search, Progress) are still pending and each still route to the generic coming-soon.js fallback. Recommend merging `worktree-phase-2-notes` into `main` next.
+
 ## 2026-07-19 23:15
 - Task: Phase 2 Notes Task 3 fix — address code-review findings on commit fea8045.
 - Changed: js/modules/notes/notes.js — added an `<h1>Notes</h1>` page heading; `render()` now saves/restores `window.scrollY` around the full-container redraw; added a module-level `focusTarget` discriminated-object variable (cleared in mount/unmount) plus `applyFocusTarget()` called at the end of `render()` to restore keyboard focus after each mutating action (Add -> add-form title input, Edit -> that card's edit-mode title input, Save/Cancel -> that card's Edit button via `:not(.note-card__button--danger)`, Delete -> add-form title input as fallback). Added `data-note-id` attrs to both `renderCard` and `renderEditCard` root elements so focus targets can be located after redraw. Verified with `node --check`.
