@@ -51,6 +51,12 @@ Format:
 - Files: js/storage/settings-store.js (new)
 - Next: Task 2 (per Phase 2 plan) will harden/extend theme-store.js and progress-store.js further and/or wire settings-store.js into a settings UI — not touched in this session.
 
+## 2026-07-19 20:55
+- Task: Phase 2 Notes — Task 2: Notes page styles.
+- Changed: Added css/components/notes.css defining the notes page layout (.notes, .notes__form, .notes__input/.notes__textarea, .notes__submit, .notes__list, .notes__empty) and a standalone note card component (.note-card + .note-card__title/__body/__date/__actions/__button/__button--danger) that carries its own background/border/shadow/padding (unlike Settings' .settings__card, which composes with .panel), so it renders consistently in both display and edit modes. Verified brace balance (14 open / 14 close) and confirmed every var(--...) reference (--space-2..6, --color-bg/border/error/primary/surface/text/text-muted, --font-heading/mono, --radius-card/control, --shadow-card) exists in css/tokens.css. Not yet linked into index.html — that happens in Task 4.
+- Files: css/components/notes.css
+- Next: Task 3 of Phase 2 Notes plan (per implementation plan sequence).
+
 ## 2026-07-19 20:45
 - Task: Phase 2 Notes — Task 1: create notes-store.js (array-backed localStorage CRUD module for the upcoming Notes feature).
 - Changed: Added `js/storage/notes-store.js`, mirroring the existing `theme-store.js`/`progress-store.js`/`settings-store.js` pattern but backed by an array instead of a single object. `getNotes()` reads and JSON-parses `localStorage["ailp:notes"]`, guarding against missing/corrupt data by returning `[]` on parse failure or when the parsed value isn't an array (same defensive shape-check pattern as Phase 1's `sidebar.js` nav.json guard, adapted for arrays via `Array.isArray`). `addNote(title, body)` appends a new note (`crypto.randomUUID()` id, `createdAt`/`updatedAt` timestamps) and persists via internal `saveNotes()`. `updateNote(id, changes)` merges changes into the matching note and bumps `updatedAt`, returning `null` if not found. `deleteNote(id)` filters the note out and persists. `saveNotes()` wraps `localStorage.setItem` in try/catch so a full or unavailable localStorage degrades to non-persistent notes rather than throwing.
