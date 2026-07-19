@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 21:30
+- Task: Phase 2 Task 3 — write css/components/settings.css.
+- Changed: Created css/components/settings.css with `.settings` (flex column layout, max-width 640px), `.settings__card` (flex column, meant to combine with `.panel` from dashboard.css — adds only layout, no background/border/shadow), `.settings__card--danger` (overrides border-color to var(--color-error) on top of `.panel`), `.settings__radio-row` / `.settings__checkbox-row` (inline flex rows), `.settings__number-input` (bg/border/radius/padding using existing tokens), `.settings__danger-button` (solid error-colored button). Content matches the plan verbatim. Verified brace balance (6 open / 6 close) and cross-checked every var(--...) reference against css/tokens.css — all present (--space-5, --space-3, --space-2, --color-error, --color-bg, --color-border, --radius-control, --color-text). File is not yet linked into index.html (that's Task 5), so no visual/runtime testing was possible or expected at this stage.
+- Files: css/components/settings.css, Agent.md
+- Next: Task 4 (settings page markup/JS) and Task 5 (link settings.css + page into index.html) remain.
+
 ## 2026-07-19 21:15
 - Task: Phase 2 Task 2 — extend theme-store.js and progress-store.js with clearStoredTheme / resetProgress.
 - Changed: Added `clearStoredTheme()` to js/storage/theme-store.js (right after `setStoredTheme`), which wraps `localStorage.removeItem(THEME_KEY)` in the existing try/catch pattern. Added `resetProgress()` to js/storage/progress-store.js (right after `setState`, before `getOverallProgressPercent`), which wraps `localStorage.setItem(PROGRESS_KEY, JSON.stringify(DEFAULT_STATE))` in the same pattern. No existing function in either file was touched — diff is pure addition (confirmed via `git diff`). Verified both with scratch `node -e` scripts per the plan: theme-store round-trip printed `dark` then `null`; progress-store round-trip printed `500 10` then `0 0`, both matching expected output.
