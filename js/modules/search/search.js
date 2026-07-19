@@ -61,7 +61,8 @@ function matchFlashcard(card, q) {
 }
 
 function snippet(text, length = 100) {
-  return text.length > length ? `${text.slice(0, length)}…` : text;
+  const str = String(text ?? "");
+  return str.length > length ? `${str.slice(0, length)}…` : str;
 }
 
 function renderResults(rawQuery) {
