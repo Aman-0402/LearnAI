@@ -19,10 +19,14 @@ export function getState() {
     const raw = localStorage.getItem(PROGRESS_KEY);
     if (!raw) return { ...DEFAULT_STATE };
     const parsed = JSON.parse(raw);
+    const storedUnitProgress =
+      parsed.unitProgress && typeof parsed.unitProgress === "object" && !Array.isArray(parsed.unitProgress)
+        ? parsed.unitProgress
+        : {};
     return {
       ...DEFAULT_STATE,
       ...parsed,
-      unitProgress: { ...DEFAULT_STATE.unitProgress, ...(parsed.unitProgress || {}) }
+      unitProgress: { ...DEFAULT_STATE.unitProgress, ...storedUnitProgress }
     };
   } catch {
     return { ...DEFAULT_STATE };
@@ -30,7 +34,12 @@ export function getState() {
 }
 
 export function setState(partial) {
-  const next = { ...getState(), ...partial };
+  const current = getState();
+  const next = {
+    ...current,
+    ...partial,
+    unitProgress: { ...current.unitProgress, ...(partial.unitProgress || {}) }
+  };
   try {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(next));
   } catch {

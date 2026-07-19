@@ -24,7 +24,9 @@ export function setStoredTheme(theme) {
 }
 
 export function resolveTheme() {
-  return getStoredTheme() || getSystemTheme();
+  const stored = getStoredTheme();
+  if (stored === "light" || stored === "dark") return stored;
+  return getSystemTheme();
 }
 
 export function applyTheme(theme) {
