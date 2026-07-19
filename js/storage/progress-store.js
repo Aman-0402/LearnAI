@@ -48,6 +48,14 @@ export function setState(partial) {
   return next;
 }
 
+export function resetProgress() {
+  try {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(DEFAULT_STATE));
+  } catch {
+    /* localStorage unavailable - nothing to reset */
+  }
+}
+
 export function getOverallProgressPercent() {
   const { unitProgress } = getState();
   const values = Object.values(unitProgress);
