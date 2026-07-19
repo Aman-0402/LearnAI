@@ -1,0 +1,22 @@
+/* css/motion.css */
+.route-fade-out {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.route-fade-in {
+  animation: route-fade-in-keyframes var(--duration-base) var(--ease-standard);
+}
+
+@keyframes route-fade-in-keyframes {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
