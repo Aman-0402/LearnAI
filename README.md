@@ -20,5 +20,12 @@ ES module imports require CORS-safe HTTP(S) serving.)
 ## Status
 
 **Phase 1 (Foundation) complete:** theme system, responsive sidebar/topbar shell,
-hash-based router, empty-state Dashboard. See `docs/superpowers/specs/` and
-`docs/superpowers/plans/` for design history.
+hash-based router, empty-state Dashboard.
+
+**Phase 2 (Core Platform) complete:** Settings (theme/reduced-motion/daily-goal/reset),
+Notes, Bookmarks, Achievements, Flashcards, Search (live cross-store filtering), and a
+dedicated Progress page — all localStorage-backed, all reachable from the sidebar nav.
+Only the lesson-content routes (Roadmap, Unit 1-4, AI Lab), which depend on Phase 4/5
+content that doesn't exist yet, still show a Coming Soon placeholder.
+
+See `docs/superpowers/specs/` and `docs/superpowers/plans/` for design history.
