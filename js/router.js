@@ -99,7 +99,7 @@ async function handleRoute(mainEl, onRouteChange) {
     }
 
     currentModule = mod;
-    await mod.mount(mainEl, entry.meta);
+    await mod.mount(mainEl, entry.meta, () => myRequestId !== requestId);
 
     if (myRequestId !== requestId) return;
 

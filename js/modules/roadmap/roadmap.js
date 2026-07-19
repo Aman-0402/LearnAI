@@ -2,7 +2,7 @@
 import { createEl } from "../../utils/dom.js";
 import { getState } from "../../storage/progress-store.js";
 
-export async function mount(container) {
+export async function mount(container, meta, isStale) {
   container.innerHTML = "";
 
   let courseData = { units: [] };
@@ -15,6 +15,7 @@ export async function mount(container) {
     }
   } catch (err) {
     console.error("Failed to load course data:", err);
+    if (isStale && isStale()) return;
     container.appendChild(
       createEl("div", {
         className: "roadmap__error",
@@ -23,6 +24,8 @@ export async function mount(container) {
     );
     return;
   }
+
+  if (isStale && isStale()) return;
 
   const { unitProgress } = getState();
 
