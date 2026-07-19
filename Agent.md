@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 21:15
+- Task: Phase 2 Task 2 — extend theme-store.js and progress-store.js with clearStoredTheme / resetProgress.
+- Changed: Added `clearStoredTheme()` to js/storage/theme-store.js (right after `setStoredTheme`), which wraps `localStorage.removeItem(THEME_KEY)` in the existing try/catch pattern. Added `resetProgress()` to js/storage/progress-store.js (right after `setState`, before `getOverallProgressPercent`), which wraps `localStorage.setItem(PROGRESS_KEY, JSON.stringify(DEFAULT_STATE))` in the same pattern. No existing function in either file was touched — diff is pure addition (confirmed via `git diff`). Verified both with scratch `node -e` scripts per the plan: theme-store round-trip printed `dark` then `null`; progress-store round-trip printed `500 10` then `0 0`, both matching expected output.
+- Files: js/storage/theme-store.js, js/storage/progress-store.js, Agent.md
+- Next: Task 3 of the Phase 2 Settings plan (per the coordinator) — likely building the settings UI/page that wires up settings-store.js, theme-store.js's clearStoredTheme, and progress-store.js's resetProgress. Not started in this session.
+
 ## 2026-07-19 21:00
 - Task: Phase 2 Task 1 — create js/storage/settings-store.js (reduced-motion / daily-goal settings persistence).
 - Changed: Added new module `js/storage/settings-store.js` following the exact try/catch + default-fallback pattern established by theme-store.js and progress-store.js from Phase 1. Exposes `getSettings()` (reads `ailp:settings` from localStorage, merges over `{ reducedMotion: false, dailyGoalMinutes: 15 }` defaults, falls back to defaults on missing/corrupt data) and `setSettings(partial)` (merges partial into current settings, persists, swallows write errors silently, returns the merged object).
