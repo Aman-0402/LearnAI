@@ -100,6 +100,9 @@ async function handleRoute(mainEl, onRouteChange) {
 
     currentModule = mod;
     await mod.mount(mainEl, entry.meta);
+
+    if (myRequestId !== requestId) return;
+
     onRouteChange(routeId);
 
     mainEl.classList.add("route-fade-in");
