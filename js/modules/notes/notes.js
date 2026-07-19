@@ -3,24 +3,48 @@ import { createEl } from "../../utils/dom.js";
 import { getNotes, addNote, updateNote, deleteNote } from "../../storage/notes-store.js";
 
 let editingId = null;
+let focusTarget = null; // { type: "add-title" } | { type: "note-title", id } | { type: "note-edit-button", id }
 
 export function mount(container) {
   editingId = null;
+  focusTarget = null;
   render(container);
 }
 
 export function unmount() {
   editingId = null;
+  focusTarget = null;
 }
 
 function render(container) {
+  const scrollY = window.scrollY;
   container.innerHTML = "";
+  const form = renderForm(container);
+  const list = renderList(container);
   container.appendChild(
     createEl("div", {
       className: "notes",
-      children: [renderForm(container), renderList(container)]
+      children: [createEl("h1", { text: "Notes" }), form, list]
     })
   );
+  window.scrollTo(0, scrollY);
+  applyFocusTarget(container);
+}
+
+function applyFocusTarget(container) {
+  if (!focusTarget) return;
+  let el = null;
+  if (focusTarget.type === "add-title") {
+    el = container.querySelector(".notes__form .notes__input");
+  } else if (focusTarget.type === "note-title") {
+    el = container.querySelector(`[data-note-id="${focusTarget.id}"] .notes__input`);
+  } else if (focusTarget.type === "note-edit-button") {
+    el = container.querySelector(
+      `[data-note-id="${focusTarget.id}"] .note-card__button:not(.note-card__button--danger)`
+    );
+  }
+  if (el) el.focus();
+  focusTarget = null;
 }
 
 function renderForm(container) {
@@ -46,6 +70,7 @@ function renderForm(container) {
     const title = titleInput.value.trim();
     if (!title) return;
     addNote(title, bodyInput.value);
+    focusTarget = { type: "add-title" };
     render(container);
   });
 
@@ -76,6 +101,7 @@ function renderCard(note, container) {
   const editButton = createEl("button", { className: "note-card__button", text: "Edit" });
   editButton.addEventListener("click", () => {
     editingId = note.id;
+    focusTarget = { type: "note-title", id: note.id };
     render(container);
   });
 
@@ -86,12 +112,14 @@ function renderCard(note, container) {
   deleteButton.addEventListener("click", () => {
     if (confirm("Delete this note? This cannot be undone.")) {
       deleteNote(note.id);
+      focusTarget = { type: "add-title" };
       render(container);
     }
   });
 
   return createEl("div", {
     className: "note-card",
+    attrs: { "data-note-id": note.id },
     children: [
       createEl("div", { className: "note-card__title", text: note.title }),
       createEl("div", { className: "note-card__body", text: note.body }),
@@ -120,17 +148,20 @@ function renderEditCard(note, container) {
     if (!title) return;
     updateNote(note.id, { title, body: bodyInput.value });
     editingId = null;
+    focusTarget = { type: "note-edit-button", id: note.id };
     render(container);
   });
 
   const cancelButton = createEl("button", { className: "note-card__button", text: "Cancel" });
   cancelButton.addEventListener("click", () => {
     editingId = null;
+    focusTarget = { type: "note-edit-button", id: note.id };
     render(container);
   });
 
   return createEl("div", {
     className: "note-card",
+    attrs: { "data-note-id": note.id },
     children: [
       titleInput,
       bodyInput,
