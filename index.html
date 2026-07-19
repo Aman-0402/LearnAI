@@ -10,9 +10,13 @@
        an ES module import cannot run synchronously before paint. -->
   <script>
     (function () {
-      var stored = localStorage.getItem("ailp:theme");
-      var theme = stored || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        var stored = localStorage.getItem("ailp:theme");
+        var theme = stored || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
     })();
   </script>
 
