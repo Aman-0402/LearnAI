@@ -16,7 +16,7 @@ export function renderTopbar({ onHamburgerClick }) {
   const search = createEl("div", { className: "topbar__search" });
   search.innerHTML = '<i data-lucide="search"></i>';
   const searchInput = createEl("input", {
-    attrs: { type: "text", placeholder: "Search lessons, terms, concepts..." }
+    attrs: { type: "text", placeholder: "Search lessons, terms, concepts...", "aria-label": "Search lessons, terms, concepts" }
   });
   search.appendChild(searchInput);
 
