@@ -38,8 +38,7 @@ const routeTable = {
     load: () => import("./modules/search/search.js")
   },
   progress: {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Progress", phase: "Phase 2" }
+    load: () => import("./modules/progress/progress.js")
   },
   achievements: {
     load: () => import("./modules/achievements/achievements.js")
