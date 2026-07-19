@@ -3,14 +3,26 @@ import { createEl } from "../../utils/dom.js";
 import { getBookmarks, addBookmark, deleteBookmark } from "../../storage/bookmarks-store.js";
 
 let urlError = null;
+let pendingTitle = null;
+let pendingUrl = null;
+let pendingNote = null;
+let focusTarget = null; // { type: "add-title" } | { type: "add-url" }
 
 export function mount(container) {
   urlError = null;
+  pendingTitle = null;
+  pendingUrl = null;
+  pendingNote = null;
+  focusTarget = null;
   render(container);
 }
 
 export function unmount() {
   urlError = null;
+  pendingTitle = null;
+  pendingUrl = null;
+  pendingNote = null;
+  focusTarget = null;
 }
 
 function render(container) {
@@ -21,6 +33,19 @@ function render(container) {
       children: [renderForm(container), renderList(container)]
     })
   );
+  applyFocusTarget(container);
+}
+
+function applyFocusTarget(container) {
+  if (!focusTarget) return;
+  let el = null;
+  if (focusTarget.type === "add-title") {
+    el = container.querySelector(".bookmarks__form .bookmarks__input");
+  } else if (focusTarget.type === "add-url") {
+    el = container.querySelectorAll(".bookmarks__form .bookmarks__input")[1] || null;
+  }
+  if (el) el.focus();
+  focusTarget = null;
 }
 
 function isValidHttpUrl(value) {
@@ -48,6 +73,10 @@ function renderForm(container) {
     attrs: { placeholder: "Note (optional)", "aria-label": "Bookmark note" }
   });
 
+  if (pendingTitle !== null) titleInput.value = pendingTitle;
+  if (pendingUrl !== null) urlInput.value = pendingUrl;
+  if (pendingNote !== null) noteInput.value = pendingNote;
+
   const submit = createEl("button", { className: "bookmarks__submit", text: "Add Bookmark" });
 
   const formChildren = [titleInput, urlInput];
@@ -67,12 +96,20 @@ function renderForm(container) {
 
     if (!isValidHttpUrl(url)) {
       urlError = "Enter a valid http(s) URL";
+      pendingTitle = title;
+      pendingUrl = url;
+      pendingNote = noteInput.value;
+      focusTarget = { type: "add-url" };
       render(container);
       return;
     }
 
     urlError = null;
+    pendingTitle = null;
+    pendingUrl = null;
+    pendingNote = null;
     addBookmark(title, url, noteInput.value);
+    focusTarget = { type: "add-title" };
     render(container);
   });
 
@@ -110,6 +147,7 @@ function renderCard(bookmark, container) {
   deleteButton.addEventListener("click", () => {
     if (confirm("Delete this bookmark? This cannot be undone.")) {
       deleteBookmark(bookmark.id);
+      focusTarget = { type: "add-title" };
       render(container);
     }
   });
