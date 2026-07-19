@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 15:40
+- Task: Phase 2 Notes Task 3 — Notes view module.
+- Changed: Added js/modules/notes/notes.js implementing mount/unmount lifecycle, add-note form, list rendering (sorted newest first), and edit-in-place (per-card edit/save/cancel) plus delete with confirm. Verified imports resolve against js/utils/dom.js (createEl) and js/storage/notes-store.js (getNotes, addNote, updateNote, deleteNote), and all class names used match css/components/notes.css. Verified with `node --check`.
+- Files: js/modules/notes/notes.js
+- Next: Task 4 of Phase 2 Notes plan — wire the notes route in js/router.js to this module (currently points at coming-soon.js).
+
 ## 2026-07-19 22:30
 - Task: Phase 2 final cross-cutting code review — fix 2 real bugs before merge (reduced-motion never applied on load; topbar theme-toggle desync vs. Settings page).
 - Changed: (1) css/base.css — appended a `[data-reduced-motion="true"] *` rule (after `.skip-link:focus`) that zeroes animation/transition durations and forces `scroll-behavior: auto`, so the existing `data-reduced-motion` attribute (already set live by settings.js's checkbox handler) actually has a CSS consumer. (2) js/main.js — added `import { getSettings } from "./storage/settings-store.js";` at the top, and at the start of `bootstrap()` (right after `const app = document.getElementById("app");`) added `const settings = getSettings();` + `document.documentElement.setAttribute("data-reduced-motion", String(settings.reducedMotion));` so the persisted setting is re-applied on every load/navigation instead of being lost. (3) js/modules/shell/theme-toggle.js — replaced the closure-based `current` theme variable (only updated by its own click handler, so it went stale after the Settings page's independent theme-radio mutation path) with a fresh read of `document.documentElement.getAttribute("data-theme")` (falling back to `resolveTheme()`) on every click, keeping the topbar toggle always in sync with the live DOM state that `applyTheme` sets.
