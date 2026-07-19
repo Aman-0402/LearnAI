@@ -1,0 +1,18 @@
+{
+  "main": [
+    { "id": "dashboard", "label": "Dashboard", "route": "dashboard", "icon": "layout-dashboard" },
+    { "id": "roadmap", "label": "Course Roadmap", "route": "roadmap", "icon": "map", "phase": "Phase 5" },
+    { "id": "unit-1", "label": "Unit 1", "route": "unit-1", "icon": "book-open", "phase": "Phase 5" },
+    { "id": "unit-2", "label": "Unit 2", "route": "unit-2", "icon": "book-open", "phase": "Phase 5" },
+    { "id": "unit-3", "label": "Unit 3", "route": "unit-3", "icon": "book-open", "phase": "Phase 5" },
+    { "id": "unit-4", "label": "Unit 4", "route": "unit-4", "icon": "book-open", "phase": "Phase 5" },
+    { "id": "ai-lab", "label": "AI Lab", "route": "ai-lab", "icon": "flask-conical", "phase": "Phase 4" },
+    { "id": "flashcards", "label": "Flashcards", "route": "flashcards", "icon": "layers", "phase": "Phase 2" },
+    { "id": "bookmarks", "label": "Bookmarks", "route": "bookmarks", "icon": "bookmark", "phase": "Phase 2" },
+    { "id": "notes", "label": "Notes", "route": "notes", "icon": "notebook-pen", "phase": "Phase 2" },
+    { "id": "search", "label": "Search", "route": "search", "icon": "search", "phase": "Phase 2" },
+    { "id": "progress", "label": "Progress", "route": "progress", "icon": "trending-up", "phase": "Phase 2" },
+    { "id": "achievements", "label": "Achievements", "route": "achievements", "icon": "trophy", "phase": "Phase 2" },
+    { "id": "settings", "label": "Settings", "route": "settings", "icon": "settings", "phase": "Phase 2" }
+  ]
+}
