@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Learning Platform</title>
+
+  <!-- Inline FOUC-prevention: sets data-theme before first paint, before any module loads.
+       Duplicates the 3-line resolution logic in js/storage/theme-store.js on purpose -
+       an ES module import cannot run synchronously before paint. -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem("ailp:theme");
+      var theme = stored || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+  <div id="app">
+    <p style="padding: 24px;">Loading...</p>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
