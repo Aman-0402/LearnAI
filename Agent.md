@@ -14,6 +14,13 @@ Format:
 
 ---
 
+## 2026-07-19 19:30
+- Task: Phase 1 Task 11 — code-review fix for js/router.js.
+- Changed: Fixed 2 real bugs found in code-quality review of commit c22eb75. (1) No error handling around `entry.load()`/`mod.mount()` — since `initRouter` is invoked without `await`/`.catch()` in `js/main.js`'s `bootstrap()`, a rejected dynamic import (e.g. today's expected `dashboard` route 404 until Task 12) was a fully unhandled rejection that left `#main` silently blank. (2) Race condition — `currentModule` was read/written across an `await` with no guard, so overlapping `hashchange` events (rapid navigation) could let a stale `import()` resolve after a newer one and leave the screen showing the wrong route while the URL showed the current one. Fixed both with a `requestId` generation-counter guard (`myRequestId !== requestId` bail-out both after load and in the catch) plus a try/catch around the load/mount sequence that renders a friendly `Failed to load this section. Please try again.` message into `mainEl` on error instead of leaving it blank. `routeTable` and `DEFAULT_ROUTE` were left untouched — only the bottom portion of the file (from `let currentModule = null;` down) changed, exactly as specified by the reviewer.
+- Verified: `node --check js/router.js` — syntax OK.
+- Files: js/router.js, Agent.md
+- Next: Task 12 (js/modules/dashboard/dashboard.js) still pending — once it lands, the `dashboard` route will mount for real instead of hitting the new catch-block fallback. Minor issue noted but not required by the reviewer: route table in js/router.js is hand-duplicated from json/nav.json (title/phase values); a future DRY pass could generate the coming-soon entries from nav.json at build/load time instead.
+
 ## 2026-07-19 19:05
 - Task: Phase 1 Task 11 — Hash router.
 - Changed: Added `<link rel="stylesheet" href="css/components/coming-soon.css" />` to index.html right after the sidebar.css link. Created js/router.js exporting `initRouter(mainEl, onRouteChange)`, matching exactly what js/main.js (Task 9) already dynamic-imports and calls. Route table has 14 entries (dashboard + 13 coming-soon routes: roadmap, unit-1..4, ai-lab, flashcards, bookmarks, notes, search, progress, achievements, settings), each coming-soon entry lazy-loading js/modules/coming-soon/coming-soon.js (Task 10) with a `meta: { title, phase }` matching json/nav.json exactly. Unknown hash redirects to `#/dashboard` via `location.hash = "#/dashboard"`; hashchange listener re-routes; previous module's `unmount()` is called before mounting the next.
