@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 17:15
+- Task: Phase 1 Task 7 fix — accessibility gap in topbar search input (code review follow-up on commit 1f183cd).
+- Changed: Added `"aria-label": "Search lessons, terms, concepts"` to the search `<input>`'s attrs in js/modules/shell/topbar.js. Placeholder text alone isn't reliably exposed as an accessible name to screen readers, so the input previously had no dependable accessible name. Verified with `node --check` (syntax OK). Two other review findings (theme-toggle closure staleness across re-renders, and `lucide.createIcons()` doing a document-wide rescan on every theme-toggle click) were flagged as real but dormant — only one call site exists for Phase 1 — and were intentionally left unfixed per coordinator direction.
+- Files: js/modules/shell/topbar.js
+- Next: Task 8 of Phase 1 Foundation plan (sidebar component), then Task 9's main.js shell integration wiring topbar.js + sidebar.js together.
+
 ## 2026-07-19 17:05
 - Task: Phase 1 Task 7 — Topbar component (css/components/topbar.css, js/modules/shell/topbar.js, js/modules/shell/theme-toggle.js).
 - Changed: Created the css/components/ directory and topbar.css (topbar bar layout, hamburger shown only below 1024px, search field, streak badge, theme-toggle button styling — all consuming existing design tokens from tokens.css). Created theme-toggle.js (initThemeToggle: resolves/applies stored or system theme, toggles + persists on click, swaps sun/moon Lucide icon) and topbar.js (renderTopbar: builds hamburger/logo/search/streak-badge/theme-toggle DOM tree via createEl, wires the hamburger's onHamburgerClick callback, reads streak from progress-store getState, calls initThemeToggle and window.lucide.createIcons()). Verified all three imports (dom.js createEl, progress-store.js getState, theme-store.js resolveTheme/applyTheme/setStoredTheme) resolve to existing files with matching exported names, and ran `node --check` on both JS files (syntax OK). No wiring into index.html/main.js yet — per the plan, Task 9 mounts the full shell (topbar + sidebar) and does live visual verification; this task only had to produce structurally correct, unwired components.
