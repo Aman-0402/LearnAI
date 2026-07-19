@@ -1,0 +1,32 @@
+{
+  "units": [
+    {
+      "id": "unit-1",
+      "title": "Unit 1: Foundations",
+      "description": "What AI actually is, and the core ideas behind machine learning.",
+      "lessons": [
+        { "id": "lesson-1", "title": "What Is Artificial Intelligence?" },
+        { "id": "lesson-2", "title": "Data, Patterns, and Learning" },
+        { "id": "lesson-3", "title": "Supervised vs. Unsupervised Learning" }
+      ]
+    },
+    {
+      "id": "unit-2",
+      "title": "Unit 2: Coming Soon",
+      "description": "Content for this unit hasn't been written yet.",
+      "lessons": []
+    },
+    {
+      "id": "unit-3",
+      "title": "Unit 3: Coming Soon",
+      "description": "Content for this unit hasn't been written yet.",
+      "lessons": []
+    },
+    {
+      "id": "unit-4",
+      "title": "Unit 4: Coming Soon",
+      "description": "Content for this unit hasn't been written yet.",
+      "lessons": []
+    }
+  ]
+}
