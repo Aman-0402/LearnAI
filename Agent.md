@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 15:35
+- Task: Phase 1 Task 3 — sidebar navigation data.
+- Changed: Added json/nav.json containing the "main" nav item array (dashboard, roadmap, unit-1..4, ai-lab, flashcards, bookmarks, notes, search, progress, achievements, settings) per the plan's verbatim spec. Validated with `node -e "JSON.parse(...)"` — printed "valid". This file is data only; it will be fetched by js/modules/shell/sidebar.js in a later task.
+- Files: json/nav.json
+- Next: Task 4 of Phase 1 Foundation plan (per implementation plan sequence).
+
 ## 2026-07-19 15:20
 - Task: Phase 1 Task 2 — base reset + typography + font loading.
 - Changed: Added css/base.css (box-sizing reset, typography defaults, focus-visible, .visually-hidden), index.html (skeleton with inline FOUC-prevention theme script, Google Fonts preconnect/link, tokens.css + base.css links, #app placeholder), and placeholder js/main.js. Verified all assets resolve (200) via a local static server and content matches source.
