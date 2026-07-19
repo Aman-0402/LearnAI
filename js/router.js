@@ -26,8 +26,7 @@ const routeTable = {
     meta: { title: "AI Lab", phase: "Phase 4" }
   },
   flashcards: {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Flashcards", phase: "Phase 2" }
+    load: () => import("./modules/flashcards/flashcards.js")
   },
   bookmarks: {
     load: () => import("./modules/bookmarks/bookmarks.js")
