@@ -38,6 +38,16 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.dashboard__hero-cta:hover {
+  opacity: 0.9;
+}
+
+.dashboard__hero-cta:active {
+  transform: scale(0.97);
 }
 
 .dashboard__stats {
@@ -61,6 +71,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  transition: transform var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
 }
 
 .stat-card__label {
