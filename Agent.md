@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 15:50
+- Task: Phase 1 Task 4 — storage wrappers (theme + progress).
+- Changed: Added js/storage/theme-store.js (getSystemTheme, getStoredTheme, setStoredTheme, resolveTheme, applyTheme — localStorage-backed theme persistence with try/catch fallbacks) and js/storage/progress-store.js (getState, setState, getOverallProgressPercent — localStorage-backed progress state with DEFAULT_STATE merge-in for xp/streak/learningTime/currentLesson/unitProgress). Verified via the plan's node scratch script with mocked localStorage/window/document globals: getState() returned the expected default object and getOverallProgressPercent() returned 0, no errors. These modules will be consumed by sidebar.js, topbar.js, theme-toggle.js, and dashboard.js in later tasks.
+- Files: js/storage/theme-store.js, js/storage/progress-store.js
+- Next: Task 5 of Phase 1 Foundation plan (per implementation plan sequence).
+
 ## 2026-07-19 15:35
 - Task: Phase 1 Task 3 — sidebar navigation data.
 - Changed: Added json/nav.json containing the "main" nav item array (dashboard, roadmap, unit-1..4, ai-lab, flashcards, bookmarks, notes, search, progress, achievements, settings) per the plan's verbatim spec. Validated with `node -e "JSON.parse(...)"` — printed "valid". This file is data only; it will be fetched by js/modules/shell/sidebar.js in a later task.
