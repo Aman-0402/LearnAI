@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 18:10
+- Task: Phase 1 Task 10 — Coming Soon placeholder view.
+- Changed: Added css/components/coming-soon.css (`.coming-soon` card: surface/border/radius/shadow tokens, flex column centered, max-width 480px; `.coming-soon__icon` 56px circle using `color-mix` with `--color-primary`; `.coming-soon__phase` mono-font pill badge) and js/modules/coming-soon/coming-soon.js exporting `mount(container, meta)` (builds icon/heading/body/phase-badge via `createEl` from `../../utils/dom.js`, clears and appends into `container`, calls `window.lucide.createIcons()` if present) and a no-op `unmount()`. Content matches the plan's verbatim spec exactly. Verified `node --check js/modules/coming-soon/coming-soon.js` (syntax OK) and confirmed the relative import `../../utils/dom.js` resolves to the existing js/utils/dom.js on disk, and that its exported `createEl(tag, { className, text, attrs, children })` signature matches how coming-soon.js calls it. Not wired into any route/router yet — this is a standalone, currently-unused module per the plan (Task 11 will mount it for every non-Dashboard nav destination in json/nav.json). No visual/browser verification performed or needed, per the plan's own Step 3 (deferred to Task 11 integration).
+- Files: css/components/coming-soon.css, js/modules/coming-soon/coming-soon.js, Agent.md
+- Next: Task 11 of Phase 1 Foundation plan — build router.js, which will import and mount this coming-soon module for placeholder routes and finally resolve the expected router.js 404 noted in the prior entry.
+
 ## 2026-07-19 18:00
 - Task: Phase 1 Task 9 fix — code review follow-up on commit 5fb95ab (blank-page flash + unhandled bootstrap rejection).
 - Changed: In js/main.js, moved `app.innerHTML = "";` from the top of `bootstrap()` (which cleared the "Loading..." placeholder before the `await renderSidebar(...)` network fetch and `await import("./router.js")` resolved, leaving a blank page for that whole window) to right before `app.appendChild(shell)`, so "Loading..." stays visible until the shell is actually ready to swap in. Replaced the bare `bootstrap();` call with `bootstrap().catch((err) => { ... })` that logs the error and renders a visible fallback message (`Something went wrong loading the app. Please refresh the page.`) into `#app`, so any awaited step throwing (e.g. today's expected `router.js` 404 until Task 11 lands, or any future failure) no longer leaves an unhandled rejection with a blank/stuck page. Verified `node --check js/main.js` (syntax OK).
