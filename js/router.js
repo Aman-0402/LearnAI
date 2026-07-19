@@ -2,8 +2,7 @@
 const routeTable = {
   dashboard: { load: () => import("./modules/dashboard/dashboard.js") },
   roadmap: {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Course Roadmap", phase: "Phase 5" }
+    load: () => import("./modules/roadmap/roadmap.js")
   },
   "unit-1": {
     load: () => import("./modules/coming-soon/coming-soon.js"),
@@ -100,7 +99,7 @@ async function handleRoute(mainEl, onRouteChange) {
     }
 
     currentModule = mod;
-    mod.mount(mainEl, entry.meta);
+    await mod.mount(mainEl, entry.meta);
     onRouteChange(routeId);
 
     mainEl.classList.add("route-fade-in");
