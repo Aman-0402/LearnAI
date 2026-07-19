@@ -14,6 +14,12 @@ Format:
 
 ---
 
+## 2026-07-19 17:05
+- Task: Phase 1 Task 7 — Topbar component (css/components/topbar.css, js/modules/shell/topbar.js, js/modules/shell/theme-toggle.js).
+- Changed: Created the css/components/ directory and topbar.css (topbar bar layout, hamburger shown only below 1024px, search field, streak badge, theme-toggle button styling — all consuming existing design tokens from tokens.css). Created theme-toggle.js (initThemeToggle: resolves/applies stored or system theme, toggles + persists on click, swaps sun/moon Lucide icon) and topbar.js (renderTopbar: builds hamburger/logo/search/streak-badge/theme-toggle DOM tree via createEl, wires the hamburger's onHamburgerClick callback, reads streak from progress-store getState, calls initThemeToggle and window.lucide.createIcons()). Verified all three imports (dom.js createEl, progress-store.js getState, theme-store.js resolveTheme/applyTheme/setStoredTheme) resolve to existing files with matching exported names, and ran `node --check` on both JS files (syntax OK). No wiring into index.html/main.js yet — per the plan, Task 9 mounts the full shell (topbar + sidebar) and does live visual verification; this task only had to produce structurally correct, unwired components.
+- Files: css/components/topbar.css, js/modules/shell/topbar.js, js/modules/shell/theme-toggle.js, Agent.md
+- Next: Task 8 of Phase 1 Foundation plan (per implementation plan sequence) — likely the sidebar component, followed by Task 9's main.js shell integration wiring topbar.js + sidebar.js together.
+
 ## 2026-07-19 16:55
 - Task: Phase 1 Task 6 fix — pin Lucide CDN version + SRI hash (code review follow-up on commit acc0bc5).
 - Changed: Resolved unpkg's `@latest` redirect for Lucide (currently `1.25.0`), downloaded that exact file, and computed its sha384 hash. Updated the `<script>` tag in index.html to `https://unpkg.com/lucide@1.25.0/dist/umd/lucide.js` with `integrity="sha384-PpZ0v4GjRXD+zBXfYaMJkWUZG4mHqAlhTADbQwrM8oXYO7LGWz+NcISPEVyO9opc"` and `crossorigin="anonymous"`, removing the unpinned `@latest`. Verified reproducibility by re-downloading the file and recomputing the hash (identical bytes, identical digest). This closes the supply-chain/stability gap flagged in review: a future Lucide release can no longer silently change what loads, and any tampering in transit would fail the SRI check instead of executing.
