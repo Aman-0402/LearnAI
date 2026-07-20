@@ -1,0 +1,44 @@
+{
+  "title": "What Is Artificial Intelligence?",
+  "sections": [
+    {
+      "heading": "Defining AI",
+      "body": "Artificial intelligence is the field of building systems that perform tasks normally requiring human intelligence: recognizing images, understanding language, making decisions from incomplete information. It isn't one algorithm — it's a broad umbrella covering many different techniques aimed at that same general goal."
+    },
+    {
+      "heading": "Narrow vs. General AI",
+      "body": "Every AI system in everyday use today is \"narrow\" — built and trained for one job, like translating text or recommending videos. It can be extremely good at that one job and completely unable to do anything else. \"General\" AI, matching human-level flexibility across any task, remains a research goal, not something shipped in products today."
+    },
+    {
+      "heading": "AI vs. Machine Learning",
+      "body": "AI is the goal — building intelligent behavior. Machine learning is today's dominant approach to reaching it: instead of a person hand-coding every rule, a machine learning system learns patterns directly from examples. Most of what people call \"AI\" in current products is machine learning underneath."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which best describes \"narrow AI\"?",
+      "options": [
+        "A system that matches human intelligence across any task",
+        "A system built to perform one specific task well",
+        "A robot with a physical body",
+        "An AI that can only run on small devices"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What's the relationship between AI and machine learning?",
+      "options": [
+        "They are the same thing",
+        "Machine learning is unrelated to AI",
+        "Machine learning is one approach used to build AI systems",
+        "AI is a subset of machine learning"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "True general AI (human-level, any task) exists today in deployed products.",
+      "options": ["True", "False"],
+      "correctIndex": 1
+    }
+  ]
+}

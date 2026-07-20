@@ -1,0 +1,49 @@
+{
+  "title": "Supervised vs. Unsupervised Learning",
+  "sections": [
+    {
+      "heading": "Supervised Learning",
+      "body": "In supervised learning, training examples come paired with correct answers, called labels. The model learns to map inputs to those labels — for example, learning to classify an email as spam or not-spam from many examples that were already labeled that way."
+    },
+    {
+      "heading": "Unsupervised Learning",
+      "body": "In unsupervised learning, there are no labels. The model finds structure in the data on its own — for example, grouping similar customers together (clustering) without being told in advance what the groups should be."
+    },
+    {
+      "heading": "Choosing Between Them",
+      "body": "Supervised learning needs labeled data, which is often costly or slow to produce, but it gives targeted, predictable results. Unsupervised learning needs no labels, but the patterns it discovers aren't guaranteed to be the ones that actually matter for your goal."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What distinguishes supervised learning from unsupervised learning?",
+      "options": [
+        "Supervised uses labeled examples with correct answers; unsupervised does not",
+        "Supervised is always more accurate",
+        "Unsupervised requires more labels",
+        "They are the same technique"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which is an example of unsupervised learning?",
+      "options": [
+        "Predicting house prices from labeled sale data",
+        "Classifying emails as spam using labeled examples",
+        "Grouping customers into segments with no predefined categories",
+        "Translating a sentence with a labeled parallel corpus"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "A key cost of supervised learning is often:",
+      "options": [
+        "It requires no data at all",
+        "Producing enough labeled examples",
+        "It never needs training",
+        "It cannot use numeric data"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}
