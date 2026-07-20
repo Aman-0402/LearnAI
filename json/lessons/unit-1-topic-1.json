@@ -207,6 +207,229 @@
         { "marks": 2, "question": "Differentiate between AI and Human Intelligence." },
         { "marks": 5, "question": "Compare AI and Human Intelligence with suitable examples." }
       ]
+    },
+    {
+      "heading": "Branches of Artificial Intelligence",
+      "image": "assets/Branches of Artificial Intelligence.png",
+      "blocks": [
+        {
+          "type": "definition",
+          "label": "Branches of AI",
+          "text": "Different fields that focus on solving specific types of intelligent problems."
+        },
+        {
+          "type": "steps",
+          "heading": "Main Branches of AI",
+          "items": [
+            { "title": "Machine Learning (ML)", "text": "Machines learn from data without being explicitly programmed.", "example": "Netflix movie recommendations." },
+            { "title": "Deep Learning (DL)", "text": "A subset of Machine Learning that uses artificial neural networks to solve complex problems.", "example": "Face recognition in smartphones." },
+            { "title": "Natural Language Processing (NLP)", "text": "Enables computers to understand, process, and generate human language.", "example": "ChatGPT, Google Translate, Siri." },
+            { "title": "Computer Vision", "text": "Allows computers to understand and analyze images and videos.", "example": "Face Unlock, CCTV object detection." },
+            { "title": "Robotics", "text": "Combines AI with machines to perform physical tasks automatically.", "example": "Industrial robots, warehouse robots." },
+            { "title": "Expert Systems", "text": "AI systems that make decisions like a human expert using predefined knowledge and rules.", "example": "Medical diagnosis systems." }
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Real-Life Examples",
+          "headers": ["Branch", "Example"],
+          "rows": [
+            ["Machine Learning", "Netflix Recommendations"],
+            ["Deep Learning", "Face Recognition"],
+            ["NLP", "ChatGPT, Google Translate"],
+            ["Computer Vision", "Face Unlock"],
+            ["Robotics", "Factory Robots"],
+            ["Expert Systems", "Medical Diagnosis"]
+          ]
+        },
+        {
+          "type": "mnemonic",
+          "heading": "Easy Trick to Remember",
+          "phrase": "My Dear New Computer Robot",
+          "items": [
+            { "letter": "M", "meaning": "Machine Learning" },
+            { "letter": "D", "meaning": "Deep Learning" },
+            { "letter": "N", "meaning": "Natural Language Processing" },
+            { "letter": "C", "meaning": "Computer Vision" },
+            { "letter": "R", "meaning": "Robotics" }
+          ],
+          "note": "Expert Systems is also an important branch — remember it separately."
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "AI has many specialized branches.",
+            "Each branch solves different types of problems.",
+            "Most modern AI applications combine multiple branches."
+          ]
+        }
+      ],
+      "interviewQA": [
+        { "question": "Name any four branches of AI.", "answer": "Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision." },
+        { "question": "Which branch is used in ChatGPT?", "answer": "Natural Language Processing (NLP) along with Machine Learning and Deep Learning." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "What are the branches of AI?" },
+        { "marks": 5, "question": "Explain the major branches of AI with examples." }
+      ]
+    },
+    {
+      "heading": "AI Workflow",
+      "image": "assets/AI Workflow.png",
+      "blocks": [
+        {
+          "type": "definition",
+          "label": "AI Workflow",
+          "text": "The step-by-step process of building an AI system, from identifying a problem to deploying the AI model."
+        },
+        {
+          "type": "steps",
+          "heading": "Steps in AI Workflow",
+          "items": [
+            { "title": "Problem Definition", "text": "Identify the problem to solve.", "example": "Predict whether a student will pass or fail." },
+            { "title": "Data Collection", "text": "Collect relevant data.", "example": "Student marks, attendance, assignments." },
+            { "title": "Data Preprocessing", "text": "Clean and prepare the data — remove duplicate data, handle missing values, correct errors." },
+            { "title": "Model Training", "text": "Train the AI model using the prepared data.", "example": "The model learns the relationship between attendance and exam results." },
+            { "title": "Model Evaluation", "text": "Check how well the model performs.", "example": "If the model predicts correctly for 95 out of 100 students, its accuracy is 95%." },
+            { "title": "Deployment", "text": "Make the trained model available for real users.", "example": "Integrate it into a school management system." },
+            { "title": "Monitoring & Improvement", "text": "Continuously monitor performance and retrain if necessary.", "example": "Update the model with new student data every semester." }
+          ]
+        },
+        {
+          "type": "flow",
+          "heading": "AI Workflow Diagram",
+          "items": [
+            "Problem",
+            "Data Collection",
+            "Data Preprocessing",
+            "Model Training",
+            "Model Evaluation",
+            "Deployment",
+            "Monitoring & Improvement"
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Real-Life Example: Spam Email Detection",
+          "headers": ["Step", "Example"],
+          "rows": [
+            ["Problem", "Detect spam emails"],
+            ["Data Collection", "Gather emails"],
+            ["Preprocessing", "Remove unnecessary text, clean data"],
+            ["Training", "Train the spam detection model"],
+            ["Evaluation", "Test prediction accuracy"],
+            ["Deployment", "Use in Gmail"],
+            ["Monitoring", "Improve using new spam patterns"]
+          ]
+        },
+        {
+          "type": "mnemonic",
+          "heading": "Easy Trick to Remember",
+          "phrase": "P D P T E D M",
+          "items": [
+            { "letter": "P", "meaning": "Problem" },
+            { "letter": "D", "meaning": "Data Collection" },
+            { "letter": "P", "meaning": "Preprocessing" },
+            { "letter": "T", "meaning": "Training" },
+            { "letter": "E", "meaning": "Evaluation" },
+            { "letter": "D", "meaning": "Deployment" },
+            { "letter": "M", "meaning": "Monitoring" }
+          ]
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "AI workflow is a sequence of steps to build an AI system.",
+            "Data quality directly affects AI performance.",
+            "AI models need continuous monitoring and improvement."
+          ]
+        }
+      ],
+      "interviewQA": [
+        { "question": "What is AI Workflow?", "answer": "AI Workflow is the complete process of developing an AI system, from problem definition to deployment and monitoring." },
+        { "question": "Why is data preprocessing important?", "answer": "It removes errors, missing values, and inconsistencies, improving the model's performance." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "What is AI Workflow?" },
+        { "marks": 5, "question": "Explain the steps of AI Workflow with an example." }
+      ]
+    },
+    {
+      "heading": "Weak AI vs Strong AI",
+      "image": "assets/Weak AI vs Strong AI.png",
+      "blocks": [
+        {
+          "type": "list",
+          "heading": "What is Weak AI?",
+          "items": [
+            "ChatGPT",
+            "Siri",
+            "Alexa",
+            "Google Maps",
+            "Face Unlock"
+          ],
+          "note": "Weak AI (Narrow AI) is designed to perform one specific task. It cannot think or perform tasks outside its programming. Example: Google Maps can find the shortest route, but it cannot diagnose diseases or play cricket."
+        },
+        {
+          "type": "list",
+          "heading": "What is Strong AI? (Hypothetical example — a robot that can:)",
+          "items": [
+            "Learn any subject",
+            "Cook food",
+            "Drive a car",
+            "Teach students",
+            "Solve mathematical problems",
+            "Make independent decisions like a human"
+          ],
+          "note": "Strong AI (General AI) is a theoretical AI that can perform any intellectual task a human can do. Strong AI does not exist yet — it is still a research goal."
+        },
+        {
+          "type": "table",
+          "heading": "Weak AI vs Strong AI",
+          "headers": ["Weak AI", "Strong AI"],
+          "rows": [
+            ["Performs one specific task", "Can perform many tasks"],
+            ["Exists today", "Does not exist yet"],
+            ["Limited intelligence", "Human-like intelligence"],
+            ["Cannot think independently", "Can learn and reason like humans (theoretical)"]
+          ]
+        },
+        {
+          "type": "comparison",
+          "heading": "Real-Life Example",
+          "items": [
+            { "label": "📱 Weak AI", "text": "Siri can answer questions but cannot become a doctor." },
+            { "label": "🤖 Strong AI", "text": "An AI that could work as a doctor, teacher, engineer, and scientist — all in one system." }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": "Easy Trick to Remember",
+          "items": [
+            "Weak AI = One Task",
+            "Strong AI = All Tasks"
+          ]
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "Weak AI is also called Narrow AI.",
+            "Almost all AI systems today are Weak AI.",
+            "Strong AI is still under development and has not been achieved."
+          ]
+        }
+      ],
+      "interviewQA": [
+        { "question": "What is Weak AI?", "answer": "Weak AI is AI designed to perform a specific task, such as voice assistants or recommendation systems." },
+        { "question": "Does Strong AI exist today?", "answer": "No. Strong AI is still a theoretical concept and has not been developed." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "Differentiate between Weak AI and Strong AI." },
+        { "marks": 5, "question": "Explain Weak AI and Strong AI with suitable examples." }
+      ]
     }
   ],
   "quiz": [
@@ -239,6 +462,36 @@
       "question": "Which works continuously without getting tired?",
       "options": ["Human", "AI", "Both", "None"],
       "correctIndex": 1
+    },
+    {
+      "question": "Which branch helps computers understand human language?",
+      "options": ["Robotics", "NLP", "Computer Vision", "Expert Systems"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Face Unlock mainly uses:",
+      "options": ["Computer Vision", "Networking", "Database", "Compiler"],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which is the first step in AI Workflow?",
+      "options": ["Training", "Deployment", "Problem Definition", "Evaluation"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Which step checks the model's performance?",
+      "options": ["Data Collection", "Evaluation", "Monitoring", "Deployment"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Another name for Weak AI is:",
+      "options": ["General AI", "Narrow AI", "Super AI", "Hybrid AI"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which of the following is an example of Weak AI?",
+      "options": ["Siri", "Human Brain", "General AI Robot", "None of these"],
+      "correctIndex": 0
     }
   ]
 }

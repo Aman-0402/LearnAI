@@ -348,6 +348,43 @@ function renderContentBlock(block) {
           })
         ]
       });
+    case "mnemonic":
+      return createEl("div", {
+        className: "lesson__block lesson__block--mnemonic",
+        children: [
+          createEl("div", { className: "lesson__block-heading", text: block.heading || "Easy Trick to Remember" }),
+          createEl("div", { className: "lesson__mnemonic-phrase", text: `"${block.phrase}"` }),
+          createEl("div", {
+            className: "lesson__mnemonic-items",
+            children: block.items.map((item) =>
+              createEl("div", {
+                className: "lesson__mnemonic-item",
+                children: [
+                  createEl("span", { className: "lesson__mnemonic-letter", text: item.letter }),
+                  createEl("span", { className: "lesson__mnemonic-meaning", text: item.meaning })
+                ]
+              })
+            )
+          }),
+          ...(block.note ? [createEl("div", { className: "lesson__block-note", text: block.note })] : [])
+        ]
+      });
+    case "flow":
+      return createEl("div", {
+        className: "lesson__block lesson__block--flow",
+        children: [
+          ...(block.heading ? [createEl("div", { className: "lesson__block-heading", text: block.heading })] : []),
+          createEl("div", {
+            className: "lesson__flow",
+            children: block.items.flatMap((item, i) => {
+              const step = createEl("div", { className: "lesson__flow-step", text: item });
+              if (i === block.items.length - 1) return [step];
+              const arrow = createEl("div", { className: "lesson__flow-arrow", text: "↓" });
+              return [step, arrow];
+            })
+          })
+        ]
+      });
     case "paragraph":
     default:
       return createEl("div", { className: "lesson__section-body", text: block.text || "" });
