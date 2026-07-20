@@ -1,0 +1,110 @@
+/* css/components/lesson.css */
+.lesson {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 720px;
+}
+
+.lesson__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lesson__section-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.lesson__section-body {
+  white-space: pre-wrap;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.lesson__quiz {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.lesson__quiz-question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lesson__quiz-question-text {
+  font-weight: 600;
+}
+
+.lesson__quiz-option-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.lesson__quiz-option-row--correct {
+  color: var(--color-primary);
+}
+
+.lesson__quiz-option-row--incorrect {
+  color: var(--color-error);
+}
+
+.lesson__quiz-submit {
+  align-self: flex-start;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-control);
+  padding: var(--space-3) var(--space-5);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.lesson__quiz-submit:hover {
+  opacity: 0.9;
+}
+
+.lesson__quiz-submit:active {
+  transform: scale(0.97);
+}
+
+.lesson__quiz-feedback {
+  font-weight: 600;
+}
+
+.lesson__quiz-feedback--success {
+  color: var(--color-primary);
+}
+
+.lesson__quiz-feedback--retry {
+  color: var(--color-error);
+}
+
+.lesson__back-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.lesson__back-link:hover {
+  text-decoration: underline;
+}
+
+.lesson__error {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-6);
+}
