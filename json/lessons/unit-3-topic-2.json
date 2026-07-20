@@ -1,0 +1,56 @@
+{
+  "title": "Propositional Logic",
+  "sections": [
+    {
+      "heading": "Syntax",
+      "body": "Propositional logic's syntax defines how to build valid sentences from propositional symbols (like P, Q, standing for statements that are either true or false) combined using logical connectives — for example, \"P AND Q\" is a well-formed sentence."
+    },
+    {
+      "heading": "Semantics",
+      "body": "Semantics defines what a sentence actually means — specifically, the rules for determining whether a sentence is true or false given an assignment of truth values to its propositional symbols."
+    },
+    {
+      "heading": "Logical Connectives",
+      "body": "The standard connectives are AND (∧, conjunction), OR (∨, disjunction), NOT (¬, negation), IMPLIES (→, conditional), and IF AND ONLY IF (↔, biconditional) — these let simple propositions be combined into more complex statements."
+    },
+    {
+      "heading": "Truth Tables",
+      "body": "A truth table exhaustively lists every possible combination of true/false values for a sentence's propositional symbols, alongside the resulting truth value of the whole sentence — a mechanical way to verify what a logical sentence means in every possible case."
+    },
+    {
+      "heading": "Inference",
+      "body": "Inference is the process of deriving new true sentences from existing ones using valid logical rules — for example, from \"P → Q\" and \"P\" being true, we can infer \"Q\" is true (a rule known as modus ponens)."
+    },
+    {
+      "heading": "Resolution",
+      "body": "Resolution is a single, powerful inference rule that works on sentences in a specific normal form (clauses) — it's the basis of many automated theorem-proving systems, since it can be applied mechanically and repeatedly to derive new conclusions or prove a contradiction."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What does the connective ∧ represent?",
+      "options": ["OR", "AND", "NOT", "IMPLIES"],
+      "correctIndex": 1
+    },
+    {
+      "question": "A truth table is used to:",
+      "options": [
+        "Store a knowledge base",
+        "Exhaustively show a sentence's truth value for every combination of its symbols' truth values",
+        "Replace the need for logical connectives",
+        "Generate random propositions"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Resolution is best described as:",
+      "options": [
+        "A type of search tree",
+        "A single inference rule, on clause-form sentences, underlying many automated theorem provers",
+        "A way to acquire knowledge from experts",
+        "A hardware architecture"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

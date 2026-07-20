@@ -1,0 +1,48 @@
+{
+  "title": "Bayesian Reasoning Fundamentals",
+  "sections": [
+    {
+      "heading": "Bayes Theorem",
+      "body": "Bayes' theorem provides a formal way to update the probability of a hypothesis given new evidence: P(H|E) = P(E|H) × P(H) / P(E). It's the mathematical foundation for reasoning that combines prior belief with new observed evidence."
+    },
+    {
+      "heading": "Conditional Probability",
+      "body": "Conditional probability, written P(A|B), is the probability that A is true given that B is known to be true — it captures how the likelihood of one event changes once we have information about another related event."
+    },
+    {
+      "heading": "Prior Probability",
+      "body": "The prior probability, P(H), is the initial belief in a hypothesis before any new evidence is considered — for example, the general (baseline) rate of a disease in a population, before looking at any specific patient's symptoms."
+    },
+    {
+      "heading": "Posterior Probability",
+      "body": "The posterior probability, P(H|E), is the updated belief in a hypothesis after accounting for new evidence — the whole point of Bayes' theorem is computing this posterior from the prior and the evidence's likelihood."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Bayes' theorem is used to:",
+      "options": [
+        "Generate random numbers",
+        "Update the probability of a hypothesis given new evidence",
+        "Build a semantic network",
+        "Replace propositional logic entirely"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "The prior probability represents:",
+      "options": [
+        "The belief after evidence is considered",
+        "The initial belief in a hypothesis before any new evidence",
+        "A type of search algorithm",
+        "A fixed constant that never changes"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "P(A|B) represents:",
+      "options": ["The probability of A and B both being false", "The probability of A given that B is true", "The probability of B alone", "A logical connective"],
+      "correctIndex": 1
+    }
+  ]
+}

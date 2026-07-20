@@ -1,0 +1,48 @@
+{
+  "title": "Rule-Based Systems",
+  "sections": [
+    {
+      "heading": "IF-THEN Rules",
+      "body": "A rule-based system encodes knowledge as IF-THEN rules: \"IF condition THEN conclusion/action.\" For example, \"IF temperature > 38°C THEN patient has fever\" — the system fires this rule whenever its condition is satisfied by known facts."
+    },
+    {
+      "heading": "Production Systems",
+      "body": "A production system is the general architecture underlying rule-based systems: a set of IF-THEN rules (production rules), a working memory holding current facts, and a control mechanism that decides which applicable rule to fire next."
+    },
+    {
+      "heading": "Rule Engine",
+      "body": "The rule engine (or inference engine) is the component that matches rules against the current facts in working memory, determines which rules are applicable, and executes (fires) them — updating working memory with new facts or actions, which may in turn trigger further rules."
+    },
+    {
+      "heading": "Conflict Resolution",
+      "body": "When multiple rules are applicable at the same time, conflict resolution decides which one fires first — common strategies include rule priority/salience, specificity (prefer more specific rules), or recency (prefer rules matching the most recently added facts)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A production rule is structured as:",
+      "options": ["A random fact", "IF condition THEN conclusion/action", "Only a truth table", "A search tree"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does the rule engine (inference engine) do?",
+      "options": [
+        "Stores raw data only",
+        "Matches rules against current facts and fires applicable ones",
+        "Only handles user interface rendering",
+        "Deletes the knowledge base"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Conflict resolution is needed when:",
+      "options": [
+        "There are no rules at all",
+        "Multiple rules are applicable at the same time and one must be chosen to fire first",
+        "The system has no working memory",
+        "Only one fact exists"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

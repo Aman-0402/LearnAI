@@ -1,0 +1,52 @@
+{
+  "title": "Knowledge-Based Systems",
+  "sections": [
+    {
+      "heading": "Knowledge",
+      "body": "In AI, knowledge means facts, rules, and relationships about a domain that a system can use to reason and make decisions — for example, knowing that \"fever plus cough may indicate flu\" is a piece of domain knowledge a medical system could reason with."
+    },
+    {
+      "heading": "Knowledge Base",
+      "body": "A knowledge base is the structured store of facts and rules a system relies on. It's the \"memory\" that reasoning processes draw from — separate from the inference engine (covered later in this unit) that actually uses that knowledge to derive conclusions."
+    },
+    {
+      "heading": "Knowledge Acquisition",
+      "body": "Knowledge acquisition is the process of gathering domain knowledge and converting it into a form the system can use — historically often done by interviewing human experts, though it can also come from documents, data, or automated extraction methods."
+    },
+    {
+      "heading": "Knowledge Engineering",
+      "body": "Knowledge engineering is the broader discipline of designing, building, and maintaining knowledge-based systems — deciding how knowledge should be represented, structured, and organized so that reasoning over it is both correct and efficient."
+    },
+    {
+      "heading": "Knowledge Management",
+      "body": "Knowledge management is the ongoing process of keeping a knowledge base accurate, consistent, and up to date as the domain changes — since outdated or incorrect knowledge leads directly to unreliable reasoning and conclusions."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is a knowledge base?",
+      "options": ["A random number generator", "The structured store of facts and rules a system reasons from", "A type of search algorithm", "A hardware component"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Knowledge acquisition is the process of:",
+      "options": [
+        "Deleting outdated facts",
+        "Gathering domain knowledge and converting it into a usable form",
+        "Running an inference engine",
+        "Compiling source code"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why is ongoing knowledge management important?",
+      "options": [
+        "It isn't important",
+        "Outdated or incorrect knowledge leads to unreliable reasoning",
+        "It replaces the need for a knowledge base",
+        "It only matters for robotics"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

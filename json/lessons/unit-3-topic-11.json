@@ -1,0 +1,57 @@
+{
+  "title": "Expert Systems and Applications",
+  "sections": [
+    {
+      "heading": "Components",
+      "body": "An expert system is an AI program designed to emulate the decision-making of a human specialist in a narrow domain, typically built from three core components: a knowledge base, an inference engine, and an explanation facility."
+    },
+    {
+      "heading": "Knowledge Base",
+      "body": "The knowledge base of an expert system stores the domain-specific facts and rules captured from human experts — this is where the system's actual specialist knowledge lives, separate from the general reasoning logic that uses it."
+    },
+    {
+      "heading": "Inference Engine",
+      "body": "The inference engine applies the knowledge base's rules to the facts of a specific case — using techniques like forward or backward chaining (covered earlier in this unit) to derive conclusions or recommendations for that case."
+    },
+    {
+      "heading": "Explanation Facility",
+      "body": "The explanation facility lets the system justify its conclusions — showing which rules and facts led to a given recommendation, which is essential for building trust in high-stakes domains where a user needs to understand why the system reached its conclusion."
+    },
+    {
+      "heading": "Real-world Applications",
+      "body": "Classic expert systems have been applied in domains like medical diagnosis (recommending likely conditions from symptoms), financial planning, equipment fault diagnosis, and configuration tasks — anywhere a narrow but deep body of specialist rules can be captured and consistently applied."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What are the three core components of a classic expert system?",
+      "options": [
+        "Knowledge base, inference engine, explanation facility",
+        "Search tree, heuristic, goal test",
+        "Sensors, actuators, environment",
+        "Prior, likelihood, posterior"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What does the explanation facility provide?",
+      "options": [
+        "Random guesses",
+        "Justification for the system's conclusions, showing which rules/facts were used",
+        "The raw knowledge base data only",
+        "Nothing useful"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Expert systems are well suited to domains that are:",
+      "options": [
+        "Extremely broad and general-purpose",
+        "Narrow but have a deep body of specialist rules that can be captured",
+        "Completely random with no rules",
+        "Only physical robotics tasks"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Predicate Logic",
+  "sections": [
+    {
+      "heading": "Predicates",
+      "body": "A predicate is a statement about objects that becomes true or false once its arguments are filled in — for example, Likes(Alice, Chocolate) is a predicate that's true if Alice likes chocolate. This is more expressive than propositional logic, which can only treat whole statements as single true/false symbols."
+    },
+    {
+      "heading": "Variables",
+      "body": "Variables (like x or y) stand in for unspecified objects in a predicate, allowing general statements — for example, Likes(x, Chocolate) says something about whichever object x refers to, rather than one fixed individual."
+    },
+    {
+      "heading": "Quantifiers",
+      "body": "Quantifiers state how many objects a statement applies to. The universal quantifier ∀ (\"for all\") says a statement holds for every object; the existential quantifier ∃ (\"there exists\") says a statement holds for at least one object."
+    },
+    {
+      "heading": "First Order Logic",
+      "body": "First order logic (FOL) extends propositional logic with predicates, variables, and quantifiers, letting it express much richer statements about objects, their properties, and relationships between them — this is the standard logic used for most knowledge representation in AI."
+    },
+    {
+      "heading": "Inference Rules",
+      "body": "First order logic uses inference rules similar in spirit to propositional logic (like modus ponens), extended to handle quantifiers — for example, universal instantiation lets you conclude a specific fact about one object from a universally-quantified statement about all objects."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What does the ∀ (universal) quantifier mean?",
+      "options": ["There exists at least one", "For all / every object", "Never", "Only for the first object"],
+      "correctIndex": 1
+    },
+    {
+      "question": "How does predicate logic differ from propositional logic?",
+      "options": [
+        "They are identical",
+        "Predicate logic adds predicates, variables, and quantifiers for reasoning about objects and their properties",
+        "Predicate logic has no truth values",
+        "Propositional logic is more expressive"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Likes(x, Chocolate) is an example of:",
+      "options": ["A quantifier", "A predicate with a variable", "A truth table", "A resolution clause"],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Semantic Networks",
+  "sections": [
+    {
+      "heading": "Nodes",
+      "body": "In a semantic network, nodes represent concepts or objects — for example, \"Dog,\" \"Animal,\" or a specific individual like \"Rex.\" The network as a whole is a graph structure built from these nodes."
+    },
+    {
+      "heading": "Links",
+      "body": "Links (edges) connect nodes and represent relationships between them — such as \"is-a\" (Rex is-a Dog), \"has-part,\" or \"has-property\" — the meaning of the network comes as much from its links as from its nodes."
+    },
+    {
+      "heading": "Inheritance",
+      "body": "Semantic networks commonly support inheritance through \"is-a\" links: if Dog is-a Animal, and Animal has-property \"can move,\" then Dog (and any specific dog) inherits that property too, without it needing to be stated explicitly for every node."
+    },
+    {
+      "heading": "Relationships",
+      "body": "Beyond simple hierarchy, semantic networks can capture many kinds of relationships between concepts — part-whole relationships, causal relationships, and general associations — giving a richer, more connected picture of a domain than a flat list of isolated facts."
+    },
+    {
+      "heading": "Knowledge Graph",
+      "body": "A knowledge graph is a large-scale, practical realization of semantic-network ideas — used in modern systems (like search engines) to represent and connect real-world entities and their relationships at massive scale, powering features like structured search results."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In a semantic network, what do nodes typically represent?",
+      "options": ["Only numbers", "Concepts or objects", "Search algorithms", "Truth tables"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does an \"is-a\" link typically enable?",
+      "options": ["Random connections", "Inheritance of properties from a general category to a more specific one", "Deleting nodes", "Nothing in particular"],
+      "correctIndex": 1
+    },
+    {
+      "question": "A knowledge graph is best described as:",
+      "options": [
+        "A single isolated fact",
+        "A large-scale realization of semantic-network ideas connecting real-world entities and relationships",
+        "A type of search tree",
+        "A rule-based production system"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

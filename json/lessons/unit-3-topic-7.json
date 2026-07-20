@@ -1,0 +1,51 @@
+{
+  "title": "Frames and Ontologies",
+  "sections": [
+    {
+      "heading": "Frames",
+      "body": "A frame is a structured way to represent a stereotyped concept or situation — like a record with named fields, bundling together everything typically known about a category (e.g. a \"Car\" frame capturing its typical attributes) in one organized unit."
+    },
+    {
+      "heading": "Slots",
+      "body": "Slots are the named fields within a frame — for example, a \"Car\" frame might have slots for Manufacturer, Wheels, and MaxSpeed. Slots define what kind of information the frame captures about its concept."
+    },
+    {
+      "heading": "Fillers",
+      "body": "Fillers are the actual values placed into a frame's slots for a specific instance — for example, the Manufacturer slot of one particular car frame might be filled with \"Toyota.\" Slots can also have default fillers, used when a specific value isn't given."
+    },
+    {
+      "heading": "Ontology",
+      "body": "An ontology is a formal specification of the concepts in a domain and the relationships between them — defining, precisely and often shared across systems, what kinds of things exist in a domain and how they relate, so different programs can interoperate using a common understanding."
+    },
+    {
+      "heading": "Taxonomy",
+      "body": "A taxonomy is a hierarchical classification of concepts, typically organized by \"is-a\" or \"kind-of\" relationships — a taxonomy is one common component within a larger ontology, focused specifically on the classification hierarchy."
+    },
+    {
+      "heading": "Knowledge Modeling",
+      "body": "Knowledge modeling is the overall process of deciding how to structure a domain's knowledge — choosing between representations like frames, semantic networks, logic, or ontologies (and often combining them) based on what the reasoning task actually requires."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In a frame, what is a slot?",
+      "options": ["A random fact", "A named field capturing a specific kind of information about the concept", "A type of quantifier", "A search algorithm"],
+      "correctIndex": 1
+    },
+    {
+      "question": "An ontology is best described as:",
+      "options": [
+        "A single fact",
+        "A formal specification of the concepts in a domain and their relationships",
+        "A type of search tree",
+        "A single frame's filler value"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A taxonomy typically organizes concepts by:",
+      "options": ["Random order", "\"is-a\" / \"kind-of\" hierarchical relationships", "Alphabetical order only", "File size"],
+      "correctIndex": 1
+    }
+  ]
+}

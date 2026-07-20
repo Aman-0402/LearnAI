@@ -1,0 +1,43 @@
+{
+  "title": "Probabilistic Inference",
+  "sections": [
+    {
+      "heading": "Bayesian Networks",
+      "body": "A Bayesian network is a graph where nodes represent random variables and edges represent direct probabilistic dependencies between them — each node stores a conditional probability table describing how it depends on its parent nodes, compactly representing a full joint probability distribution."
+    },
+    {
+      "heading": "Hidden Variables",
+      "body": "Hidden (or latent) variables are variables in a probabilistic model that aren't directly observed but influence the observed variables — inference often needs to reason about the likely values of these hidden variables based on what can actually be measured."
+    },
+    {
+      "heading": "Probabilistic Models",
+      "body": "A probabilistic model represents uncertainty explicitly using probability distributions over possible states or outcomes, rather than committing to one single certain answer — allowing a system to represent \"how confident\" it is, not just \"what it thinks is true.\""
+    },
+    {
+      "heading": "Inference Algorithms",
+      "body": "Inference algorithms compute the probability of some variables given observed evidence about others — exact methods (like variable elimination) always give the precise answer but can be computationally expensive; approximate methods (like sampling) trade some accuracy for speed on larger, more complex networks."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In a Bayesian network, what do edges represent?",
+      "options": ["Random noise", "Direct probabilistic dependencies between variables", "Unrelated data points", "Search tree branches"],
+      "correctIndex": 1
+    },
+    {
+      "question": "A hidden (latent) variable is:",
+      "options": [
+        "Always directly observed",
+        "A variable that isn't directly observed but influences observed variables",
+        "The same as a prior probability",
+        "A type of logical connective"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Approximate inference methods (like sampling) generally trade:",
+      "options": ["Nothing for nothing", "Some accuracy for computational speed on larger networks", "Speed for no benefit", "Correctness for no reason"],
+      "correctIndex": 1
+    }
+  ]
+}

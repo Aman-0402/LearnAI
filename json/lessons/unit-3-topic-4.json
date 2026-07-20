@@ -1,0 +1,48 @@
+{
+  "title": "Logical Inference Techniques",
+  "sections": [
+    {
+      "heading": "Forward Chaining",
+      "body": "Forward chaining starts from known facts and repeatedly applies rules whose conditions are satisfied, generating new facts, until the desired conclusion is derived (or no more rules apply). It's data-driven — reasoning forward from what's known toward whatever it implies."
+    },
+    {
+      "heading": "Backward Chaining",
+      "body": "Backward chaining starts from a goal (the thing to be proven) and works backward, checking which rules could conclude that goal and recursively trying to satisfy their conditions. It's goal-driven — often more efficient than forward chaining when you have a specific question to answer rather than wanting to derive everything possible."
+    },
+    {
+      "heading": "Resolution",
+      "body": "Resolution (introduced with propositional logic) is also a core inference technique in first order logic reasoning systems — repeatedly combining clauses to derive new ones, commonly used together with proof by contradiction to establish that a statement must be true."
+    },
+    {
+      "heading": "Proof by Contradiction",
+      "body": "Proof by contradiction (also called refutation) works by assuming the negation of what you want to prove, then showing that assumption leads to a logical contradiction with known facts — since the assumption can't be true without contradiction, the original statement must be true."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Forward chaining reasons:",
+      "options": ["Backward from the goal to known facts", "Forward from known facts, applying rules until a conclusion is reached", "Randomly, with no direction", "Only in propositional logic"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Backward chaining is often more efficient than forward chaining when:",
+      "options": [
+        "You want to derive every possible fact",
+        "You have a specific goal/question to answer",
+        "There are no rules at all",
+        "The knowledge base is empty"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Proof by contradiction works by:",
+      "options": [
+        "Assuming the negation of the goal and showing it leads to a contradiction",
+        "Ignoring all known facts",
+        "Randomly guessing the answer",
+        "Only applying to predicate logic, never propositional logic"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

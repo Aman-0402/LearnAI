@@ -1,0 +1,43 @@
+{
+  "title": "Uncertainty in AI",
+  "sections": [
+    {
+      "heading": "Sources of Uncertainty",
+      "body": "Real-world AI systems rarely have perfect, complete information — uncertainty arises from many sources: sensors that aren't perfectly accurate, incomplete knowledge about the world, and inherent randomness in the environment itself."
+    },
+    {
+      "heading": "Incomplete Knowledge",
+      "body": "A system often can't know everything relevant to a decision — for example, a diagnostic system may not have every possible test result for a patient, yet still needs to reason and act using only the information actually available."
+    },
+    {
+      "heading": "Noisy Data",
+      "body": "Real-world data is often noisy — sensor readings can be inaccurate, measurements can have errors, and reported information can simply be wrong. Robust AI reasoning needs to account for this imperfection rather than assuming every input is exactly correct."
+    },
+    {
+      "heading": "Decision under Uncertainty",
+      "body": "When outcomes aren't certain, an AI system needs a principled way to choose actions anyway — this is where probability theory and utility come in, letting a system weigh likely outcomes and their value to make the best decision it reasonably can, given the uncertainty involved."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which is NOT a typical source of uncertainty in AI systems?",
+      "options": ["Imperfect sensors", "Incomplete knowledge", "Noisy data", "A perfectly deterministic, fully known environment"],
+      "correctIndex": 3
+    },
+    {
+      "question": "Why does incomplete knowledge matter for AI reasoning?",
+      "options": [
+        "It doesn't matter at all",
+        "Systems must still reason and act using only the information actually available",
+        "It means the system can never make a decision",
+        "It only affects hardware, not software"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What tools help AI systems make decisions under uncertainty?",
+      "options": ["Only fixed IF-THEN rules", "Probability theory and utility", "Random number generators alone", "Ignoring uncertainty entirely"],
+      "correctIndex": 1
+    }
+  ]
+}

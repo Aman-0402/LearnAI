@@ -39,9 +39,21 @@
     },
     {
       "id": "unit-3",
-      "title": "Unit 3: Coming Soon",
-      "description": "Content for this unit hasn't been written yet.",
-      "lessons": []
+      "title": "Unit 3: Knowledge Representation and Reasoning",
+      "description": "Representing knowledge with logic, rules, semantic networks, and ontologies, plus reasoning under uncertainty with Bayesian methods and expert systems.",
+      "lessons": [
+        { "id": "topic-1", "title": "Knowledge-Based Systems" },
+        { "id": "topic-2", "title": "Propositional Logic" },
+        { "id": "topic-3", "title": "Predicate Logic" },
+        { "id": "topic-4", "title": "Logical Inference Techniques" },
+        { "id": "topic-5", "title": "Rule-Based Systems" },
+        { "id": "topic-6", "title": "Semantic Networks" },
+        { "id": "topic-7", "title": "Frames and Ontologies" },
+        { "id": "topic-8", "title": "Uncertainty in AI" },
+        { "id": "topic-9", "title": "Bayesian Reasoning Fundamentals" },
+        { "id": "topic-10", "title": "Probabilistic Inference" },
+        { "id": "topic-11", "title": "Expert Systems and Applications" }
+      ]
     },
     {
       "id": "unit-4",
