@@ -71,15 +71,22 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
 
   const heading = createEl("h1", { text: lessonData.title });
 
-  const sections = lessonData.sections.map((section) =>
-    createEl("div", {
-      className: "lesson__section",
-      children: [
-        createEl("div", { className: "lesson__section-heading", text: section.heading }),
-        createEl("div", { className: "lesson__section-body", text: section.body })
-      ]
-    })
-  );
+  const sections = lessonData.sections.map((section) => {
+    const children = [
+      createEl("div", { className: "lesson__section-heading", text: section.heading }),
+      createEl("div", { className: "lesson__section-body", text: section.body })
+    ];
+
+    if (section.image) {
+      const img = createEl("img", {
+        className: "lesson__section-image",
+        attrs: { src: encodeURI(section.image), alt: section.heading, loading: "lazy" }
+      });
+      children.push(img);
+    }
+
+    return createEl("div", { className: "lesson__section", children });
+  });
 
   const quiz = renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit);
 
