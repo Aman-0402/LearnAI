@@ -1,0 +1,56 @@
+{
+  "title": "History and Evolution of AI",
+  "sections": [
+    {
+      "heading": "Birth of AI",
+      "body": "The intellectual roots of AI trace back to 1940s-50s work on formal logic, computation, and cybernetics — including Alan Turing's 1950 question \"Can machines think?\" and his proposal of what became known as the Turing Test as a practical way to evaluate machine intelligence."
+    },
+    {
+      "heading": "Dartmouth Conference (1956)",
+      "body": "The field of AI was formally founded at a workshop at Dartmouth College in 1956, organized by John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon. McCarthy coined the term \"Artificial Intelligence\" for the proposal, and the conference is widely regarded as the birth of AI as a distinct research field."
+    },
+    {
+      "heading": "AI Winters",
+      "body": "Periods of reduced funding and interest in AI research — known as \"AI winters\" — occurred roughly in the 1970s and again in the late 1980s/early 1990s, when early systems failed to live up to inflated expectations. Progress slowed, funding dried up, and skepticism grew, until new techniques and more computing power revived the field each time."
+    },
+    {
+      "heading": "Growth of AI",
+      "body": "From the 1990s onward, AI re-emerged through statistical machine learning, faster hardware, and the growing availability of data. Milestones like IBM's Deep Blue defeating world chess champion Garry Kasparov in 1997 demonstrated that narrow, well-defined problems could be tackled with brute computational power combined with smarter algorithms."
+    },
+    {
+      "heading": "Modern AI",
+      "body": "The 2010s brought a resurgence driven by deep learning — neural networks trained on massive datasets using powerful GPUs. This era produced breakthroughs in image recognition, speech recognition, and language models, moving AI from research labs into everyday consumer products at large scale."
+    },
+    {
+      "heading": "Future of AI",
+      "body": "Current research directions include making AI systems more general, more efficient, more transparent (explainable), and more aligned with human values and safety. How far AI capability can advance, and how society adapts to it, remains one of the most actively debated questions in technology today."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Where and when was the field of AI formally founded?",
+      "options": ["MIT, 1965", "Dartmouth College, 1956", "Stanford, 1980", "Bell Labs, 1940"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What characterized an \"AI winter\"?",
+      "options": [
+        "A period of rapid AI breakthroughs",
+        "A period of reduced funding and interest after expectations weren't met",
+        "The literal freezing of early computer hardware",
+        "A conference held in a cold climate"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What primarily drove the modern (2010s) resurgence of AI?",
+      "options": [
+        "A return to purely rule-based expert systems",
+        "Deep learning combined with large datasets and GPU compute",
+        "The invention of the term \"Artificial Intelligence\"",
+        "A single conference in 1956"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

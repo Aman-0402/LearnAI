@@ -1,0 +1,56 @@
+{
+  "title": "Performance Measures",
+  "sections": [
+    {
+      "heading": "Performance Evaluation",
+      "body": "Evaluating an AI system means judging it against criteria relevant to its actual task — not just whether it eventually produces an answer, but how good that answer is, how reliably it's produced, and at what cost in time and resources."
+    },
+    {
+      "heading": "Accuracy",
+      "body": "Accuracy measures how often a system's outputs are correct. It's a useful measure but not always sufficient on its own — for example, a system correct 95% of the time can still be dangerously unreliable if its rare failures are severe."
+    },
+    {
+      "heading": "Completeness",
+      "body": "A search algorithm is complete if it's guaranteed to find a solution whenever one exists. Incomplete algorithms might miss valid solutions in some cases — for example, by exploring one branch of a search space forever without ever backtracking to check others."
+    },
+    {
+      "heading": "Optimality",
+      "body": "A search algorithm is optimal if it's guaranteed to find the lowest-cost (best) solution among all possible solutions, not merely any solution. An algorithm can be complete without being optimal — it might reliably find a solution, but not always the cheapest one."
+    },
+    {
+      "heading": "Time Complexity",
+      "body": "Time complexity describes how the running time of an algorithm grows as the size of the problem (e.g. the size of the state space) increases — usually expressed in terms like the number of nodes generated during search."
+    },
+    {
+      "heading": "Space Complexity",
+      "body": "Space complexity describes how much memory an algorithm requires as the problem size grows — this matters because some search strategies that are fast in time can require storing an impractically large number of states in memory."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A search algorithm that always finds a solution when one exists is called:",
+      "options": ["Optimal", "Complete", "Accurate", "Rational"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does optimality guarantee that mere completeness does not?",
+      "options": [
+        "That a solution exists at all",
+        "That the lowest-cost solution is found, not just any solution",
+        "That the algorithm runs instantly",
+        "That no memory is used"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Space complexity primarily describes:",
+      "options": [
+        "How correct the answers are",
+        "How much memory an algorithm needs as problem size grows",
+        "The physical size of the hardware",
+        "The number of goal states"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

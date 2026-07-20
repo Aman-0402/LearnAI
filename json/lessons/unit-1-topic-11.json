@@ -1,0 +1,65 @@
+{
+  "title": "AI Applications and Challenges",
+  "sections": [
+    {
+      "heading": "Real-World AI Applications",
+      "body": "Beyond any single industry, AI now touches everyday life broadly: recommendation systems on streaming/shopping platforms, voice assistants, spam and fraud filters, navigation apps, and translation tools are all AI systems most people interact with regularly, often without thinking of them as \"AI\" at all."
+    },
+    {
+      "heading": "Ethical Issues",
+      "body": "As AI systems take on more consequential decisions — who gets a loan, a job interview, or a medical recommendation — the ethical stakes of how they're built and deployed rise accordingly. This has made AI ethics a core part of responsible AI development, not an optional afterthought."
+    },
+    {
+      "heading": "Bias in AI",
+      "body": "AI systems learn from data, and if that data reflects historical or societal biases, the system can learn and even amplify those biases in its outputs — for example, a hiring model trained on past biased hiring decisions can perpetuate that same bias against future candidates."
+    },
+    {
+      "heading": "Privacy",
+      "body": "Many AI systems are trained on large amounts of personal data, raising concerns about how that data is collected, stored, and used — including the risk that a trained model could inadvertently leak or reconstruct sensitive details about the individuals in its training data."
+    },
+    {
+      "heading": "Security",
+      "body": "AI systems introduce new security concerns beyond traditional software, including adversarial inputs specifically crafted to fool a model, data poisoning (corrupting training data to manipulate future behavior), and the misuse of AI itself as a tool for attacks like generating convincing phishing content."
+    },
+    {
+      "heading": "Explainability",
+      "body": "Explainability is the degree to which a human can understand why an AI system produced a particular output. Many powerful modern models (especially deep learning) act as \"black boxes\" — highly accurate but hard to interpret, which is a real problem in high-stakes domains like medicine or criminal justice where a decision needs to be justified."
+    },
+    {
+      "heading": "Future Challenges",
+      "body": "Open challenges for the field include making AI systems more robust, fair, transparent, and energy-efficient; establishing effective regulation and governance; and navigating the broader societal and economic impact of increasingly capable AI as it's adopted more widely."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Bias in AI systems typically originates from:",
+      "options": [
+        "The computer's hardware",
+        "Training data that reflects historical or societal biases",
+        "Random chance with no connection to data",
+        "The programming language used"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Explainability refers to:",
+      "options": [
+        "How fast a model runs",
+        "The degree to which a human can understand why a system produced a given output",
+        "The number of parameters in a model",
+        "How much data a model was trained on"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is an example of an AI-specific security concern?",
+      "options": [
+        "A weak Wi-Fi password",
+        "Adversarial inputs crafted to fool a model, or data poisoning of training data",
+        "A slow internet connection",
+        "An outdated web browser"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

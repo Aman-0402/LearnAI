@@ -1,0 +1,61 @@
+{
+  "title": "State Space Representation",
+  "sections": [
+    {
+      "heading": "States",
+      "body": "A state is a snapshot description of the problem at some point in time — capturing exactly the information needed to determine what actions are available and whether the goal has been reached, while leaving out irrelevant detail to keep the representation manageable."
+    },
+    {
+      "heading": "Operators",
+      "body": "Operators define the possible transitions between states — given a state, an operator specifies both when it can be applied (its preconditions) and what state results from applying it (its effect)."
+    },
+    {
+      "heading": "Transition Model",
+      "body": "The transition model formally describes what state results from performing a given action in a given state. In deterministic problems, one action from one state always leads to exactly one resulting state; in stochastic problems, the same action can lead to different outcomes with different probabilities."
+    },
+    {
+      "heading": "Search Graph",
+      "body": "The search graph represents the full state space: nodes are states, and edges are the transitions between them defined by the operators. Unlike a search tree, the graph merges together any paths that reach the same state, so each distinct state appears only once."
+    },
+    {
+      "heading": "Search Tree",
+      "body": "The search tree is what's actually built during a search process — a tree of nodes representing paths explored so far. Because it's built by expanding along paths, the same underlying state can appear as multiple different nodes in the tree if reached via different routes."
+    },
+    {
+      "heading": "State Space Complexity",
+      "body": "State space complexity refers to how large the space of possible states is for a given problem, and how quickly it grows — often exponentially with problem size. This complexity is why smart search strategies and heuristics matter: exhaustively searching a huge state space is often computationally infeasible."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A state is best described as:",
+      "options": [
+        "A random number",
+        "A snapshot description capturing exactly the information needed to reason about the problem",
+        "A type of operator",
+        "The name of the algorithm"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What's the key structural difference between a search graph and a search tree?",
+      "options": [
+        "There is no difference",
+        "The graph merges repeated states into one node; the tree can represent the same state multiple times via different paths",
+        "The tree has no root",
+        "The graph never contains edges"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why does state space complexity matter in practice?",
+      "options": [
+        "It never affects performance",
+        "Because state spaces can grow exponentially, making exhaustive search infeasible without smarter strategies",
+        "It only matters for simple reflex agents",
+        "It determines the color of the graph"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

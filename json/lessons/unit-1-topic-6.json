@@ -1,0 +1,52 @@
+{
+  "title": "Agent Architectures",
+  "sections": [
+    {
+      "heading": "Simple Reflex Agent",
+      "body": "A simple reflex agent selects actions based only on the current percept, ignoring the rest of the percept history, using condition-action rules like \"if X then do Y.\" It's fast and simple but only works well in fully observable environments where the current percept contains everything needed to decide."
+    },
+    {
+      "heading": "Model-Based Agent",
+      "body": "A model-based reflex agent maintains an internal state that tracks aspects of the world it can't currently observe, updated based on percept history and knowledge of how the world evolves. This lets it handle partially observable environments that simple reflex agents can't."
+    },
+    {
+      "heading": "Goal-Based Agent",
+      "body": "A goal-based agent acts to achieve explicit goals, not just react to the current state. It considers the future consequences of actions — essentially asking \"will this get me closer to my goal?\" — which requires reasoning about sequences of actions, not just single-step reactions."
+    },
+    {
+      "heading": "Utility-Based Agent",
+      "body": "A utility-based agent goes further than a goal-based one by using a utility function that assigns a numeric \"happiness\" score to different world states, allowing it to choose among multiple ways of reaching a goal (or trade off conflicting goals) by picking the option with the highest expected utility."
+    },
+    {
+      "heading": "Learning Agent",
+      "body": "A learning agent can improve its own performance over time. It's typically described with four conceptual components: a performance element (decides actions), a learning element (makes improvements based on feedback), a critic (evaluates how well the agent is doing against a fixed performance standard), and a problem generator (suggests exploratory actions to discover better strategies)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A simple reflex agent decides its action based on:",
+      "options": [
+        "The entire percept history",
+        "Only the current percept, via condition-action rules",
+        "A learned utility function",
+        "Goals set by another agent"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What distinguishes a model-based agent from a simple reflex agent?",
+      "options": [
+        "It has no rules at all",
+        "It maintains internal state to handle partial observability",
+        "It never acts",
+        "It only works in fully observable environments"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which agent type uses a numeric function to compare and trade off different outcomes?",
+      "options": ["Simple reflex agent", "Goal-based agent", "Utility-based agent", "Model-based agent"],
+      "correctIndex": 2
+    }
+  ]
+}

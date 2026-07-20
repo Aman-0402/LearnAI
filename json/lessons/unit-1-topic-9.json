@@ -1,0 +1,61 @@
+{
+  "title": "Problem Formulation",
+  "sections": [
+    {
+      "heading": "Defining the Problem",
+      "body": "Problem formulation is the step of translating a real-world task into a precise structure a search algorithm can work with — deciding exactly what counts as a state, what actions are available, and what it means to succeed, before any searching begins."
+    },
+    {
+      "heading": "Initial State",
+      "body": "Formulating a problem starts by defining the initial state precisely — the exact starting configuration, described using only the details relevant to solving the problem, since including irrelevant detail makes the state space unnecessarily large."
+    },
+    {
+      "heading": "Goal Test",
+      "body": "The goal test determines whether a given state counts as a solution. It can be as simple as checking equality against one specific target state, or a more general check (e.g. \"all items are sorted\") that many different states could satisfy."
+    },
+    {
+      "heading": "Actions",
+      "body": "Defining the problem requires specifying the set of actions available at each state — this is often expressed as a function that, given a state, returns the set of actions that can legally be applied from it."
+    },
+    {
+      "heading": "Path Cost",
+      "body": "The path cost function assigns a numeric cost to a sequence of actions, typically as the sum of individual step costs. This lets a search algorithm compare different solution paths and prefer cheaper ones, not just any path that happens to reach the goal."
+    },
+    {
+      "heading": "Constraints",
+      "body": "Constraints are conditions that limit which states or actions are valid — for example, a delivery route problem might constrain routes to only use roads a truck is legally allowed on. Correctly capturing constraints during formulation prevents the search from wasting time on, or returning, invalid solutions."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is the purpose of problem formulation?",
+      "options": [
+        "To skip defining the problem and start searching immediately",
+        "To translate a real-world task into a precise structure (states, actions, goal) a search algorithm can use",
+        "To guarantee the fastest possible hardware",
+        "To eliminate the need for a goal test"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "The goal test is used to:",
+      "options": [
+        "Determine whether a given state counts as a solution",
+        "Define the initial state",
+        "Calculate path cost",
+        "List all constraints"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Why does path cost matter during problem formulation?",
+      "options": [
+        "It doesn't matter at all",
+        "It lets the search compare solution paths and prefer cheaper ones, not just any goal-reaching path",
+        "It replaces the need for a goal test",
+        "It only applies to robotics"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

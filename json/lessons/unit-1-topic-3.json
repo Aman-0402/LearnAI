@@ -1,0 +1,61 @@
+{
+  "title": "Fundamentals of Artificial Intelligence",
+  "sections": [
+    {
+      "heading": "Basic Concepts",
+      "body": "At its core, AI systems are built from a handful of recurring ideas: representing knowledge about the world, searching through possibilities to find a solution, reasoning from what's known to what follows, and improving performance through learning. Almost every AI technique is some combination of these building blocks."
+    },
+    {
+      "heading": "Intelligent Behavior",
+      "body": "Intelligent behavior is generally recognized by traits like the ability to handle novel situations, learn from experience, generalize beyond exact training examples, and act purposefully toward a goal — rather than simply following a single fixed, hardcoded rule for every possible input."
+    },
+    {
+      "heading": "Learning and Reasoning",
+      "body": "Learning is the process of improving performance based on experience or data, without being explicitly reprogrammed for every new case. Reasoning is the process of deriving new conclusions from existing knowledge — for example, inferring a diagnosis from a set of symptoms using logical or probabilistic rules."
+    },
+    {
+      "heading": "Perception",
+      "body": "Perception is how an AI system takes in raw information from its environment — such as pixels from a camera, sound waves from a microphone, or text from a document — and converts it into a structured form (like \"there's a cat in this image\") that the rest of the system can reason about."
+    },
+    {
+      "heading": "Decision Making",
+      "body": "Decision making is choosing an action from among the available options, typically to maximize some measure of expected benefit or minimize expected cost, often under uncertainty about the exact outcome of each choice."
+    },
+    {
+      "heading": "Problem Solving",
+      "body": "Problem solving in AI generally means finding a sequence of actions that transforms a starting situation into a desired goal situation — this is often approached as a search process through a space of possible states, which is a recurring pattern across many different AI applications."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which trait is most associated with intelligent behavior, as opposed to a single fixed rule?",
+      "options": [
+        "Handling only one exact input every time",
+        "Generalizing and adapting to novel situations",
+        "Ignoring all prior experience",
+        "Producing the same output regardless of input"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the key difference between learning and reasoning?",
+      "options": [
+        "They are the same process",
+        "Learning improves performance from experience; reasoning derives new conclusions from existing knowledge",
+        "Reasoning only applies to robots",
+        "Learning requires no data at all"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Problem solving in AI is often approached as:",
+      "options": [
+        "Random guessing with no structure",
+        "A search process through a space of possible states toward a goal",
+        "Purely memorizing past answers",
+        "A hardware-only concern"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

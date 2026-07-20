@@ -1,0 +1,51 @@
+{
+  "title": "Introduction to Artificial Intelligence",
+  "sections": [
+    {
+      "heading": "Definition of Artificial Intelligence",
+      "body": "Artificial Intelligence is the branch of computer science concerned with building systems that can perform tasks which normally require human intelligence — perceiving, reasoning, learning, and deciding. Rather than following one rigid definition, AI is best understood as the pursuit of machines that act intelligently in their environment."
+    },
+    {
+      "heading": "Goals of AI",
+      "body": "The core goals of AI research are to build systems that can reason and solve problems, represent and use knowledge, learn from experience, perceive their environment (through vision, speech, sensors), and act autonomously to achieve objectives. Different AI systems pursue different subsets of these goals depending on their purpose."
+    },
+    {
+      "heading": "AI vs Human Intelligence",
+      "body": "Human intelligence is general, adaptive, and grounded in consciousness, emotion, and lived experience. Current AI systems, by contrast, are typically narrow — excelling at a specific task by processing far more data far faster than a person could, but without genuine understanding, common sense, or the ability to transfer skill across unrelated domains the way a human effortlessly can."
+    },
+    {
+      "heading": "Branches of AI",
+      "body": "AI is an umbrella term covering many specialized branches: Machine Learning (systems that improve from data), Natural Language Processing (understanding and generating human language), Computer Vision (interpreting images and video), Robotics (physical agents acting in the world), Expert Systems (encoding specialist knowledge as rules), and Planning (sequencing actions to reach a goal)."
+    },
+    {
+      "heading": "AI Workflow",
+      "body": "Building an AI system typically follows a workflow: define the problem, collect and prepare data, choose or design a model/approach, train and tune it, evaluate its performance against real requirements, deploy it, and monitor it over time — since real-world conditions change and a model that worked yesterday can degrade tomorrow."
+    },
+    {
+      "heading": "Weak AI vs Strong AI",
+      "body": "Weak AI (also called narrow AI) is designed to perform one task well — this describes every AI system in use today, from spam filters to voice assistants. Strong AI (or Artificial General Intelligence) refers to a hypothetical system with human-level, general-purpose intelligence across any task. Strong AI remains a long-term research goal, not something that exists in deployed systems."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which of these best matches every AI system in use today?",
+      "options": ["Strong AI", "Weak / Narrow AI", "Artificial General Intelligence", "Conscious AI"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is NOT typically listed as a core goal of AI?",
+      "options": ["Learning from experience", "Reasoning and problem solving", "Replacing human emotion", "Perceiving the environment"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Natural Language Processing is best described as:",
+      "options": [
+        "A branch of AI focused on understanding and generating human language",
+        "A synonym for Artificial General Intelligence",
+        "A physical robotics platform",
+        "A hardware requirement for all AI systems"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

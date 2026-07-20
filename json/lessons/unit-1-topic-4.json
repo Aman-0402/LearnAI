@@ -1,0 +1,85 @@
+{
+  "title": "Characteristics and Applications of AI",
+  "sections": [
+    {
+      "heading": "Characteristics of AI Systems",
+      "body": "AI systems are generally characterized by three traits working together: automation (performing tasks without continuous human intervention), learning ability (improving performance from data or experience over time), and adaptability (adjusting behavior when the environment or inputs change from what was originally expected)."
+    },
+    {
+      "heading": "Automation",
+      "body": "Automation means the system carries out a task on its own once set up — freeing people from repetitive work. In AI specifically, automation often goes beyond simple fixed scripts, since the system can adjust its own behavior as conditions change rather than always doing the exact same steps."
+    },
+    {
+      "heading": "Learning Ability",
+      "body": "A defining trait of most modern AI systems is the ability to improve at a task by learning from data or feedback, rather than being explicitly reprogrammed by an engineer for every new case or edge case that appears."
+    },
+    {
+      "heading": "Adaptability",
+      "body": "Adaptability is the capacity to keep performing well when conditions shift — new kinds of input, a changing environment, or evolving user behavior — without needing to be manually rebuilt from scratch every time something changes."
+    },
+    {
+      "heading": "Applications in Healthcare",
+      "body": "AI assists in medical image analysis (spotting tumors in scans), predicting patient risk, drug discovery, and personalizing treatment plans based on a patient's data — generally as a decision-support aid for clinicians, not a replacement for medical judgment."
+    },
+    {
+      "heading": "Applications in Finance",
+      "body": "In finance, AI is used for fraud detection (flagging unusual transaction patterns), algorithmic trading, credit risk scoring, and customer service chatbots that handle routine account questions."
+    },
+    {
+      "heading": "Applications in Education",
+      "body": "AI powers adaptive learning platforms that adjust content difficulty to an individual student's pace, automated grading for objective assessments, and tools that recommend learning material based on a student's progress and gaps."
+    },
+    {
+      "heading": "Applications in Robotics",
+      "body": "Robotics combines AI's perception and decision-making with physical actuators — enabling robots to navigate warehouses, perform precise assembly-line tasks, and handle manipulation tasks that require sensing and adapting to the physical world in real time."
+    },
+    {
+      "heading": "Applications in Gaming",
+      "body": "AI drives non-player character behavior, dynamic difficulty adjustment, and procedural content generation in games — and separately, game-playing AI research (like chess and Go engines) has historically been a key benchmark for measuring AI progress."
+    },
+    {
+      "heading": "Applications in Agriculture",
+      "body": "AI supports precision agriculture through crop health monitoring via drone/satellite imagery, yield prediction, and automated systems that optimize irrigation and pesticide use based on real-time field data."
+    },
+    {
+      "heading": "Applications in Cybersecurity",
+      "body": "AI helps detect anomalous network activity, identify malware based on behavioral patterns rather than exact known signatures, and flag phishing attempts — adapting to new attack patterns faster than manually updated rule lists."
+    },
+    {
+      "heading": "Applications in Transportation",
+      "body": "AI enables route optimization, traffic prediction, and the perception/decision-making systems behind driver-assistance features and autonomous vehicle research, where the system must interpret sensor data and make safe real-time decisions."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which three traits are commonly used to characterize AI systems?",
+      "options": [
+        "Automation, learning ability, adaptability",
+        "Speed, cost, popularity",
+        "Color, size, weight",
+        "Only automation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "In healthcare, AI is generally used as:",
+      "options": [
+        "A full replacement for clinical judgment",
+        "A decision-support aid, such as flagging tumors in scans",
+        "Only for hospital billing",
+        "A device with no data involved"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is a typical AI application in cybersecurity?",
+      "options": [
+        "Grading student essays",
+        "Detecting anomalous network activity and new attack patterns",
+        "Predicting crop yields",
+        "Route optimization for delivery trucks"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}
