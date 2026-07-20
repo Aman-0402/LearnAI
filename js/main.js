@@ -4,23 +4,30 @@ import { renderSidebar, setActiveLink } from "./modules/shell/sidebar.js";
 import { createEl } from "./utils/dom.js";
 import { getSettings } from "./storage/settings-store.js";
 
+const isDesktop = () => window.matchMedia("(min-width: 1025px)").matches;
+
 async function bootstrap() {
   const app = document.getElementById("app");
 
   const settings = getSettings();
   document.documentElement.setAttribute("data-reduced-motion", String(settings.reducedMotion));
 
-  let sidebarOpen = false;
+  let sidebarOpen = isDesktop();
 
   const shell = createEl("div", { className: "app-shell" });
   const scrim = createEl("div", { className: "sidebar-scrim" });
   const skipLink = createEl("a", { className: "skip-link", attrs: { href: "#main-content" }, text: "Skip to content" });
 
+  const setSidebarOpen = (open) => {
+    sidebarOpen = open;
+    sidebarEl.setAttribute("data-open", String(open));
+    scrim.setAttribute("data-open", String(open));
+    shell.setAttribute("data-sidebar-open", String(open));
+  };
+
   const topbar = renderTopbar({
     onHamburgerClick: () => {
-      sidebarOpen = !sidebarOpen;
-      sidebarEl.setAttribute("data-open", String(sidebarOpen));
-      scrim.setAttribute("data-open", String(sidebarOpen));
+      setSidebarOpen(!sidebarOpen);
     }
   });
   topbar.classList.add("app-topbar");
@@ -29,16 +36,16 @@ async function bootstrap() {
   const sidebarEl = await renderSidebar({ activeRoute: initialRoute });
   sidebarEl.classList.add("app-sidebar");
 
+  setSidebarOpen(sidebarOpen);
+
   scrim.addEventListener("click", () => {
-    sidebarOpen = false;
-    sidebarEl.setAttribute("data-open", "false");
-    scrim.setAttribute("data-open", "false");
+    setSidebarOpen(false);
   });
 
   window.addEventListener("hashchange", () => {
-    sidebarOpen = false;
-    sidebarEl.setAttribute("data-open", "false");
-    scrim.setAttribute("data-open", "false");
+    if (!isDesktop()) {
+      setSidebarOpen(false);
+    }
   });
 
   const main = createEl("main", { className: "app-main", attrs: { id: "main-content" } });

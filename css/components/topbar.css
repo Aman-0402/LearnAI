@@ -10,7 +10,7 @@
 }
 
 .topbar__hamburger {
-  display: none;
+  display: inline-flex;
   background: none;
   border: none;
   border-radius: var(--radius-control);
@@ -22,12 +22,6 @@
 
 .topbar__hamburger:hover {
   background-color: color-mix(in srgb, var(--color-text) 8%, transparent);
-}
-
-@media (max-width: 1024px) {
-  .topbar__hamburger {
-    display: inline-flex;
-  }
 }
 
 .topbar__logo {

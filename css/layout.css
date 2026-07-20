@@ -7,6 +7,7 @@
     "sidebar topbar"
     "sidebar main";
   min-height: 100vh;
+  transition: grid-template-columns var(--duration-base) var(--ease-standard);
 }
 
 .app-topbar {
@@ -23,7 +24,6 @@
 .app-main {
   grid-area: main;
   padding: var(--space-6);
-  max-width: 1200px;
   width: 100%;
 }
 
@@ -74,5 +74,15 @@
     height: 100vh;
     overflow-y: auto;
     z-index: 10;
+    transform: translateX(0);
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .app-sidebar[data-open="false"] {
+    transform: translateX(-100%);
+  }
+
+  .app-shell[data-sidebar-open="false"] {
+    grid-template-columns: 0 1fr;
   }
 }
