@@ -996,10 +996,12 @@ function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, tota
     });
 
     let rowClass = "lesson__quiz-option-row";
-    if (showFeedback && selectedAnswers[qIndex] === optIndex) {
-      rowClass += optIndex === q.correctIndex
-        ? " lesson__quiz-option-row--correct"
-        : " lesson__quiz-option-row--incorrect";
+    if (showFeedback) {
+      if (optIndex === q.correctIndex) {
+        rowClass += " lesson__quiz-option-row--correct";
+      } else if (selectedAnswers[qIndex] === optIndex) {
+        rowClass += " lesson__quiz-option-row--incorrect";
+      }
     }
 
     return createEl("div", { className: rowClass, children: [input, label] });
