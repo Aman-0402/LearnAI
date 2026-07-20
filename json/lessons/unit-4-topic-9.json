@@ -1,0 +1,57 @@
+{
+  "title": "Autonomous Agents",
+  "sections": [
+    {
+      "heading": "Autonomous Systems",
+      "body": "An autonomous system operates and makes decisions independently, without requiring continuous human control — building on the intelligent-agent concepts from Unit 1, but emphasizing systems that must operate reliably over extended periods with minimal supervision."
+    },
+    {
+      "heading": "Robotics",
+      "body": "Robotics combines AI's perception, planning, and decision-making with physical hardware, letting autonomous systems sense and act in the physical world — from industrial arms to mobile robots navigating unpredictable real environments."
+    },
+    {
+      "heading": "Self-driving Systems",
+      "body": "Self-driving systems are a prominent application of autonomous agents, integrating perception (interpreting sensor data), decision-making (choosing safe actions), and control (executing steering/braking) — all under strict real-time and safety constraints."
+    },
+    {
+      "heading": "Intelligent Decision Making",
+      "body": "Autonomous agents must make decisions continuously as new information arrives, often under the same uncertainty and incomplete-knowledge challenges covered earlier in this course — drawing on planning, learning, and probabilistic reasoning together."
+    },
+    {
+      "heading": "Agent Communication",
+      "body": "When multiple autonomous agents operate in the same environment (e.g. multiple self-driving vehicles), communication protocols let them share intentions and coordinate — connecting back to the multi-agent systems concepts covered earlier in this unit."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "An autonomous system is defined by its ability to:",
+      "options": [
+        "Require continuous human control for every decision",
+        "Operate and make decisions independently with minimal supervision",
+        "Only work in simulation, never the real world",
+        "Avoid using any sensors"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Self-driving systems integrate which capabilities?",
+      "options": [
+        "Perception, decision-making, and control, under real-time safety constraints",
+        "Only image generation",
+        "Only rule-based expert systems",
+        "Only communication with other vehicles"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Why is agent communication important for multiple autonomous agents sharing an environment?",
+      "options": [
+        "It isn't important",
+        "It lets agents share intentions and coordinate to avoid conflicts",
+        "It replaces the need for sensors",
+        "It only matters for a single agent"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

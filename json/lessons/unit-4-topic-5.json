@@ -1,0 +1,56 @@
+{
+  "title": "Introduction to Machine Learning in AI Systems",
+  "sections": [
+    {
+      "heading": "Supervised Learning",
+      "body": "Supervised learning trains a model on labeled examples — input-output pairs where the correct answer is known — so the model learns to predict the output for new, unseen inputs based on the patterns found in that labeled training data."
+    },
+    {
+      "heading": "Unsupervised Learning",
+      "body": "Unsupervised learning works with unlabeled data, finding structure or patterns on its own — such as grouping similar items together — without ever being told what the \"correct\" grouping or answer should be."
+    },
+    {
+      "heading": "Reinforcement Learning",
+      "body": "Reinforcement learning trains an agent to make decisions by interacting with an environment and receiving rewards or penalties for its actions, gradually learning a policy that maximizes cumulative reward — closely related to the MDP framework introduced earlier in this unit."
+    },
+    {
+      "heading": "Classification",
+      "body": "Classification is a supervised learning task where the output is a category from a discrete set of options — for example, predicting whether an email is \"spam\" or \"not spam,\" or identifying which animal appears in a photo."
+    },
+    {
+      "heading": "Regression",
+      "body": "Regression is a supervised learning task where the output is a continuous numeric value — for example, predicting a house's price or a stock's future value, rather than choosing among a fixed set of categories."
+    },
+    {
+      "heading": "Clustering",
+      "body": "Clustering is a common unsupervised learning task that groups similar data points together based on shared characteristics — for example, segmenting customers into groups with similar purchasing behavior, without predefined category labels."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is the key difference between classification and regression?",
+      "options": [
+        "Classification predicts a category; regression predicts a continuous numeric value",
+        "They are the same task",
+        "Regression only works with images",
+        "Classification requires no training data"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Clustering is an example of:",
+      "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Classification"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Reinforcement learning trains an agent primarily by:",
+      "options": [
+        "Giving it labeled input-output pairs",
+        "Interacting with an environment and receiving rewards/penalties over time",
+        "Clustering unlabeled data",
+        "Memorizing a fixed dataset with no interaction"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

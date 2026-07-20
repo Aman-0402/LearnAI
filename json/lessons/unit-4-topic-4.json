@@ -1,0 +1,64 @@
+{
+  "title": "Machine Learning Fundamentals",
+  "sections": [
+    {
+      "heading": "AI vs ML",
+      "body": "AI is the broad goal of building systems that behave intelligently; machine learning is the dominant modern approach to reaching that goal — instead of hand-coding every rule, an ML system learns patterns directly from data. Every ML system is a form of AI, but not every AI technique (like classical search or logic-based planning) involves learning from data."
+    },
+    {
+      "heading": "Learning Types",
+      "body": "Machine learning is commonly split into three broad types: supervised learning (learning from labeled examples), unsupervised learning (finding structure in unlabeled data), and reinforcement learning (learning through trial-and-error interaction with an environment, guided by rewards)."
+    },
+    {
+      "heading": "Dataset",
+      "body": "A dataset is the collection of examples an ML system learns from — typically split into training data (used to fit the model) and testing data (held back to evaluate how well the model generalizes to examples it hasn't seen before)."
+    },
+    {
+      "heading": "Features",
+      "body": "Features are the measurable input variables describing each example in a dataset — for instance, a house-price model might use square footage, number of bedrooms, and location as features that the model uses to make predictions."
+    },
+    {
+      "heading": "Labels",
+      "body": "Labels are the known correct answers associated with training examples in supervised learning — for example, the actual sale price of each house in a price-prediction dataset. Unsupervised learning, by contrast, works with data that has no labels at all."
+    },
+    {
+      "heading": "Model",
+      "body": "A model is the learned mathematical representation that maps inputs (features) to outputs (predictions) — it starts with adjustable internal parameters and is shaped by the training process to fit patterns in the data."
+    },
+    {
+      "heading": "Training",
+      "body": "Training is the process of adjusting a model's parameters using the training dataset, typically by iteratively reducing the difference between the model's predictions and the actual known labels (in supervised learning)."
+    },
+    {
+      "heading": "Testing",
+      "body": "Testing evaluates a trained model's performance on data it was never trained on — this is essential to check whether the model has actually learned generalizable patterns, rather than just memorizing the specific training examples it saw."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "How does ML relate to AI?",
+      "options": [
+        "They are unrelated fields",
+        "ML is a dominant modern approach to achieving AI's broader goal, learning from data instead of hand-coded rules",
+        "AI is a subset of ML",
+        "ML replaces the need for any data"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why is a model evaluated on a separate test set rather than the training set?",
+      "options": [
+        "It doesn't matter which set is used",
+        "To check whether it generalizes to new data, rather than just memorizing training examples",
+        "Test sets are always larger",
+        "Training data is never available for evaluation"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "In supervised learning, labels represent:",
+      "options": ["The input features only", "The known correct answers associated with training examples", "A random number", "The model's internal parameters"],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Emerging Trends in Artificial Intelligence",
+  "sections": [
+    {
+      "heading": "Artificial General Intelligence (AGI)",
+      "body": "AGI refers to a hypothetical AI system with human-level, general-purpose intelligence across virtually any task — as noted in Unit 1, every AI system in use today is narrow, and AGI remains an active, debated research goal rather than an existing technology."
+    },
+    {
+      "heading": "Edge AI",
+      "body": "Edge AI means running AI models directly on local devices (phones, cameras, sensors) rather than sending data to a remote server for processing — reducing latency, working without a constant network connection, and keeping data more private."
+    },
+    {
+      "heading": "TinyML",
+      "body": "TinyML is the practice of running machine learning models on extremely resource-constrained hardware, like microcontrollers with kilobytes of memory — enabling AI capabilities in low-power devices such as sensors that need to run for years on a small battery."
+    },
+    {
+      "heading": "AIoT",
+      "body": "AIoT (AI + Internet of Things) combines AI decision-making with networks of connected sensors and devices — letting distributed IoT systems not just collect data, but locally analyze and act on it intelligently."
+    },
+    {
+      "heading": "Federated Learning",
+      "body": "Federated learning trains a shared model across many devices holding local data, without that raw data ever leaving each device — only model updates are shared and combined centrally, which helps address privacy concerns raised back in Unit 1's AI-challenges topic."
+    },
+    {
+      "heading": "Digital Twins",
+      "body": "A digital twin is a virtual model of a real-world physical system, kept synchronized with its real counterpart via sensor data — used to simulate, predict, and optimize the behavior of the physical system without needing to experiment on the real thing directly."
+    },
+    {
+      "heading": "AI in Healthcare",
+      "body": "Emerging healthcare applications extend beyond diagnostics to areas like personalized medicine, AI-assisted drug discovery, and predictive care that flags at-risk patients before a condition becomes acute."
+    },
+    {
+      "heading": "AI in Cybersecurity",
+      "body": "Emerging cybersecurity applications increasingly use AI not just to detect known attack patterns, but to adaptively anticipate and respond to novel threats in real time, as attackers themselves begin using AI-generated attacks."
+    },
+    {
+      "heading": "Future of AI",
+      "body": "The trajectory of AI points toward more capable, more efficient, and more widely deployed systems — with the central open questions being how to make that growth safe, fair, and beneficial, echoing the ethical challenges introduced back in Unit 1 and revisited throughout this course."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Edge AI refers to:",
+      "options": [
+        "Running AI models directly on local devices instead of a remote server",
+        "A type of search algorithm",
+        "A hypothetical human-level AI",
+        "A single centralized data center"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What is the key privacy benefit of federated learning?",
+      "options": [
+        "Raw data never leaves each device; only model updates are shared centrally",
+        "It requires uploading all raw data to one server",
+        "It eliminates the need for a model entirely",
+        "It has no privacy benefit"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "A digital twin is:",
+      "options": [
+        "A physical backup robot",
+        "A virtual model of a real-world system, kept synchronized via sensor data",
+        "A synonym for AGI",
+        "A type of federated learning"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

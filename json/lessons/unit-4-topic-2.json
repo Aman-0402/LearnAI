@@ -1,0 +1,48 @@
+{
+  "title": "Decision Making under Uncertainty",
+  "sections": [
+    {
+      "heading": "Utility Theory",
+      "body": "Utility theory provides a formal way to represent an agent's preferences as numbers — a higher utility means a more preferred outcome. This lets an agent compare very different kinds of outcomes on one common scale, and choose rationally rather than arbitrarily."
+    },
+    {
+      "heading": "Expected Utility",
+      "body": "Expected utility combines probability with utility: for an action with several possible uncertain outcomes, the expected utility is the probability-weighted average of the utility of each outcome. A rational agent under uncertainty chooses the action with the highest expected utility."
+    },
+    {
+      "heading": "Risk Analysis",
+      "body": "Risk analysis examines the likelihood and impact of different possible outcomes of a decision — including low-probability but high-impact outcomes that a simple \"most likely outcome\" view might overlook, but that expected-utility reasoning naturally accounts for."
+    },
+    {
+      "heading": "Decision Trees",
+      "body": "A decision tree lays out a sequence of decisions and uncertain events as branches, with outcomes and their probabilities at the leaves — used to visually and systematically compute the expected utility of different choices at each decision point."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Expected utility is calculated as:",
+      "options": [
+        "The single most likely outcome's utility",
+        "The probability-weighted average of the utility of each possible outcome",
+        "A random guess",
+        "The sum of all probabilities"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A rational agent under uncertainty chooses the action that:",
+      "options": ["Has the lowest probability of any outcome", "Maximizes expected utility", "Is easiest to compute", "Ignores all outcomes"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why is risk analysis useful even for low-probability outcomes?",
+      "options": [
+        "Low-probability outcomes never matter",
+        "A low-probability but high-impact outcome can still significantly affect expected utility",
+        "It replaces the need for probability entirely",
+        "It only applies to decision trees"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

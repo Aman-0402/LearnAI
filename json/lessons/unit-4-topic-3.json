@@ -1,0 +1,56 @@
+{
+  "title": "Markov Decision Processes (MDP)",
+  "sections": [
+    {
+      "heading": "States",
+      "body": "In an MDP, states represent all the distinct situations the agent could be in. The \"Markov\" property means the future only depends on the current state, not on the full history of how the agent got there — the current state captures everything relevant."
+    },
+    {
+      "heading": "Actions",
+      "body": "Actions are the choices available to the agent in each state. In an MDP, taking an action from a state leads to a new state — but unlike classical planning, this transition can be probabilistic rather than certain, reflecting real-world unpredictability."
+    },
+    {
+      "heading": "Rewards",
+      "body": "A reward is a numeric signal received after taking an action in a state, indicating how good or bad that outcome was. The agent's objective in an MDP is to choose actions that maximize its total accumulated reward over time, not just the immediate reward."
+    },
+    {
+      "heading": "Policy",
+      "body": "A policy is a strategy specifying which action to take in each state. Solving an MDP means finding an optimal policy — one that maximizes expected cumulative reward regardless of which state the agent happens to start in."
+    },
+    {
+      "heading": "Value Function",
+      "body": "A value function estimates how good it is to be in a given state (or to take a given action in a state), in terms of expected future reward under a given policy — it's the key quantity that lets an agent compare states and actions to improve its policy."
+    },
+    {
+      "heading": "Bellman Equation",
+      "body": "The Bellman equation expresses a state's value recursively: the value of a state equals the immediate reward plus the discounted value of the best next state reachable from it. This recursive relationship is the mathematical foundation most MDP-solving algorithms are built on."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The \"Markov\" property means:",
+      "options": [
+        "The future depends on the entire history of past states",
+        "The future depends only on the current state, not on the full history",
+        "Rewards are always zero",
+        "There is only one possible action"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A policy in an MDP specifies:",
+      "options": ["A single reward value", "Which action to take in each state", "The Markov property itself", "A fixed sequence of states with no choices"],
+      "correctIndex": 1
+    },
+    {
+      "question": "The Bellman equation expresses a state's value as:",
+      "options": [
+        "A completely random number",
+        "The immediate reward plus the discounted value of the best reachable next state",
+        "The sum of all past rewards only",
+        "Zero, always"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

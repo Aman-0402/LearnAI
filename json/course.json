@@ -57,9 +57,20 @@
     },
     {
       "id": "unit-4",
-      "title": "Unit 4: Coming Soon",
-      "description": "Content for this unit hasn't been written yet.",
-      "lessons": []
+      "title": "Unit 4: Planning, Learning and Modern AI Systems",
+      "description": "Automated planning, decision making under uncertainty, MDPs, machine learning foundations, multi-agent systems, responsible AI, generative AI, autonomous agents, and emerging trends.",
+      "lessons": [
+        { "id": "topic-1", "title": "Automated Planning Concepts" },
+        { "id": "topic-2", "title": "Decision Making under Uncertainty" },
+        { "id": "topic-3", "title": "Markov Decision Processes (MDP)" },
+        { "id": "topic-4", "title": "Machine Learning Fundamentals" },
+        { "id": "topic-5", "title": "Introduction to Machine Learning in AI Systems" },
+        { "id": "topic-6", "title": "Multi-Agent Systems" },
+        { "id": "topic-7", "title": "Explainable and Responsible AI" },
+        { "id": "topic-8", "title": "Generative AI Overview" },
+        { "id": "topic-9", "title": "Autonomous Agents" },
+        { "id": "topic-10", "title": "Emerging Trends in Artificial Intelligence" }
+      ]
     }
   ]
 }

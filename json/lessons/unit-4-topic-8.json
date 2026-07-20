@@ -1,0 +1,65 @@
+{
+  "title": "Generative AI Overview",
+  "sections": [
+    {
+      "heading": "Foundation Models",
+      "body": "Foundation models are large-scale models trained on broad, diverse data that can then be adapted to many different downstream tasks — rather than training a separate model from scratch for every individual task, one foundation model can be fine-tuned or prompted for many uses."
+    },
+    {
+      "heading": "Large Language Models (LLMs)",
+      "body": "Large Language Models are foundation models trained on massive amounts of text, learning statistical patterns of language well enough to generate coherent text, answer questions, summarize content, and assist with a wide range of language-based tasks."
+    },
+    {
+      "heading": "Transformers",
+      "body": "The transformer is the neural network architecture underlying most modern LLMs. Its key innovation is the attention mechanism, which lets the model weigh the relevance of different parts of its input to each other, regardless of how far apart they are in the text."
+    },
+    {
+      "heading": "Prompt Engineering",
+      "body": "Prompt engineering is the practice of carefully crafting the input given to a generative model to get better, more reliable outputs — since the same underlying model can behave very differently depending on how a task is described to it."
+    },
+    {
+      "heading": "Image Generation",
+      "body": "Generative AI extends beyond text to images — models can generate new images from text descriptions, edit existing images, or create variations, using techniques trained on large datasets of image-text pairs."
+    },
+    {
+      "heading": "AI Assistants",
+      "body": "AI assistants combine generative models with tools, memory, and interfaces to help users with tasks conversationally — from answering questions to drafting documents to, increasingly, taking actions on a user's behalf through connected tools."
+    },
+    {
+      "heading": "Applications",
+      "body": "Generative AI is now applied across content creation, coding assistance, customer support, design, and research assistance — its rapid adoption is a major driver of the \"modern AI\" era discussed in Unit 1's history topic."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is a foundation model?",
+      "options": [
+        "A model trained for exactly one narrow task and unusable elsewhere",
+        "A large-scale model trained on broad data, adaptable to many downstream tasks",
+        "A type of search algorithm",
+        "A hardware chip"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the key innovation of the transformer architecture?",
+      "options": [
+        "It removes the need for training data",
+        "The attention mechanism, letting the model weigh relevance between different parts of the input",
+        "It only works on images",
+        "It uses no neural network at all"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Prompt engineering is the practice of:",
+      "options": [
+        "Building new hardware",
+        "Carefully crafting input to a generative model to get better, more reliable outputs",
+        "Training a model from scratch every time",
+        "Deleting training data"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

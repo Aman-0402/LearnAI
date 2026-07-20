@@ -1,0 +1,52 @@
+{
+  "title": "Automated Planning Concepts",
+  "sections": [
+    {
+      "heading": "Planning Problem",
+      "body": "A planning problem asks an agent to find a sequence of actions that transforms an initial state into a state satisfying some goal — similar in spirit to the search problems in Unit 2, but planning typically represents states and actions more richly, in terms of logical facts that change."
+    },
+    {
+      "heading": "Planning Agent",
+      "body": "A planning agent reasons about the future by constructing an explicit plan before acting, rather than reacting one step at a time — this lets it consider the consequences of entire sequences of actions before committing to any of them."
+    },
+    {
+      "heading": "Planning Domain",
+      "body": "A planning domain defines the general \"rules of the world\" for a class of problems — the possible actions, their preconditions, and their effects — independent of any one specific starting state or goal, so the same domain can be reused across many different planning problems."
+    },
+    {
+      "heading": "Goal Planning",
+      "body": "Goal planning focuses on determining the target condition(s) a plan must achieve — goals in planning are often expressed as a set of facts that must hold true in the final state, rather than a single exact state to match."
+    },
+    {
+      "heading": "State Transition",
+      "body": "A state transition describes how executing an action changes the world from one state to another — in classical planning, each action has defined preconditions (what must be true to apply it) and effects (what becomes true or false afterward)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A planning domain defines:",
+      "options": [
+        "One specific problem instance only",
+        "The general actions, preconditions, and effects reusable across many problems",
+        "A single fixed goal state",
+        "A neural network architecture"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does a state transition describe?",
+      "options": ["A random event", "How executing an action changes the world from one state to another", "The final goal only", "A type of heuristic"],
+      "correctIndex": 1
+    },
+    {
+      "question": "How does a planning agent differ from a purely reactive agent?",
+      "options": [
+        "It constructs an explicit plan considering future consequences before acting",
+        "It never considers the future",
+        "It has no goals",
+        "It ignores preconditions and effects"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "title": "Multi-Agent Systems",
+  "sections": [
+    {
+      "heading": "Cooperative Agents",
+      "body": "In a cooperative multi-agent system, agents work together toward a shared goal — for example, a fleet of warehouse robots coordinating to fulfill orders efficiently, where one agent's success also benefits the others."
+    },
+    {
+      "heading": "Competitive Agents",
+      "body": "In a competitive multi-agent system, agents have conflicting goals — one agent's gain can be another's loss, similar to the adversarial game-playing search covered in Unit 2, but potentially with many agents rather than just two."
+    },
+    {
+      "heading": "Communication",
+      "body": "Communication lets agents share information, intentions, or requests with each other — enabling coordination that wouldn't be possible if each agent could only act on its own private, local observations."
+    },
+    {
+      "heading": "Coordination",
+      "body": "Coordination is the process of aligning multiple agents' actions to achieve a good collective outcome — avoiding conflicts (like two agents claiming the same resource) and combining individual capabilities into effective joint behavior."
+    },
+    {
+      "heading": "Distributed AI",
+      "body": "Distributed AI studies how intelligence can emerge from multiple interacting agents rather than one centralized reasoner — often more robust and scalable than a single-agent approach, since the system doesn't have one single point of failure."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In a cooperative multi-agent system, agents:",
+      "options": ["Have entirely conflicting goals", "Work together toward a shared goal", "Never communicate", "Always act identically"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What role does communication play in multi-agent systems?",
+      "options": [
+        "It has no role",
+        "It lets agents share information/intentions, enabling coordination beyond local observation alone",
+        "It only applies to competitive agents",
+        "It replaces the need for actions"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A key advantage of distributed AI over a single centralized reasoner is:",
+      "options": [
+        "It has one single point of failure",
+        "Increased robustness and scalability without one single point of failure",
+        "It requires no coordination at all",
+        "It cannot handle competitive agents"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Explainable and Responsible AI",
+  "sections": [
+    {
+      "heading": "Explainable AI (XAI)",
+      "body": "Explainable AI aims to make a system's decisions understandable to humans — rather than treating a model as an opaque black box, XAI techniques try to reveal which factors most influenced a given prediction or recommendation."
+    },
+    {
+      "heading": "Fairness",
+      "body": "Fairness in AI means ensuring a system's outcomes don't systematically disadvantage particular groups — this is closely tied to the bias-in-data problem introduced in Unit 1, and remains an active area of both technical and policy research."
+    },
+    {
+      "heading": "Transparency",
+      "body": "Transparency means being open about how an AI system works, what data it was trained on, and its known limitations — giving users and stakeholders enough information to reasonably trust (or appropriately distrust) the system's outputs."
+    },
+    {
+      "heading": "Accountability",
+      "body": "Accountability means having clear responsibility for an AI system's outcomes — ensuring there's a person or organization answerable for how the system is built, deployed, and for correcting it when it causes harm."
+    },
+    {
+      "heading": "Ethics",
+      "body": "AI ethics is the broader field examining the moral implications of building and deploying AI systems — covering questions of harm, consent, autonomy, and the societal impact of automating decisions that used to require human judgment."
+    },
+    {
+      "heading": "Responsible AI",
+      "body": "Responsible AI is the practical umbrella bringing fairness, transparency, accountability, and ethics together into concrete development practices — treating these as design requirements throughout a system's lifecycle, not an afterthought bolted on at the end."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Explainable AI (XAI) primarily aims to:",
+      "options": [
+        "Make model decisions understandable to humans",
+        "Make models faster",
+        "Eliminate the need for training data",
+        "Hide how a model works"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Accountability in AI means:",
+      "options": [
+        "No one is responsible for outcomes",
+        "There is clear responsibility for a system's outcomes and correcting harm",
+        "The system must be fully autonomous with no oversight",
+        "Only the end user is responsible"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Responsible AI is best described as:",
+      "options": [
+        "A single algorithm",
+        "Bringing fairness, transparency, accountability, and ethics into concrete practices throughout a system's lifecycle",
+        "A synonym for machine learning",
+        "An optional afterthought with no real requirements"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}
