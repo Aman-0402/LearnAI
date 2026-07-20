@@ -65,4 +65,14 @@
   .sidebar-scrim {
     display: none;
   }
+
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 10;
+  }
 }
