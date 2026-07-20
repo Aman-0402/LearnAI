@@ -5,20 +5,20 @@ const routeTable = {
     load: () => import("./modules/roadmap/roadmap.js")
   },
   "unit-1": {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Unit 1", phase: "Phase 5" }
+    load: () => import("./modules/unit/unit.js"),
+    meta: { unitId: "unit-1" }
   },
   "unit-2": {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Unit 2", phase: "Phase 5" }
+    load: () => import("./modules/unit/unit.js"),
+    meta: { unitId: "unit-2" }
   },
   "unit-3": {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Unit 3", phase: "Phase 5" }
+    load: () => import("./modules/unit/unit.js"),
+    meta: { unitId: "unit-3" }
   },
   "unit-4": {
-    load: () => import("./modules/coming-soon/coming-soon.js"),
-    meta: { title: "Unit 4", phase: "Phase 5" }
+    load: () => import("./modules/unit/unit.js"),
+    meta: { unitId: "unit-4" }
   },
   "ai-lab": {
     load: () => import("./modules/coming-soon/coming-soon.js"),
@@ -72,19 +72,36 @@ function waitForTransitionEnd(el, className, fallbackMs) {
   });
 }
 
+const LESSON_ROUTE_PATTERN = /^(unit-\d+)\/(.+)$/;
+
 async function handleRoute(mainEl, onRouteChange) {
   const routeId = (location.hash.replace(/^#\//, "") || DEFAULT_ROUTE);
-  const entry = routeTable[routeId];
+  const lessonMatch = routeId.match(LESSON_ROUTE_PATTERN);
 
-  if (!entry) {
-    location.hash = `#/${DEFAULT_ROUTE}`;
-    return;
+  let load;
+  let meta;
+  let sidebarRoute;
+
+  if (lessonMatch) {
+    const [, unitId, lessonId] = lessonMatch;
+    load = () => import("./modules/lesson/lesson.js");
+    meta = { unitId, lessonId };
+    sidebarRoute = unitId;
+  } else {
+    const entry = routeTable[routeId];
+    if (!entry) {
+      location.hash = `#/${DEFAULT_ROUTE}`;
+      return;
+    }
+    load = entry.load;
+    meta = entry.meta;
+    sidebarRoute = routeId;
   }
 
   const myRequestId = ++requestId;
 
   try {
-    const mod = await entry.load();
+    const mod = await load();
 
     if (myRequestId !== requestId) return;
 
@@ -99,11 +116,11 @@ async function handleRoute(mainEl, onRouteChange) {
     }
 
     currentModule = mod;
-    await mod.mount(mainEl, entry.meta, () => myRequestId !== requestId);
+    await mod.mount(mainEl, meta, () => myRequestId !== requestId);
 
     if (myRequestId !== requestId) return;
 
-    onRouteChange(routeId);
+    onRouteChange(sidebarRoute);
 
     mainEl.classList.add("route-fade-in");
     mainEl.addEventListener(
