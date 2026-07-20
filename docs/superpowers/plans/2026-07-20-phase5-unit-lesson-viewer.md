@@ -651,6 +651,8 @@ export async function mount(container, meta, isStale) {
   container.appendChild(
     createEl("div", { className: "unit", children: [heading, description, lessonsSection] })
   );
+
+  if (window.lucide) window.lucide.createIcons();
 }
 
 export function unmount() {
@@ -678,7 +680,7 @@ function renderLessonRow(unitId, lesson, completedLessons) {
 }
 ```
 
-Note: `.unit-lesson-row` uses the same Lucide `innerHTML` + `data-lucide` pattern already established in `coming-soon.js`/`topbar.js`/`achievements.js`; the caller (`main.js`'s bootstrap or the router) is expected to already call `window.lucide.createIcons()` after route mounts the same way `achievements.js` does — check `achievements.js` for the exact `if (window.lucide) window.lucide.createIcons();` call site and add the identical call at the end of `unit.js`'s success path (after `container.appendChild(...)`, before the function returns), since without it the check icon's `<i data-lucide="check">` tag would never get replaced with a real SVG.
+Note: `.unit-lesson-row` uses the same Lucide `innerHTML` + `data-lucide` pattern already established in `coming-soon.js`/`topbar.js`/`achievements.js`. The `if (window.lucide) window.lucide.createIcons();` call at the end of `mount()`'s success path (shown in the code above) matches `achievements.js`'s exact call site — without it, the check icon's `<i data-lucide="check">` tag would never get replaced with a real SVG.
 
 - [ ] **Step 2: Verify with node --check**
 
@@ -686,7 +688,7 @@ Run: `node --check js/modules/unit/unit.js` — expect no output.
 
 - [ ] **Step 3: Verify imports and Lucide call**
 
-Confirm `js/storage/progress-store.js` exports `getState`. Confirm `js/utils/dom.js`'s `createEl` signature matches usage. Confirm you added `if (window.lucide) window.lucide.createIcons();` right after the success-path `container.appendChild(...)` call (matching `achievements.js`'s exact pattern) — re-read the file after editing to confirm this line is actually present, since it was called out as a required addition in Step 1's note rather than shown inline in the initial code block.
+Confirm `js/storage/progress-store.js` exports `getState`. Confirm `js/utils/dom.js`'s `createEl` signature matches usage. Confirm the `if (window.lucide) window.lucide.createIcons();` line from the code above landed correctly right after the success-path `container.appendChild(...)` call.
 
 - [ ] **Step 4: Commit**
 
