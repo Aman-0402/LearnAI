@@ -1,0 +1,52 @@
+{
+  "title": "Best First Search",
+  "sections": [
+    {
+      "heading": "Greedy Best First Search",
+      "body": "Greedy Best First Search expands the node that appears closest to the goal, using only the heuristic estimate h(n) to decide — it greedily chases whatever looks most promising right now, without considering how much it already cost to get there."
+    },
+    {
+      "heading": "Algorithm",
+      "body": "Like UCS, Greedy Best First Search uses a priority queue for its frontier, but sorted by h(n) alone instead of cumulative path cost g(n) — the node estimated to be nearest the goal is always expanded next."
+    },
+    {
+      "heading": "Evaluation Function",
+      "body": "Greedy Best First Search's evaluation function is simply f(n) = h(n) — it ignores the cost already incurred entirely, focusing purely on the estimated remaining distance."
+    },
+    {
+      "heading": "Advantages",
+      "body": "Because it aggressively follows the heuristic toward the goal, Greedy Best First Search is often very fast in practice and can find a solution while exploring far fewer nodes than uninformed strategies, especially with a good heuristic."
+    },
+    {
+      "heading": "Limitations",
+      "body": "Greedy Best First Search is neither complete nor optimal in general — since it ignores path cost so far, it can get stuck in loops or dead ends chasing a locally attractive but ultimately misleading heuristic value, and even when it succeeds, the path found is often not the cheapest one."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Greedy Best First Search's evaluation function is:",
+      "options": ["f(n) = g(n)", "f(n) = h(n)", "f(n) = g(n) + h(n)", "f(n) = 0 always"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the main limitation of Greedy Best First Search?",
+      "options": [
+        "It always finds the optimal path",
+        "It is neither complete nor optimal in general, since it ignores cost already spent",
+        "It cannot use a priority queue",
+        "It requires no heuristic at all"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why can Greedy Best First Search be fast in practice?",
+      "options": [
+        "It explores every node in the state space",
+        "It aggressively follows the heuristic, often exploring far fewer nodes than uninformed search",
+        "It never uses a heuristic",
+        "It always backtracks fully like DFS"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

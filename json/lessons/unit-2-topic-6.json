@@ -1,0 +1,48 @@
+{
+  "title": "Informed Search Techniques",
+  "sections": [
+    {
+      "heading": "Heuristic Search",
+      "body": "Informed (or \"heuristic\") search strategies use extra problem-specific knowledge — a heuristic — to estimate how close a state is to the goal, letting the algorithm make smarter choices about which node to explore next instead of searching blindly."
+    },
+    {
+      "heading": "Evaluation Function",
+      "body": "An evaluation function assigns a number to each node used to decide expansion order — lower (or higher, depending on convention) values are preferred. Different informed search algorithms differ mainly in how they define this evaluation function."
+    },
+    {
+      "heading": "Cost Function",
+      "body": "The cost function g(n) represents the known cost to reach a node n from the initial state — the same cumulative path cost tracked by UCS, and one of the two ingredients combined in algorithms like A* (covered later in this unit)."
+    },
+    {
+      "heading": "Search Efficiency",
+      "body": "By using a good heuristic to guide the search toward promising areas of the state space, informed search can find solutions while exploring far fewer nodes than uninformed search — the whole point of adding a heuristic is efficiency, not just correctness."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What distinguishes informed search from uninformed search?",
+      "options": [
+        "Informed search uses a heuristic to estimate closeness to the goal",
+        "Informed search never uses a queue",
+        "Uninformed search is always faster",
+        "There is no difference"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What does g(n) represent in search algorithms?",
+      "options": ["A random guess", "The known cost to reach node n from the initial state", "The heuristic estimate to the goal", "The branching factor"],
+      "correctIndex": 1
+    },
+    {
+      "question": "The main benefit of adding a heuristic to search is:",
+      "options": [
+        "Guaranteed correctness that uninformed search lacks",
+        "Improved efficiency — exploring fewer nodes to find a solution",
+        "Eliminating the need for a goal test",
+        "Making the algorithm use less code"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

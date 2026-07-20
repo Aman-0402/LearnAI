@@ -1,0 +1,61 @@
+{
+  "title": "Adversarial Search and Game Playing",
+  "sections": [
+    {
+      "heading": "Two-player Games",
+      "body": "Adversarial search applies to two-player games where one player's gain is the other's loss (zero-sum games), such as chess or tic-tac-toe. Unlike ordinary search, the agent must account for an opponent who is actively trying to work against its goals."
+    },
+    {
+      "heading": "Minimax Algorithm",
+      "body": "The minimax algorithm assumes both players play optimally: the \"maximizing\" player picks moves to maximize the outcome, while the \"minimizing\" player (the opponent) picks moves to minimize it. Minimax explores the game tree, propagating the best guaranteed outcome back up from the leaves to decide the best move for the current player."
+    },
+    {
+      "heading": "Alpha-Beta Pruning",
+      "body": "Alpha-beta pruning is an optimization of minimax that skips exploring branches that can't possibly influence the final decision — if a branch is already proven worse than a move already found elsewhere, there's no need to keep evaluating it. This can dramatically reduce the number of nodes explored without changing the final decision at all."
+    },
+    {
+      "heading": "Game Trees",
+      "body": "A game tree represents all possible sequences of moves in a game: nodes are game states, and each level alternates between the two players' turns. Game trees for real games like chess are astronomically large, which is exactly why techniques like alpha-beta pruning and depth-limited search with evaluation functions matter."
+    },
+    {
+      "heading": "Utility Function",
+      "body": "A utility function assigns a numeric value to terminal (game-over) states, representing how good that outcome is for a given player — for example, +1 for a win, -1 for a loss, 0 for a draw. Minimax uses this utility to decide which move ultimately leads to the best guaranteed outcome."
+    },
+    {
+      "heading": "Applications",
+      "body": "Adversarial search techniques power classical game-playing AI (chess, checkers, Go engines), and the same core ideas extend to any competitive multi-agent setting where one participant's success comes at another's expense, including certain negotiation and security scenarios."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Minimax assumes:",
+      "options": [
+        "Both players play randomly",
+        "One player maximizes the outcome while the opponent minimizes it, both playing optimally",
+        "There is no opponent at all",
+        "The game has no terminal states"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does alpha-beta pruning achieve?",
+      "options": [
+        "It changes the final decision minimax would make",
+        "It skips exploring branches that can't affect the final decision, without changing the outcome",
+        "It removes the need for a utility function",
+        "It only works in single-player games"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A utility function is used to:",
+      "options": [
+        "Assign a numeric value to terminal game states, representing how good the outcome is",
+        "Generate random moves",
+        "Replace the game tree entirely",
+        "Count the number of players"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

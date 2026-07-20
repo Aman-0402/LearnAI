@@ -1,0 +1,60 @@
+{
+  "title": "Constraint Satisfaction Problems (CSP)",
+  "sections": [
+    {
+      "heading": "Variables",
+      "body": "A CSP is defined by a set of variables, each of which must be assigned a value. For example, in a map-coloring problem, each region of the map is a variable that needs to be assigned a color."
+    },
+    {
+      "heading": "Domains",
+      "body": "Each variable has a domain — the set of possible values it could be assigned. In map coloring, the domain for every region might be {red, green, blue}; different variables can also have different domains depending on the problem."
+    },
+    {
+      "heading": "Constraints",
+      "body": "Constraints specify restrictions on which combinations of values are allowed across variables — for example, in map coloring, adjacent regions must not share the same color. A solution is a complete assignment of values to all variables that satisfies every constraint."
+    },
+    {
+      "heading": "Constraint Graph",
+      "body": "A constraint graph represents a CSP visually: nodes are variables, and edges connect variables that share a constraint with each other. This structure helps algorithms reason about which variables' assignments affect which others."
+    },
+    {
+      "heading": "Backtracking",
+      "body": "Backtracking search assigns values to variables one at a time, checking constraints as it goes, and backtracks (undoes the most recent assignment and tries a different value) whenever a constraint is violated — a systematic way of exploring the space of possible assignments without checking every combination exhaustively."
+    },
+    {
+      "heading": "Forward Checking",
+      "body": "Forward checking is an enhancement to backtracking: whenever a variable is assigned, it immediately removes now-inconsistent values from the domains of unassigned variables connected to it by a constraint — catching failures earlier than plain backtracking would, before wasting time on doomed assignments."
+    },
+    {
+      "heading": "Arc Consistency",
+      "body": "A CSP is arc-consistent if, for every pair of connected variables, every value in one variable's domain has at least one compatible value remaining in the other's domain. Enforcing arc consistency (e.g. via the AC-3 algorithm) prunes domains further than forward checking alone, often making the remaining search much faster."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "In a CSP, what does a \"domain\" represent?",
+      "options": ["The set of constraints", "The set of possible values a variable could be assigned", "The final solution", "The constraint graph"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does forward checking do that plain backtracking does not?",
+      "options": [
+        "Nothing, they are identical",
+        "It removes now-inconsistent values from unassigned variables' domains immediately after each assignment",
+        "It ignores constraints entirely",
+        "It requires no variables"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A CSP is \"arc-consistent\" when:",
+      "options": [
+        "Every value in one variable's domain has a compatible value in every connected variable's domain",
+        "There are no constraints at all",
+        "Only one variable exists",
+        "All domains are empty"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

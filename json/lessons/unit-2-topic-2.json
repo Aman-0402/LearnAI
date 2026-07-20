@@ -1,0 +1,57 @@
+{
+  "title": "Uninformed Search Strategies",
+  "sections": [
+    {
+      "heading": "Blind Search",
+      "body": "Uninformed (or \"blind\") search strategies have no extra information about how close a state is to the goal beyond what's given in the problem definition itself — they can only distinguish a goal state from a non-goal state, with no sense of \"getting warmer.\""
+    },
+    {
+      "heading": "Tree Search",
+      "body": "A tree-search version of an algorithm expands nodes without checking whether a state has already been visited. This is simple to implement but can waste time re-exploring the same state repeatedly if the state space has multiple paths to the same state."
+    },
+    {
+      "heading": "Graph Search",
+      "body": "A graph-search version keeps track of states already visited (an \"explored set\") and skips re-expanding them. This avoids redundant work but requires extra memory to store the explored set."
+    },
+    {
+      "heading": "Completeness",
+      "body": "An uninformed search strategy is complete if it's guaranteed to find a solution whenever one exists — for example, BFS is complete on finite state spaces, while a naive DFS can fail to terminate on an infinite or very deep state space."
+    },
+    {
+      "heading": "Optimality",
+      "body": "An uninformed search strategy is optimal if it always finds the cheapest solution, not just any solution. Whether a given strategy is optimal often depends on whether all action costs are equal or vary — this distinction is exactly why BFS, DFS, and UCS behave differently, covered in the following topics."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What defines an \"uninformed\" or \"blind\" search strategy?",
+      "options": [
+        "It has no extra information about distance to the goal beyond the problem definition",
+        "It always finds the optimal solution",
+        "It only works on graphs, never trees",
+        "It requires a heuristic function"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What does graph search add compared to tree search?",
+      "options": [
+        "Nothing, they are identical",
+        "Tracking already-visited states to avoid redundant re-exploration",
+        "A heuristic function",
+        "Guaranteed optimality"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "A search strategy is \"complete\" if it:",
+      "options": [
+        "Always finds the cheapest solution",
+        "Is guaranteed to find a solution whenever one exists",
+        "Uses no memory at all",
+        "Never explores more than one node"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "title": "A* Search Algorithm",
+  "sections": [
+    {
+      "heading": "f(n) = g(n) + h(n)",
+      "body": "A* combines the strengths of UCS and Greedy Best First Search into one evaluation function: f(n) = g(n) + h(n), where g(n) is the cost already spent reaching n, and h(n) is the estimated cost remaining to the goal. It always expands the node with the lowest f(n)."
+    },
+    {
+      "heading": "Cost Function",
+      "body": "By combining both the cost so far and the estimated cost remaining, A* balances \"don't waste what I've already spent getting here\" (UCS's concern) against \"but also head toward the goal efficiently\" (Greedy's concern) — getting the benefits of both."
+    },
+    {
+      "heading": "Optimality",
+      "body": "A* is optimal (guaranteed to find the cheapest solution) when its heuristic is admissible — never overestimating the true remaining cost — because that guarantees A* never prematurely commits to a path that only looks cheap due to an overly optimistic heuristic."
+    },
+    {
+      "heading": "Completeness",
+      "body": "A* is complete on finite state spaces with positive step costs, and generally complete on infinite spaces too as long as there's a solution and costs don't shrink to zero along any infinite path — guaranteeing it won't loop forever without ever finding an existing solution."
+    },
+    {
+      "heading": "Complexity",
+      "body": "A*'s time and space complexity are still exponential in the worst case, but a well-designed heuristic can dramatically reduce this in practice compared to uninformed search — the quality of the heuristic directly determines how much better than brute-force search A* performs."
+    },
+    {
+      "heading": "Applications",
+      "body": "A* is one of the most widely used search algorithms in practice — powering pathfinding in video games and robotics navigation, GPS route planning, and puzzle-solving, precisely because it's both optimal (with a good heuristic) and typically much faster than uninformed alternatives."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A*'s evaluation function is:",
+      "options": ["f(n) = g(n) only", "f(n) = h(n) only", "f(n) = g(n) + h(n)", "f(n) = random(n)"],
+      "correctIndex": 2
+    },
+    {
+      "question": "A* is guaranteed optimal when:",
+      "options": ["It uses no heuristic at all", "Its heuristic is admissible (never overestimates)", "It uses a stack instead of a priority queue", "The state space is infinite"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Why is A* widely used in practice (e.g. pathfinding, GPS)?",
+      "options": [
+        "It requires no computation",
+        "It combines optimality (with a good heuristic) with typically much better efficiency than uninformed search",
+        "It never needs a goal test",
+        "It ignores path cost entirely"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

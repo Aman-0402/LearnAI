@@ -1,0 +1,48 @@
+{
+  "title": "Local Search Methods",
+  "sections": [
+    {
+      "heading": "Hill Climbing",
+      "body": "Hill climbing starts from a single current state and repeatedly moves to a better neighboring state, stopping when no neighbor is better. It's simple and memory-efficient (it doesn't track a whole search tree) but can get stuck at a local maximum — a state better than all its neighbors, but not the best possible state overall."
+    },
+    {
+      "heading": "Simulated Annealing",
+      "body": "Simulated annealing addresses hill climbing's local-maximum problem by sometimes accepting a worse move, with a probability that decreases over time (following a \"temperature\" schedule inspired by metal cooling and annealing). Early on it explores more freely; later it settles down, converging toward a strong solution."
+    },
+    {
+      "heading": "Local Beam Search",
+      "body": "Local beam search keeps track of k states in parallel (instead of just one, as in hill climbing) and generates successors for all of them, keeping the best k overall at each step — the parallel states can share information, since a promising region discovered by one \"pulls\" the search toward it."
+    },
+    {
+      "heading": "Genetic Algorithms (Overview)",
+      "body": "Genetic algorithms maintain a population of candidate solutions and evolve it over generations using operations inspired by biological evolution: selection (favoring fitter candidates), crossover (combining parts of two candidates), and mutation (small random changes) — searching for good solutions without needing gradient or heuristic guidance in the traditional sense."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The main weakness of basic hill climbing is:",
+      "options": [
+        "It uses too much memory",
+        "It can get stuck at a local maximum, missing the global best solution",
+        "It always finds the optimal answer",
+        "It requires a heuristic"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "How does simulated annealing address hill climbing's weakness?",
+      "options": [
+        "By never accepting worse moves",
+        "By sometimes accepting worse moves, with decreasing probability over time, to escape local maxima",
+        "By tracking the entire search tree",
+        "By using a stack instead"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Genetic algorithms use which biologically-inspired operations?",
+      "options": ["Selection, crossover, and mutation", "Only random guessing", "Only depth-first traversal", "Only breadth-first traversal"],
+      "correctIndex": 0
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Depth First Search (DFS)",
+  "sections": [
+    {
+      "heading": "Algorithm",
+      "body": "Depth First Search explores as far as possible down one branch of the search tree before backtracking to try the next alternative. It dives deep first, rather than expanding broadly level by level like BFS."
+    },
+    {
+      "heading": "Stack Implementation",
+      "body": "DFS is implemented using a LIFO (last-in, first-out) stack for its frontier — the most recently generated node is expanded next, which naturally produces the \"go deep, then backtrack\" behavior."
+    },
+    {
+      "heading": "Recursive DFS",
+      "body": "DFS is often implemented recursively, where a function calls itself on each child node — the call stack itself acts as the LIFO structure implicitly, without needing an explicit stack data structure in the code."
+    },
+    {
+      "heading": "Properties",
+      "body": "DFS is not complete in infinite state spaces (it can get stuck going down one infinite branch and never backtrack to try others) and is not optimal even when it does find a solution (the first goal found may not be the cheapest one)."
+    },
+    {
+      "heading": "Applications",
+      "body": "DFS is useful when memory is limited, when any solution (not necessarily the best) is acceptable, or for tasks like topological sorting, cycle detection, and exhaustively exploring all possibilities in puzzles like maze generation/solving."
+    },
+    {
+      "heading": "Complexity Analysis",
+      "body": "DFS's time complexity is O(b^m), where m is the maximum depth of the tree (which can be much worse than BFS's d if m is large or infinite). Its key advantage is space complexity of only O(bm) — linear in depth, since it only needs to remember the current path plus unexplored siblings, not the entire frontier."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "DFS explores the search tree by:",
+      "options": ["Expanding level by level", "Going as deep as possible down one branch before backtracking", "Always picking the cheapest node", "Exploring randomly with no structure"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is DFS's key space-complexity advantage over BFS?",
+      "options": [
+        "DFS uses no memory at all",
+        "DFS's space complexity is linear in depth (O(bm)), much lower than BFS's exponential O(b^d)",
+        "DFS always uses more memory than BFS",
+        "There is no difference"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Is DFS guaranteed to find the optimal (cheapest) solution?",
+      "options": ["Yes, always", "No — the first goal it finds may not be the cheapest", "Only in infinite spaces", "Only when using a queue"],
+      "correctIndex": 1
+    }
+  ]
+}

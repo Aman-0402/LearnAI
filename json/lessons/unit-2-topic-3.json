@@ -1,0 +1,46 @@
+{
+  "title": "Breadth First Search (BFS)",
+  "sections": [
+    {
+      "heading": "Algorithm",
+      "body": "Breadth First Search explores the search tree level by level: it fully expands all nodes at the current depth before moving on to any node at the next depth. This means it always finds the shallowest goal node first."
+    },
+    {
+      "heading": "Queue Implementation",
+      "body": "BFS is implemented using a FIFO (first-in, first-out) queue to hold the \"frontier\" of nodes waiting to be expanded. Newly generated nodes are added to the back of the queue, so nodes are expanded in the exact order they were first discovered."
+    },
+    {
+      "heading": "Properties",
+      "body": "BFS is complete (it will find a solution if one exists, on a finite state space) and, when all step costs are equal, it's also optimal — since it finds the shallowest goal first, which is also the cheapest when every step costs the same."
+    },
+    {
+      "heading": "Time Complexity",
+      "body": "If b is the branching factor (average number of children per node) and d is the depth of the shallowest goal, BFS's time complexity is O(b^d) — it can need to generate an exponential number of nodes as depth increases."
+    },
+    {
+      "heading": "Space Complexity",
+      "body": "BFS's space complexity is also O(b^d), since it must keep every generated node in memory (the entire frontier plus explored set) — this is BFS's main practical drawback, since memory is often exhausted before time runs out on large problems."
+    },
+    {
+      "heading": "Applications",
+      "body": "BFS is well suited to problems where the shallowest solution is wanted and all actions cost the same — for example, finding the shortest number of hops between two people in a social network, or the minimum number of moves to solve certain puzzles."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "BFS explores the search tree:",
+      "options": ["Depth first, all the way down one branch", "Level by level, shallowest nodes first", "Randomly", "Only along the cheapest path"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What data structure implements BFS's frontier?",
+      "options": ["A FIFO queue", "A LIFO stack", "A priority queue sorted by heuristic", "A hash map only"],
+      "correctIndex": 0
+    },
+    {
+      "question": "BFS is optimal when:",
+      "options": ["Never", "All step costs are equal", "Only in infinite state spaces", "Only when using a stack"],
+      "correctIndex": 1
+    }
+  ]
+}

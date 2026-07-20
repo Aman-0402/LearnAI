@@ -1,0 +1,47 @@
+{
+  "title": "Uniform Cost Search (UCS)",
+  "sections": [
+    {
+      "heading": "Priority Queue",
+      "body": "Uniform Cost Search uses a priority queue for its frontier, always expanding the node with the lowest cumulative path cost so far — rather than a queue (BFS) or a stack (DFS), it's specifically ordered by cost."
+    },
+    {
+      "heading": "Path Cost",
+      "body": "Path cost is the sum of the costs of every action taken to reach a given node from the initial state. UCS tracks this running total for every node in the frontier so it can always expand the cheapest one next."
+    },
+    {
+      "heading": "Algorithm",
+      "body": "UCS repeatedly removes the lowest-cost node from the priority queue, checks if it's a goal, and if not, expands it by adding its children (with their updated cumulative costs) back into the priority queue — continuing until a goal node is dequeued."
+    },
+    {
+      "heading": "Properties",
+      "body": "UCS is complete and optimal, even when step costs vary (unlike plain BFS, which is only optimal when all costs are equal) — as long as step costs are non-negative, so the cumulative cost never decreases as the path gets longer."
+    },
+    {
+      "heading": "Applications",
+      "body": "UCS is well suited to problems like finding the cheapest route on a map where roads have different costs (distance, time, tolls) — it generalizes BFS's shortest-path idea to weighted, unequal-cost actions."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "UCS always expands the node with:",
+      "options": ["The greatest depth", "The lowest cumulative path cost so far", "A random priority", "The most children"],
+      "correctIndex": 1
+    },
+    {
+      "question": "How does UCS compare to BFS when step costs vary?",
+      "options": [
+        "They behave identically",
+        "UCS remains optimal with varying costs; plain BFS is only optimal when all costs are equal",
+        "BFS is always better",
+        "UCS cannot handle varying costs at all"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "UCS is guaranteed optimal as long as:",
+      "options": ["Step costs are non-negative", "The graph is a tree", "There is only one goal state", "Step costs are all negative"],
+      "correctIndex": 0
+    }
+  ]
+}

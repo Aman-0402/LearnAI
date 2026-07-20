@@ -1,0 +1,52 @@
+{
+  "title": "Search Fundamentals",
+  "sections": [
+    {
+      "heading": "Search Problems",
+      "body": "A search problem asks: starting from some initial situation, find a sequence of actions that reaches a desired goal. Formally solving one requires defining the state space, the available actions, the goal test, and (usually) a cost for each action — the same formulation ideas introduced in Unit 1, now put into practice with concrete algorithms."
+    },
+    {
+      "heading": "Search Trees",
+      "body": "A search tree is built up as an algorithm explores: the root is the initial state, and each node's children are the states reachable by one action. The same real-world state can appear as several different nodes in the tree if it's reached via different sequences of actions."
+    },
+    {
+      "heading": "Search Graphs",
+      "body": "The search graph is the underlying map of all states and the transitions between them. Unlike the tree, each state appears exactly once in the graph — search algorithms that track visited states can use this to avoid wastefully re-exploring the same state multiple times."
+    },
+    {
+      "heading": "Search Algorithms",
+      "body": "A search algorithm is the strategy for deciding which node in the search tree to expand next. Different algorithms make this choice differently — by depth, by breadth, by cost so far, or by an estimate of remaining distance to the goal — which is exactly what distinguishes the search strategies covered in this unit."
+    },
+    {
+      "heading": "Search Strategy",
+      "body": "A search strategy is evaluated along a few key dimensions: completeness (does it always find a solution if one exists?), optimality (does it find the cheapest solution?), time complexity (how long does it take?), and space complexity (how much memory does it use?). Every algorithm in this unit makes different tradeoffs across these dimensions."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What does a search algorithm primarily decide?",
+      "options": [
+        "Which node in the search tree to expand next",
+        "The color of the state space diagram",
+        "The programming language to use",
+        "The hardware the agent runs on"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What is the key structural difference between a search tree and a search graph?",
+      "options": [
+        "There is none",
+        "The graph represents each state exactly once; the tree can repeat a state via different paths",
+        "The tree has no states",
+        "The graph is always smaller than the tree"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is NOT one of the standard dimensions for evaluating a search strategy?",
+      "options": ["Completeness", "Optimality", "Time complexity", "The programmer's favorite color"],
+      "correctIndex": 3
+    }
+  ]
+}
