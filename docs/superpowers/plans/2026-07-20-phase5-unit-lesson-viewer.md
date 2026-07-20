@@ -848,11 +848,13 @@ const XP_PER_LESSON = 20;
 
 let selectedAnswers = [];
 let feedbackState = null; // null | "correct-all" | "has-wrong"
+let justAwardedXp = false;
 
 export async function mount(container, meta, isStale) {
   container.innerHTML = "";
   selectedAnswers = [];
   feedbackState = null;
+  justAwardedXp = false;
 
   const unitId = meta && meta.unitId;
   const lessonId = meta && meta.lessonId;
@@ -897,6 +899,7 @@ export async function mount(container, meta, isStale) {
 export function unmount() {
   selectedAnswers = [];
   feedbackState = null;
+  justAwardedXp = false;
 }
 
 function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
@@ -939,9 +942,9 @@ function renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit)
     children.push(
       createEl("div", {
         className: "lesson__quiz-feedback lesson__quiz-feedback--success",
-        text: alreadyComplete && feedbackState !== "correct-all"
-          ? "You've already completed this lesson."
-          : `Lesson complete! +${XP_PER_LESSON} XP`
+        text: justAwardedXp
+          ? `Lesson complete! +${XP_PER_LESSON} XP`
+          : "You've already completed this lesson."
       })
     );
   } else {
@@ -960,14 +963,17 @@ function renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit)
       feedbackState = allCorrect ? "correct-all" : "has-wrong";
 
       if (allCorrect) {
-        const totalCompleted = getState().completedLessons.filter((k) => k.startsWith(`${unitId}/`)).length;
-        const newCompletedCount = getState().completedLessons.includes(lessonKey)
-          ? totalCompleted
-          : totalCompleted + 1;
-        const unitProgressPercent = totalLessonsInUnit > 0
-          ? Math.round((newCompletedCount / totalLessonsInUnit) * 100)
-          : 0;
-        completeLesson({ lessonKey, unitId, unitProgressPercent, xpAward: XP_PER_LESSON });
+        const { completedLessons } = getState();
+        const wasAlreadyComplete = completedLessons.includes(lessonKey);
+        justAwardedXp = !wasAlreadyComplete;
+
+        if (!wasAlreadyComplete) {
+          const totalCompletedInUnit = completedLessons.filter((k) => k.startsWith(`${unitId}/`)).length;
+          const unitProgressPercent = totalLessonsInUnit > 0
+            ? Math.round(((totalCompletedInUnit + 1) / totalLessonsInUnit) * 100)
+            : 0;
+          completeLesson({ lessonKey, unitId, unitProgressPercent, xpAward: XP_PER_LESSON });
+        }
       }
 
       render(container, unitId, lessonId, lessonData, totalLessonsInUnit);
