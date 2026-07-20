@@ -85,9 +85,18 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
         className: "lesson__section-number",
         text: `Section ${sIndex + 1}`
       }),
-      createEl("div", { className: "lesson__section-heading", text: section.heading }),
-      createEl("div", { className: "lesson__section-body", text: section.body })
+      createEl("div", { className: "lesson__section-heading", text: section.heading })
     ];
+
+    if (section.intro) {
+      children.push(createEl("div", { className: "lesson__section-body", text: section.intro }));
+    }
+
+    if (Array.isArray(section.blocks) && section.blocks.length > 0) {
+      section.blocks.forEach((block) => children.push(renderContentBlock(block)));
+    } else if (section.body) {
+      children.push(createEl("div", { className: "lesson__section-body", text: section.body }));
+    }
 
     if (section.image) {
       const img = createEl("img", {
@@ -229,13 +238,77 @@ function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, tota
   return createEl("div", { className: `lesson__quiz-question lesson__quiz-question--${status || "pending"}`, children });
 }
 
+function renderContentBlock(block) {
+  switch (block.type) {
+    case "definition":
+      return createEl("div", {
+        className: "lesson__block lesson__block--definition",
+        children: [
+          createEl("span", { className: "lesson__block-label", text: block.label }),
+          createEl("div", { className: "lesson__block-text", text: block.text })
+        ]
+      });
+    case "list":
+      return createEl("div", {
+        className: "lesson__block lesson__block--list",
+        children: [
+          ...(block.heading ? [createEl("div", { className: "lesson__block-heading", text: block.heading })] : []),
+          createEl("ul", {
+            className: "lesson__block-list",
+            children: block.items.map((item) => createEl("li", { text: item }))
+          }),
+          ...(block.note ? [createEl("div", { className: "lesson__block-note", text: block.note })] : [])
+        ]
+      });
+    case "comparison":
+      return createEl("div", {
+        className: "lesson__block lesson__block--comparison",
+        children: [
+          ...(block.heading ? [createEl("div", { className: "lesson__block-heading", text: block.heading })] : []),
+          createEl("div", {
+            className: "lesson__comparison-grid",
+            children: block.items.map((item) =>
+              createEl("div", {
+                className: "lesson__comparison-card",
+                children: [
+                  createEl("div", { className: "lesson__comparison-label", text: item.label }),
+                  createEl("div", { className: "lesson__comparison-text", text: item.text })
+                ]
+              })
+            )
+          })
+        ]
+      });
+    case "keypoints":
+      return createEl("div", {
+        className: "lesson__block lesson__block--keypoints",
+        children: [
+          createEl("div", { className: "lesson__block-heading", text: block.heading || "Key Points" }),
+          createEl("ul", {
+            className: "lesson__block-list lesson__block-list--keypoints",
+            children: block.items.map((item) => createEl("li", { text: item }))
+          })
+        ]
+      });
+    case "paragraph":
+    default:
+      return createEl("div", { className: "lesson__section-body", text: block.text || "" });
+  }
+}
+
 function renderQAList(heading, items) {
   const rows = items.map((item) =>
     createEl("div", {
       className: "lesson__qa-item",
       children: [
-        createEl("div", { className: "lesson__qa-question", text: item.question }),
-        createEl("div", { className: "lesson__qa-answer", text: item.answer })
+        createEl("div", {
+          className: "lesson__qa-question",
+          children: [createEl("span", { className: "lesson__qa-badge lesson__qa-badge--q", text: "Q" }), createEl("span", { text: item.question })]
+        }),
+        createEl("div", {
+          className: "lesson__qa-answer",
+          children: [createEl("span", { className: "lesson__qa-badge lesson__qa-badge--a", text: "A" }), createEl("span", { text: item.answer })]
+        })
       ]
     })
   );

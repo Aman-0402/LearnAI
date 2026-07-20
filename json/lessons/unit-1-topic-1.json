@@ -4,7 +4,57 @@
     {
       "heading": "Definition of Artificial Intelligence",
       "image": "assets/Definition of Artificial Intelligence.png",
-      "body": "Simple Definition:\nArtificial Intelligence (AI) is the ability of a computer or machine to perform tasks that normally require human intelligence.\n\nTechnical Definition:\nAI is a branch of Computer Science that develops intelligent systems capable of learning, reasoning, problem-solving, decision-making, and understanding data.\n\nWhy do we need AI?\nBecause humans cannot always:\n- Process huge amounts of data quickly\n- Work 24/7 without fatigue\n- Make instant decisions in every situation\nAI helps automate these tasks efficiently.\n\nReal-Life Examples:\n- ChatGPT → Answers questions\n- Google Maps → Finds the best route\n- Netflix → Recommends movies\n- Gmail → Detects spam emails\n- Face Unlock → Recognizes your face\n\nAI vs Normal Program:\nNormal Program — Follows fixed rules. Example: Calculator.\nAI Program — Learns from data, improves over time. Example: ChatGPT.\n\nKey Points:\n- AI = Artificial + Intelligence\n- AI imitates human intelligence.\n- AI can learn, reason, and make decisions.\n- AI is used in almost every industry today.",
+      "blocks": [
+        {
+          "type": "definition",
+          "label": "Simple Definition",
+          "text": "Artificial Intelligence (AI) is the ability of a computer or machine to perform tasks that normally require human intelligence."
+        },
+        {
+          "type": "definition",
+          "label": "Technical Definition",
+          "text": "AI is a branch of Computer Science that develops intelligent systems capable of learning, reasoning, problem-solving, decision-making, and understanding data."
+        },
+        {
+          "type": "list",
+          "heading": "Why do we need AI? Because humans cannot always:",
+          "items": [
+            "Process huge amounts of data quickly",
+            "Work 24/7 without fatigue",
+            "Make instant decisions in every situation"
+          ],
+          "note": "AI helps automate these tasks efficiently."
+        },
+        {
+          "type": "list",
+          "heading": "Real-Life Examples",
+          "items": [
+            "ChatGPT → Answers questions",
+            "Google Maps → Finds the best route",
+            "Netflix → Recommends movies",
+            "Gmail → Detects spam emails",
+            "Face Unlock → Recognizes your face"
+          ]
+        },
+        {
+          "type": "comparison",
+          "heading": "AI vs Normal Program",
+          "items": [
+            { "label": "Normal Program", "text": "Follows fixed rules. Example: Calculator." },
+            { "label": "AI Program", "text": "Learns from data, improves over time. Example: ChatGPT." }
+          ]
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "AI = Artificial + Intelligence",
+            "AI imitates human intelligence.",
+            "AI can learn, reason, and make decisions.",
+            "AI is used in almost every industry today."
+          ]
+        }
+      ],
       "interviewQA": [
         { "question": "What is Artificial Intelligence?", "answer": "AI is the ability of machines to perform tasks that normally require human intelligence." },
         { "question": "Give two examples of AI.", "answer": "ChatGPT and Google Maps." }
