@@ -9,6 +9,7 @@ let questionStatus = []; // null | "correct" | "wrong", per question index
 let xpAwardedThisSession = new Set();
 let lessonWasCompleteAtMount = false;
 let justCompletedTopic = false;
+let currentUnit = null;
 
 export async function mount(container, meta, isStale) {
   container.innerHTML = "";
@@ -17,6 +18,7 @@ export async function mount(container, meta, isStale) {
   xpAwardedThisSession = new Set();
   lessonWasCompleteAtMount = false;
   justCompletedTopic = false;
+  currentUnit = null;
 
   const unitId = meta && meta.unitId;
   const lessonId = meta && meta.lessonId;
@@ -52,6 +54,7 @@ export async function mount(container, meta, isStale) {
 
   const unit = courseData.units.find((u) => u.id === unitId);
   const totalLessonsInUnit = unit ? unit.lessons.length : 0;
+  currentUnit = unit || null;
 
   selectedAnswers = new Array(lessonData.quiz.length).fill(null);
   questionStatus = new Array(lessonData.quiz.length).fill(null);
@@ -66,6 +69,7 @@ export function unmount() {
   xpAwardedThisSession = new Set();
   lessonWasCompleteAtMount = false;
   justCompletedTopic = false;
+  currentUnit = null;
 }
 
 function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
@@ -119,9 +123,13 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
 
   const quiz = renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit);
 
+  const footerNav = renderFooterNav(unitId, lessonId);
+
   container.appendChild(
-    createEl("div", { className: "lesson", children: [backLink, heading, ...sections, quiz] })
+    createEl("div", { className: "lesson", children: [backLink, heading, ...sections, quiz, ...(footerNav ? [footerNav] : [])] })
   );
+
+  if (window.lucide) window.lucide.createIcons();
 }
 
 function renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
@@ -290,10 +298,88 @@ function renderContentBlock(block) {
           })
         ]
       });
+    case "steps":
+      return createEl("div", {
+        className: "lesson__block lesson__block--steps",
+        children: [
+          ...(block.heading ? [createEl("div", { className: "lesson__block-heading", text: block.heading })] : []),
+          createEl("div", {
+            className: "lesson__steps-list",
+            children: block.items.map((item, i) =>
+              createEl("div", {
+                className: "lesson__step",
+                children: [
+                  createEl("span", { className: "lesson__step-number", text: String(i + 1) }),
+                  createEl("div", {
+                    className: "lesson__step-body",
+                    children: [
+                      createEl("div", { className: "lesson__step-title", text: item.title }),
+                      createEl("div", { className: "lesson__step-text", text: item.text }),
+                      ...(item.example
+                        ? [createEl("div", { className: "lesson__step-example", text: `Example: ${item.example}` })]
+                        : [])
+                    ]
+                  })
+                ]
+              })
+            )
+          })
+        ]
+      });
+    case "table":
+      return createEl("div", {
+        className: "lesson__block lesson__block--table",
+        children: [
+          ...(block.heading ? [createEl("div", { className: "lesson__block-heading", text: block.heading })] : []),
+          createEl("table", {
+            className: "lesson__table",
+            children: [
+              createEl("thead", {
+                children: [
+                  createEl("tr", { children: block.headers.map((h) => createEl("th", { text: h })) })
+                ]
+              }),
+              createEl("tbody", {
+                children: block.rows.map((row) =>
+                  createEl("tr", { children: row.map((cell) => createEl("td", { text: cell })) })
+                )
+              })
+            ]
+          })
+        ]
+      });
     case "paragraph":
     default:
       return createEl("div", { className: "lesson__section-body", text: block.text || "" });
   }
+}
+
+function renderFooterNav(unitId, lessonId) {
+  if (!currentUnit || !Array.isArray(currentUnit.lessons)) return null;
+
+  const currentIndex = currentUnit.lessons.findIndex((l) => l.id === lessonId);
+  if (currentIndex === -1) return null;
+
+  const nextLesson = currentUnit.lessons[currentIndex + 1];
+  if (!nextLesson) return null;
+
+  return createEl("a", {
+    className: "lesson__next-link",
+    children: [
+      createEl("span", {
+        children: [
+          createEl("span", { className: "lesson__next-label", text: "Next Topic" }),
+          createEl("span", { className: "lesson__next-title", text: nextLesson.title })
+        ]
+      }),
+      (() => {
+        const icon = createEl("span", { className: "lesson__next-icon" });
+        icon.innerHTML = '<i data-lucide="arrow-right"></i>';
+        return icon;
+      })()
+    ],
+    attrs: { href: `#/${unitId}/${nextLesson.id}` }
+  });
 }
 
 function renderQAList(heading, items) {

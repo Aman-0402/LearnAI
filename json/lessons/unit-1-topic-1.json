@@ -63,6 +63,67 @@
         { "marks": 2, "question": "Define Artificial Intelligence." },
         { "marks": 5, "question": "Explain Artificial Intelligence with suitable examples." }
       ]
+    },
+    {
+      "heading": "Goals of Artificial Intelligence",
+      "image": "assets/Goals of Artificial Intelligence.png",
+      "intro": "The goal of AI is to create machines that can perform tasks requiring human intelligence.",
+      "blocks": [
+        {
+          "type": "steps",
+          "heading": "Main Goals of AI",
+          "items": [
+            { "title": "Learning", "text": "AI learns from data and improves over time.", "example": "Netflix recommends better movies based on your watching history." },
+            { "title": "Reasoning", "text": "AI uses logic to solve problems and make decisions.", "example": "Chess-playing AI chooses the best move." },
+            { "title": "Problem Solving", "text": "AI finds the best solution to a given problem.", "example": "Google Maps finds the shortest route." },
+            { "title": "Decision Making", "text": "AI selects the best option from multiple choices.", "example": "Banks use AI to approve or reject loans." },
+            { "title": "Perception", "text": "AI understands information from images, videos, speech, or sensors.", "example": "Face Unlock on smartphones." },
+            { "title": "Automation", "text": "AI performs repetitive tasks automatically with minimal human intervention.", "example": "Customer support chatbots answer common questions." }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": "Why are these Goals Important?",
+          "items": [
+            "Save time",
+            "Reduce human effort",
+            "Improve accuracy",
+            "Make faster decisions",
+            "Handle large amounts of data"
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Real-Life Examples",
+          "headers": ["Goal", "Example"],
+          "rows": [
+            ["Learning", "ChatGPT"],
+            ["Reasoning", "Chess AI"],
+            ["Problem Solving", "Google Maps"],
+            ["Decision Making", "Loan Approval System"],
+            ["Perception", "Face Recognition"],
+            ["Automation", "Email Spam Filter"]
+          ]
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "AI aims to make machines intelligent.",
+            "AI learns from experience and data.",
+            "AI helps solve problems and make decisions.",
+            "AI is widely used in daily life."
+          ]
+        }
+      ],
+      "interviewQA": [
+        { "question": "What is the main goal of AI?", "answer": "To develop machines that can perform tasks requiring human intelligence." },
+        { "question": "Name any four goals of AI.", "answer": "Learning, Reasoning, Problem Solving, Decision Making." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "What are the goals of Artificial Intelligence?" },
+        { "marks": 5, "question": "Explain the major goals of AI with examples." }
+      ]
     }
   ],
   "quiz": [
@@ -74,6 +135,16 @@
     {
       "question": "Which is an AI application?",
       "options": ["Calculator", "ChatGPT", "Keyboard", "Mouse"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is NOT a goal of AI?",
+      "options": ["Learning", "Reasoning", "Cooking Food", "Decision Making"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Google Maps mainly demonstrates which AI goal?",
+      "options": ["Gaming", "Problem Solving", "Printing", "Networking"],
       "correctIndex": 1
     }
   ]
