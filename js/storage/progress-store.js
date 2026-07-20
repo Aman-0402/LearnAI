@@ -63,6 +63,11 @@ export function completeLesson({ lessonKey, unitId, unitProgressPercent, xpAward
   });
 }
 
+export function addXp(amount) {
+  const current = getState();
+  return setState({ xp: current.xp + amount });
+}
+
 export function resetProgress() {
   try {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(DEFAULT_STATE));

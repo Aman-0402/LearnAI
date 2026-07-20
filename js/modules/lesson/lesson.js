@@ -1,18 +1,22 @@
 // js/modules/lesson/lesson.js
 import { createEl } from "../../utils/dom.js";
-import { getState, completeLesson } from "../../storage/progress-store.js";
+import { getState, completeLesson, addXp } from "../../storage/progress-store.js";
 
-const XP_PER_LESSON = 20;
+const DEFAULT_QUESTION_XP = 5;
 
 let selectedAnswers = [];
-let feedbackState = null; // null | "correct-all" | "has-wrong"
-let justAwardedXp = false;
+let questionStatus = []; // null | "correct" | "wrong", per question index
+let xpAwardedThisSession = new Set();
+let lessonWasCompleteAtMount = false;
+let justCompletedTopic = false;
 
 export async function mount(container, meta, isStale) {
   container.innerHTML = "";
   selectedAnswers = [];
-  feedbackState = null;
-  justAwardedXp = false;
+  questionStatus = [];
+  xpAwardedThisSession = new Set();
+  lessonWasCompleteAtMount = false;
+  justCompletedTopic = false;
 
   const unitId = meta && meta.unitId;
   const lessonId = meta && meta.lessonId;
@@ -50,14 +54,18 @@ export async function mount(container, meta, isStale) {
   const totalLessonsInUnit = unit ? unit.lessons.length : 0;
 
   selectedAnswers = new Array(lessonData.quiz.length).fill(null);
+  questionStatus = new Array(lessonData.quiz.length).fill(null);
+  lessonWasCompleteAtMount = getState().completedLessons.includes(`${unitId}/${lessonId}`);
 
   render(container, unitId, lessonId, lessonData, totalLessonsInUnit);
 }
 
 export function unmount() {
   selectedAnswers = [];
-  feedbackState = null;
-  justAwardedXp = false;
+  questionStatus = [];
+  xpAwardedThisSession = new Set();
+  lessonWasCompleteAtMount = false;
+  justCompletedTopic = false;
 }
 
 function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
@@ -71,8 +79,12 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
 
   const heading = createEl("h1", { text: lessonData.title });
 
-  const sections = lessonData.sections.map((section) => {
+  const sections = lessonData.sections.map((section, sIndex) => {
     const children = [
+      createEl("div", {
+        className: "lesson__section-number",
+        text: `Section ${sIndex + 1}`
+      }),
       createEl("div", { className: "lesson__section-heading", text: section.heading }),
       createEl("div", { className: "lesson__section-body", text: section.body })
     ];
@@ -104,61 +116,34 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
 }
 
 function renderQuiz(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
-  const lessonKey = `${unitId}/${lessonId}`;
-  const alreadyComplete = getState().completedLessons.includes(lessonKey);
+  const quizHeading = createEl("div", { className: "lesson__quiz-heading", text: "Knowledge Check" });
 
-  const questionEls = lessonData.quiz.map((q, qIndex) => renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, totalLessonsInUnit));
+  const questionEls = lessonData.quiz.map((q, qIndex) =>
+    renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, totalLessonsInUnit)
+  );
 
-  const children = [...questionEls];
+  const children = [quizHeading, ...questionEls];
 
-  if (feedbackState === "correct-all" || alreadyComplete) {
+  const allCorrect = lessonData.quiz.every((q, i) => questionStatus[i] === "correct");
+
+  if (lessonWasCompleteAtMount || allCorrect) {
     children.push(
       createEl("div", {
         className: "lesson__quiz-feedback lesson__quiz-feedback--success",
-        text: justAwardedXp
-          ? `Lesson complete! +${XP_PER_LESSON} XP`
+        text: justCompletedTopic
+          ? "Topic complete! All questions answered correctly."
           : "You've already completed this lesson."
       })
     );
-  } else {
-    if (feedbackState === "has-wrong") {
-      children.push(
-        createEl("div", {
-          className: "lesson__quiz-feedback lesson__quiz-feedback--retry",
-          text: "Not quite — review the highlighted answers and try again."
-        })
-      );
-    }
-
-    const submit = createEl("button", { className: "lesson__quiz-submit", text: "Submit" });
-    submit.addEventListener("click", () => {
-      const allCorrect = lessonData.quiz.every((q, i) => selectedAnswers[i] === q.correctIndex);
-      feedbackState = allCorrect ? "correct-all" : "has-wrong";
-
-      if (allCorrect) {
-        const { completedLessons } = getState();
-        const wasAlreadyComplete = completedLessons.includes(lessonKey);
-        justAwardedXp = !wasAlreadyComplete;
-
-        if (!wasAlreadyComplete) {
-          const totalCompletedInUnit = completedLessons.filter((k) => k.startsWith(`${unitId}/`)).length;
-          const unitProgressPercent = totalLessonsInUnit > 0
-            ? Math.round(((totalCompletedInUnit + 1) / totalLessonsInUnit) * 100)
-            : 0;
-          completeLesson({ lessonKey, unitId, unitProgressPercent, xpAward: XP_PER_LESSON });
-        }
-      }
-
-      render(container, unitId, lessonId, lessonData, totalLessonsInUnit);
-    });
-    children.push(submit);
   }
 
   return createEl("div", { className: "lesson__quiz", children });
 }
 
 function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, totalLessonsInUnit) {
-  const showFeedback = feedbackState === "has-wrong";
+  const lessonKey = `${unitId}/${lessonId}`;
+  const status = questionStatus[qIndex];
+  const questionXp = q.xp || DEFAULT_QUESTION_XP;
 
   const optionRows = q.options.map((option, optIndex) => {
     const input = createEl("input", {
@@ -175,7 +160,7 @@ function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, tota
     });
 
     let rowClass = "lesson__quiz-option-row";
-    if (showFeedback) {
+    if (status === "wrong") {
       if (optIndex === q.correctIndex) {
         rowClass += " lesson__quiz-option-row--correct";
       } else if (selectedAnswers[qIndex] === optIndex) {
@@ -186,10 +171,62 @@ function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, tota
     return createEl("div", { className: rowClass, children: [input, label] });
   });
 
-  return createEl("div", {
-    className: "lesson__quiz-question",
-    children: [createEl("div", { className: "lesson__quiz-question-text", text: q.question }), ...optionRows]
-  });
+  const children = [
+    createEl("div", {
+      className: "lesson__quiz-question-header",
+      children: [
+        createEl("span", { className: "lesson__quiz-question-number", text: `Q${qIndex + 1}` }),
+        createEl("span", { className: "lesson__quiz-question-text", text: q.question }),
+        createEl("span", { className: "lesson__quiz-question-xp", text: `+${questionXp} XP` })
+      ]
+    }),
+    ...optionRows
+  ];
+
+  if (status === "correct") {
+    children.push(
+      createEl("div", {
+        className: "lesson__quiz-question-feedback lesson__quiz-question-feedback--correct",
+        text: `Correct! +${questionXp} XP`
+      })
+    );
+  } else if (status === "wrong") {
+    children.push(
+      createEl("div", {
+        className: "lesson__quiz-question-feedback lesson__quiz-question-feedback--wrong",
+        text: "Not quite — the correct answer is highlighted above. Try again."
+      })
+    );
+  } else {
+    const submit = createEl("button", { className: "lesson__quiz-question-submit", text: "Submit Answer" });
+    submit.addEventListener("click", () => {
+      const isCorrect = selectedAnswers[qIndex] === q.correctIndex;
+      questionStatus[qIndex] = isCorrect ? "correct" : "wrong";
+
+      if (isCorrect && !lessonWasCompleteAtMount && !xpAwardedThisSession.has(qIndex)) {
+        xpAwardedThisSession.add(qIndex);
+        addXp(questionXp);
+      }
+
+      const allCorrect = lessonData.quiz.every((qq, ii) => questionStatus[ii] === "correct");
+      if (isCorrect && allCorrect && !lessonWasCompleteAtMount) {
+        const { completedLessons } = getState();
+        if (!completedLessons.includes(lessonKey)) {
+          const totalCompletedInUnit = completedLessons.filter((k) => k.startsWith(`${unitId}/`)).length;
+          const unitProgressPercent = totalLessonsInUnit > 0
+            ? Math.round(((totalCompletedInUnit + 1) / totalLessonsInUnit) * 100)
+            : 0;
+          completeLesson({ lessonKey, unitId, unitProgressPercent, xpAward: 0 });
+          justCompletedTopic = true;
+        }
+      }
+
+      render(container, unitId, lessonId, lessonData, totalLessonsInUnit);
+    });
+    children.push(submit);
+  }
+
+  return createEl("div", { className: `lesson__quiz-question lesson__quiz-question--${status || "pending"}`, children });
 }
 
 function renderQAList(heading, items) {
