@@ -124,6 +124,89 @@
         { "marks": 2, "question": "What are the goals of Artificial Intelligence?" },
         { "marks": 5, "question": "Explain the major goals of AI with examples." }
       ]
+    },
+    {
+      "heading": "AI vs Human Intelligence",
+      "image": "assets/AI vs Human Intelligence.png",
+      "blocks": [
+        {
+          "type": "list",
+          "heading": "What is Human Intelligence?",
+          "items": [
+            "Think",
+            "Learn",
+            "Understand",
+            "Solve problems",
+            "Make decisions",
+            "Show emotions and creativity"
+          ],
+          "note": "Example: A teacher explains a concept in different ways until every student understands."
+        },
+        {
+          "type": "definition",
+          "label": "Artificial Intelligence",
+          "text": "The ability of machines to perform tasks that normally require human intelligence. Example: ChatGPT answering questions or Google Maps finding the best route."
+        },
+        {
+          "type": "table",
+          "heading": "AI vs Human Intelligence",
+          "headers": ["AI", "Human Intelligence"],
+          "rows": [
+            ["Man-made", "Natural"],
+            ["Learns from data", "Learns from experience"],
+            ["Very fast calculations", "Slower calculations"],
+            ["No emotions", "Has emotions"],
+            ["Works 24/7", "Gets tired"],
+            ["Limited to training", "Can think creatively"]
+          ]
+        },
+        {
+          "type": "comparison",
+          "heading": "Real-Life Example: Solving a Math Problem",
+          "items": [
+            { "label": "👨 Human", "text": "Understands the concept, uses logic, and may try different methods." },
+            { "label": "🤖 AI", "text": "Solves it using patterns and algorithms learned from data." }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": "Advantages of AI",
+          "items": [
+            "Fast processing",
+            "High accuracy",
+            "Works continuously",
+            "Handles large amounts of data"
+          ]
+        },
+        {
+          "type": "list",
+          "heading": "Advantages of Humans",
+          "items": [
+            "Creativity",
+            "Emotions",
+            "Common sense",
+            "Moral and ethical judgment",
+            "Adaptability to completely new situations"
+          ]
+        },
+        {
+          "type": "keypoints",
+          "heading": "Key Points",
+          "items": [
+            "AI is fast, but humans are creative.",
+            "AI has no real emotions or consciousness.",
+            "Humans can learn from limited experiences, while AI usually needs large amounts of data."
+          ]
+        }
+      ],
+      "interviewQA": [
+        { "question": "What is the main difference between AI and Human Intelligence?", "answer": "AI is man-made and data-driven, while Human Intelligence is natural, emotional, creative, and capable of common-sense reasoning." },
+        { "question": "Can AI completely replace humans?", "answer": "No. AI can automate many tasks, but it cannot fully replace human creativity, emotions, ethics, and common sense." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "Differentiate between AI and Human Intelligence." },
+        { "marks": 5, "question": "Compare AI and Human Intelligence with suitable examples." }
+      ]
     }
   ],
   "quiz": [
@@ -145,6 +228,16 @@
     {
       "question": "Google Maps mainly demonstrates which AI goal?",
       "options": ["Gaming", "Problem Solving", "Printing", "Networking"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which of the following has emotions?",
+      "options": ["AI", "Human", "Robot", "Computer"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which works continuously without getting tired?",
+      "options": ["Human", "AI", "Both", "None"],
       "correctIndex": 1
     }
   ]
