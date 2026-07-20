@@ -2,6 +2,8 @@
 import { createEl } from "../../utils/dom.js";
 import { getState } from "../../storage/progress-store.js";
 
+const UNIT_ACCENTS = ["var(--color-primary)", "var(--color-success)", "var(--color-accent)", "var(--color-warning)"];
+
 let expandedUnits = new Set();
 
 export async function mount(container, meta, isStale) {
@@ -46,8 +48,8 @@ function render(container, courseData) {
 
   const units = createEl("div", {
     className: "roadmap__units",
-    children: courseData.units.map((unit) =>
-      renderUnitCard(container, courseData, unit, unitProgress[unit.id] || 0, completedLessons)
+    children: courseData.units.map((unit, index) =>
+      renderUnitCard(container, courseData, unit, index, unitProgress[unit.id] || 0, completedLessons)
     )
   });
 
@@ -58,57 +60,88 @@ function render(container, courseData) {
   if (window.lucide) window.lucide.createIcons();
 }
 
-function renderUnitCard(container, courseData, unit, percent, completedLessons) {
+function renderUnitCard(container, courseData, unit, index, percent, completedLessons) {
+  const accent = UNIT_ACCENTS[index % UNIT_ACCENTS.length];
+  const isExpanded = expandedUnits.has(unit.id);
+
   const lessonCountLabel =
     unit.lessons.length > 0
       ? `${unit.lessons.length} lesson${unit.lessons.length === 1 ? "" : "s"}`
       : "Content coming soon";
 
-  const isExpanded = expandedUnits.has(unit.id);
-
-  const fill = createEl("div", { className: "roadmap-unit-card__fill" });
-  fill.style.width = `${percent}%`;
-
-  const chevron = createEl("span", { className: "roadmap-unit-card__chevron" });
-  chevron.innerHTML = '<i data-lucide="chevron-right"></i>';
+  const eyebrow = createEl("div", {
+    className: "roadmap-unit-card__eyebrow",
+    text: `Unit ${String(index + 1).padStart(2, "0")}`
+  });
 
   const titleButton = createEl("button", {
     className: "roadmap-unit-card__title",
     attrs: { type: "button", "aria-expanded": String(isExpanded) },
-    children: [chevron, createEl("span", { text: unit.title })]
+    text: unit.title.replace(/^Unit \d+:\s*/, "")
   });
-  titleButton.addEventListener("click", () => {
+
+  const toggle = createEl("button", {
+    className: "roadmap-unit-card__toggle",
+    attrs: { type: "button", "aria-label": isExpanded ? "Collapse topics" : "Expand topics" }
+  });
+  toggle.innerHTML = '<i data-lucide="chevron-down"></i>';
+
+  const onToggle = () => {
     if (expandedUnits.has(unit.id)) {
       expandedUnits.delete(unit.id);
     } else {
       expandedUnits.add(unit.id);
     }
     render(container, courseData);
+  };
+  titleButton.addEventListener("click", onToggle);
+  toggle.addEventListener("click", onToggle);
+
+  const header = createEl("div", {
+    className: "roadmap-unit-card__header",
+    children: [createEl("div", { className: "roadmap-unit-card__heading", children: [eyebrow, titleButton] }), toggle]
+  });
+
+  const fill = createEl("div", { className: "roadmap-unit-card__fill" });
+  fill.style.width = `${percent}%`;
+
+  const progressRow = createEl("div", {
+    className: "roadmap-unit-card__progress-row",
+    children: [
+      createEl("div", { className: "roadmap-unit-card__bar", children: [fill] }),
+      createEl("div", {
+        className: "roadmap-unit-card__meta",
+        children: [createEl("span", { className: "roadmap-unit-card__percent", text: `${percent}%` }), document.createTextNode(` · ${lessonCountLabel}`)]
+      })
+    ]
   });
 
   const children = [
-    titleButton,
+    header,
     createEl("div", { className: "roadmap-unit-card__description", text: unit.description }),
-    createEl("div", { className: "roadmap-unit-card__meta", text: `${lessonCountLabel} · ${percent}% complete` }),
-    createEl("div", { className: "roadmap-unit-card__bar", children: [fill] })
+    progressRow
   ];
 
   if (isExpanded) {
     children.push(renderTopicsList(unit, completedLessons));
   }
 
-  children.push(
-    createEl("a", {
-      className: "roadmap-unit-card__link",
-      text: "Start",
-      attrs: { href: `#/${unit.id}` }
-    })
-  );
+  const startIcon = createEl("span", {});
+  startIcon.innerHTML = '<i data-lucide="arrow-right"></i>';
+  const startLink = createEl("a", {
+    className: "roadmap-unit-card__link",
+    children: [createEl("span", { text: percent > 0 ? "Continue" : "Start" }), startIcon],
+    attrs: { href: `#/${unit.id}` }
+  });
+  children.push(startLink);
 
-  return createEl("div", {
+  const card = createEl("div", {
     className: isExpanded ? "roadmap-unit-card roadmap-unit-card--expanded" : "roadmap-unit-card",
     children
   });
+  card.style.setProperty("--unit-accent", accent);
+
+  return card;
 }
 
 function renderTopicsList(unit, completedLessons) {
@@ -121,24 +154,25 @@ function renderTopicsList(unit, completedLessons) {
 
   return createEl("div", {
     className: "roadmap-unit-card__topics",
-    children: unit.lessons.map((lesson) => renderTopicLink(unit, lesson, completedLessons))
+    children: unit.lessons.map((lesson, i) => renderTopicLink(unit, lesson, i, completedLessons))
   });
 }
 
-function renderTopicLink(unit, lesson, completedLessons) {
+function renderTopicLink(unit, lesson, index, completedLessons) {
   const isComplete = completedLessons.includes(`${unit.id}/${lesson.id}`);
 
-  const children = [createEl("span", { text: lesson.title })];
-
+  const indexBadge = createEl("span", { className: "roadmap-unit-card__topic-index" });
   if (isComplete) {
-    const check = createEl("span", { className: "roadmap-unit-card__topic-check" });
-    check.innerHTML = '<i data-lucide="check"></i>';
-    children.unshift(check);
+    indexBadge.innerHTML = '<i data-lucide="check"></i>';
+  } else {
+    indexBadge.textContent = String(index + 1);
   }
 
   return createEl("a", {
-    className: "roadmap-unit-card__topic-link",
-    children,
+    className: isComplete
+      ? "roadmap-unit-card__topic-link roadmap-unit-card__topic-link--done"
+      : "roadmap-unit-card__topic-link",
+    children: [indexBadge, createEl("span", { className: "roadmap-unit-card__topic-title", text: lesson.title })],
     attrs: { href: `#/${unit.id}/${lesson.id}` }
   });
 }
