@@ -75,24 +75,8 @@ function renderBottomBlock() {
     ]
   });
 
-  const streak = createEl("div", {
-    className: "sidebar__stat-row",
-    children: [
-      createEl("span", { text: "Daily Streak" }),
-      createEl("span", { text: `${state.streak} days` })
-    ]
-  });
-
-  const time = createEl("div", {
-    className: "sidebar__stat-row",
-    children: [
-      createEl("span", { text: "Learning Time" }),
-      createEl("span", { text: `${state.learningTime} min` })
-    ]
-  });
-
   return createEl("div", {
     className: "sidebar__bottom",
-    children: [progressLabel, progressBar, currentLesson, streak, time]
+    children: [progressLabel, progressBar, currentLesson]
   });
 }
