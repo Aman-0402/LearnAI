@@ -1,0 +1,30 @@
+{
+  "title": "Introduction to Artificial Intelligence",
+  "sections": [
+    {
+      "heading": "Definition of Artificial Intelligence",
+      "image": "assets/Definition of Artificial Intelligence.png",
+      "body": "Simple Definition:\nArtificial Intelligence (AI) is the ability of a computer or machine to perform tasks that normally require human intelligence.\n\nTechnical Definition:\nAI is a branch of Computer Science that develops intelligent systems capable of learning, reasoning, problem-solving, decision-making, and understanding data.\n\nWhy do we need AI?\nBecause humans cannot always:\n- Process huge amounts of data quickly\n- Work 24/7 without fatigue\n- Make instant decisions in every situation\nAI helps automate these tasks efficiently.\n\nReal-Life Examples:\n- ChatGPT → Answers questions\n- Google Maps → Finds the best route\n- Netflix → Recommends movies\n- Gmail → Detects spam emails\n- Face Unlock → Recognizes your face\n\nAI vs Normal Program:\nNormal Program — Follows fixed rules. Example: Calculator.\nAI Program — Learns from data, improves over time. Example: ChatGPT.\n\nKey Points:\n- AI = Artificial + Intelligence\n- AI imitates human intelligence.\n- AI can learn, reason, and make decisions.\n- AI is used in almost every industry today.",
+      "interviewQA": [
+        { "question": "What is Artificial Intelligence?", "answer": "AI is the ability of machines to perform tasks that normally require human intelligence." },
+        { "question": "Give two examples of AI.", "answer": "ChatGPT and Google Maps." }
+      ],
+      "examQuestions": [
+        { "marks": 2, "question": "Define Artificial Intelligence." },
+        { "marks": 5, "question": "Explain Artificial Intelligence with suitable examples." }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "AI stands for:",
+      "options": ["Artificial Internet", "Artificial Intelligence", "Automated Intelligence", "Advanced Interface"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which is an AI application?",
+      "options": ["Calculator", "ChatGPT", "Keyboard", "Mouse"],
+      "correctIndex": 1
+    }
+  ]
+}

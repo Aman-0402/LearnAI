@@ -85,6 +85,14 @@ function render(container, unitId, lessonId, lessonData, totalLessonsInUnit) {
       children.push(img);
     }
 
+    if (Array.isArray(section.interviewQA) && section.interviewQA.length > 0) {
+      children.push(renderQAList("Interview Questions", section.interviewQA));
+    }
+
+    if (Array.isArray(section.examQuestions) && section.examQuestions.length > 0) {
+      children.push(renderExamQuestions(section.examQuestions));
+    }
+
     return createEl("div", { className: "lesson__section", children });
   });
 
@@ -181,5 +189,39 @@ function renderQuestion(q, qIndex, container, unitId, lessonId, lessonData, tota
   return createEl("div", {
     className: "lesson__quiz-question",
     children: [createEl("div", { className: "lesson__quiz-question-text", text: q.question }), ...optionRows]
+  });
+}
+
+function renderQAList(heading, items) {
+  const rows = items.map((item) =>
+    createEl("div", {
+      className: "lesson__qa-item",
+      children: [
+        createEl("div", { className: "lesson__qa-question", text: item.question }),
+        createEl("div", { className: "lesson__qa-answer", text: item.answer })
+      ]
+    })
+  );
+
+  return createEl("div", {
+    className: "lesson__qa-block",
+    children: [createEl("div", { className: "lesson__qa-heading", text: heading }), ...rows]
+  });
+}
+
+function renderExamQuestions(items) {
+  const rows = items.map((item) =>
+    createEl("div", {
+      className: "lesson__exam-item",
+      children: [
+        createEl("span", { className: "lesson__exam-marks", text: `${item.marks} Marks` }),
+        createEl("span", { className: "lesson__exam-question", text: item.question })
+      ]
+    })
+  );
+
+  return createEl("div", {
+    className: "lesson__qa-block",
+    children: [createEl("div", { className: "lesson__qa-heading", text: "University Exam Questions" }), ...rows]
   });
 }
