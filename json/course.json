@@ -2,12 +2,20 @@
   "units": [
     {
       "id": "unit-1",
-      "title": "Unit 1: Foundations",
-      "description": "What AI actually is, and the core ideas behind machine learning.",
+      "title": "Unit 1: Introduction to Artificial Intelligence and Intelligent Agents",
+      "description": "Foundations of AI: definitions, history, rational agents, agent architectures, and problem solving through search.",
       "lessons": [
-        { "id": "lesson-1", "title": "What Is Artificial Intelligence?" },
-        { "id": "lesson-2", "title": "Data, Patterns, and Learning" },
-        { "id": "lesson-3", "title": "Supervised vs. Unsupervised Learning" }
+        { "id": "topic-1", "title": "Introduction to Artificial Intelligence" },
+        { "id": "topic-2", "title": "History and Evolution of AI" },
+        { "id": "topic-3", "title": "Fundamentals of Artificial Intelligence" },
+        { "id": "topic-4", "title": "Characteristics and Applications of AI" },
+        { "id": "topic-5", "title": "Rational Agents and Intelligent Systems" },
+        { "id": "topic-6", "title": "Agent Architectures" },
+        { "id": "topic-7", "title": "Problem Solving using AI" },
+        { "id": "topic-8", "title": "State Space Representation" },
+        { "id": "topic-9", "title": "Problem Formulation" },
+        { "id": "topic-10", "title": "Performance Measures" },
+        { "id": "topic-11", "title": "AI Applications and Challenges" }
       ]
     },
     {
